@@ -1,0 +1,129 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import BlogCard from '../../components/BlogCard.astro';
+import { getCollection } from 'astro:content';
+
+// Get all blog posts
+const allPosts = await getCollection('blog');
+const sortedPosts = allPosts.sort((a, b) =>
+  b.data.publishDate.getTime() - a.data.publishDate.getTime()
+);
+
+// Get all unique tags
+const allTags = [...new Set(allPosts.flatMap(post => post.data.tags))].sort();
+
+// Get tag from URL if filtering
+const urlParams = Astro.url.searchParams;
+const selectedTag = urlParams.get('tag');
+
+// Filter posts by tag if selected
+const filteredPosts = selectedTag
+  ? sortedPosts.filter(post => post.data.tags.includes(selectedTag))
+  : sortedPosts;
+
+const featuredPosts = sortedPosts.filter(post => post.data.featured);
+---
+
+<Layout
+  title="Blog - Hope Foundation Stories and Updates"
+  description="Read stories of impact, updates from our programs, and insights from our team."
+>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Our Blog</h1>
+      <p class="text-xl text-blue-100 max-w-2xl">
+        Stories of impact, program updates, and insights from our community
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="py-12 md:py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Tag Filter -->
+      {allTags.length > 0 && (
+        <div class="mb-12">
+          <h2 class="text-lg font-semibold text-gray-900 mb-4">Filter by Topic</h2>
+          <div class="flex flex-wrap gap-3">
+            <a
+              href="/blog"
+              class={`px-4 py-2 rounded-full transition-colors ${
+                !selectedTag
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+              }`}
+            >
+              All Posts
+            </a>
+            {allTags.map(tag => (
+              <a
+                href={`/blog?tag=${encodeURIComponent(tag)}`}
+                class={`px-4 py-2 rounded-full transition-colors ${
+                  selectedTag === tag
+                    ? 'bg-blue-600 text-white'
+                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                }`}
+              >
+                {tag}
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <!-- Featured Posts -->
+      {!selectedTag && featuredPosts.length > 0 && (
+        <div class="mb-16">
+          <h2 class="text-2xl font-bold text-gray-900 mb-6">Featured Stories</h2>
+          <div class="grid md:grid-cols-2 gap-8">
+            {featuredPosts.slice(0, 2).map(post => (
+              <BlogCard
+                title={post.data.title}
+                description={post.data.description}
+                publishDate={post.data.publishDate}
+                author={post.data.author}
+                slug={post.slug}
+                image={post.data.image}
+                imageAlt={post.data.imageAlt}
+                tags={post.data.tags}
+              />
+            ))}
+          </div>
+        </div>
+      )}
+
+      <!-- All Posts -->
+      <div>
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">
+          {selectedTag ? `Posts tagged "${selectedTag}"` : 'All Posts'}
+        </h2>
+
+        {filteredPosts.length > 0 ? (
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredPosts.map(post => (
+              <BlogCard
+                title={post.data.title}
+                description={post.data.description}
+                publishDate={post.data.publishDate}
+                author={post.data.author}
+                slug={post.slug}
+                image={post.data.image}
+                imageAlt={post.data.imageAlt}
+                tags={post.data.tags}
+              />
+            ))}
+          </div>
+        ) : (
+          <div class="text-center py-12">
+            <p class="text-xl text-gray-600">
+              {selectedTag
+                ? `No posts found with tag "${selectedTag}"`
+                : 'No blog posts yet. Check back soon!'}
+            </p>
+          </div>
+        )}
+      </div>
+    </div>
+  </section>
+</Layout>

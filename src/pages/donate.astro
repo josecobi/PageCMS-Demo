@@ -1,0 +1,288 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const givingLevels = [
+  {
+    name: 'Friend',
+    amount: '$25',
+    benefits: [
+      'Provides school supplies for 2 students',
+      'Monthly impact newsletter',
+      'Tax-deductible receipt',
+    ],
+  },
+  {
+    name: 'Supporter',
+    amount: '$100',
+    benefits: [
+      'Funds a week of after-school programs',
+      'All Friend benefits',
+      'Quarterly impact reports',
+      'Invitation to annual appreciation event',
+    ],
+    featured: true,
+  },
+  {
+    name: 'Champion',
+    amount: '$500',
+    benefits: [
+      'Sponsors a family for one month',
+      'All Supporter benefits',
+      'Recognition on our website',
+      'Personal thank-you from leadership',
+    ],
+  },
+  {
+    name: 'Partner',
+    amount: '$1,000+',
+    benefits: [
+      'Fully funds a community program',
+      'All Champion benefits',
+      'Opportunity to visit programs',
+      'Personalized impact story',
+      'Corporate partnership opportunities',
+    ],
+  },
+];
+---
+
+<Layout
+  title="Donate - Support Hope Foundation's Mission"
+  description="Your donation helps us create lasting change in our community. Every contribution makes a difference."
+>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">Make a Difference Today</h1>
+      <p class="text-xl text-blue-100">
+        Your generosity empowers individuals, strengthens families, and transforms our community
+      </p>
+    </div>
+  </section>
+
+  <!-- Impact Statement -->
+  <section class="py-16 md:py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Your Impact</h2>
+      <p class="text-xl text-gray-600 leading-relaxed mb-8">
+        Every dollar you contribute goes directly toward programs that create real, lasting change.
+        From education and healthcare to job training and community development, your support
+        enables us to serve thousands of individuals and families each year.
+      </p>
+
+      <div class="grid md:grid-cols-3 gap-8 mt-12">
+        <div class="text-center">
+          <div class="text-5xl font-bold text-blue-600 mb-2">92%</div>
+          <div class="text-gray-600">Goes directly to programs</div>
+        </div>
+        <div class="text-center">
+          <div class="text-5xl font-bold text-blue-600 mb-2">15,000+</div>
+          <div class="text-gray-600">People served annually</div>
+        </div>
+        <div class="text-center">
+          <div class="text-5xl font-bold text-blue-600 mb-2">25</div>
+          <div class="text-gray-600">Active programs</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Giving Levels -->
+  <section class="py-16 md:py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-12">Giving Levels</h2>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {givingLevels.map(level => (
+          <div class={`bg-white rounded-lg shadow-md p-6 flex flex-col ${level.featured ? 'ring-2 ring-blue-600 transform scale-105' : ''}`}>
+            {level.featured && (
+              <div class="text-center mb-4">
+                <span class="inline-block px-3 py-1 bg-blue-600 text-white text-sm font-semibold rounded-full">
+                  Most Popular
+                </span>
+              </div>
+            )}
+            <div class="text-center mb-6">
+              <h3 class="text-2xl font-bold text-gray-900 mb-2">{level.name}</h3>
+              <div class="text-4xl font-bold text-blue-600">{level.amount}</div>
+            </div>
+            <ul class="space-y-3 flex-grow mb-6">
+              {level.benefits.map(benefit => (
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span class="text-gray-600 text-sm">{benefit}</span>
+                </li>
+              ))}
+            </ul>
+            <a
+              href="#donate-widget"
+              class={`block text-center px-6 py-3 rounded-md font-semibold transition-colors ${
+                level.featured
+                  ? 'bg-blue-600 text-white hover:bg-blue-700'
+                  : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
+              }`}
+            >
+              Give {level.amount}
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Donation Widget Placeholder -->
+  <section id="donate-widget" class="py-16 md:py-20">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white rounded-lg shadow-lg p-8 md:p-12 text-center">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6">Make Your Donation</h2>
+        <p class="text-gray-600 mb-8">
+          This is a placeholder for your donation widget integration (Stripe, PayPal, Donorbox, etc.)
+        </p>
+
+        <!-- Placeholder donation form -->
+        <div class="bg-gray-50 border-2 border-dashed border-gray-300 rounded-lg p-12">
+          <div class="text-center">
+            <svg class="w-16 h-16 mx-auto text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">Donation Widget Integration</h3>
+            <p class="text-gray-600 mb-4">
+              Integrate with Stripe, PayPal, Donorbox, or your preferred payment processor
+            </p>
+            <div class="text-sm text-gray-500">
+              <p class="mb-2">Popular options:</p>
+              <ul class="space-y-1">
+                <li>• Stripe Checkout</li>
+                <li>• PayPal Donate Button</li>
+                <li>• Donorbox Widget</li>
+                <li>• Give WP</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Alternative donation methods -->
+        <div class="mt-12 pt-8 border-t border-gray-200">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">Other Ways to Give</h3>
+          <div class="grid md:grid-cols-3 gap-6 text-left">
+            <div>
+              <h4 class="font-semibold text-gray-900 mb-2">By Check</h4>
+              <p class="text-sm text-gray-600">
+                Make checks payable to:<br />
+                Hope Foundation<br />
+                123 Hope Street<br />
+                Community City, CC 12345
+              </p>
+            </div>
+            <div>
+              <h4 class="font-semibold text-gray-900 mb-2">By Phone</h4>
+              <p class="text-sm text-gray-600">
+                Call us to make a donation:<br />
+                (555) 123-4567<br />
+                Monday-Friday<br />
+                9am-5pm EST
+              </p>
+            </div>
+            <div>
+              <h4 class="font-semibold text-gray-900 mb-2">Legacy Giving</h4>
+              <p class="text-sm text-gray-600">
+                Learn about planned giving and how to include Hope Foundation in your will.
+                <a href="/contact" class="text-blue-600 hover:underline">Contact us</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tax Information -->
+  <section class="py-16 md:py-20 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Tax-Deductible Donation</h2>
+      <p class="text-gray-600 mb-2">
+        Hope Foundation is a registered 501(c)(3) nonprofit organization.
+      </p>
+      <p class="text-gray-600 mb-4">
+        Tax ID: 12-3456789
+      </p>
+      <p class="text-sm text-gray-500">
+        All donations are tax-deductible to the fullest extent allowed by law.
+        You will receive a receipt for your records.
+      </p>
+    </div>
+  </section>
+
+  <!-- Transparency -->
+  <section class="py-16 md:py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">Financial Transparency</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">How We Use Your Donations</h3>
+          <div class="space-y-4">
+            <div>
+              <div class="flex justify-between mb-2">
+                <span class="text-gray-700">Programs & Services</span>
+                <span class="font-semibold text-blue-600">92%</span>
+              </div>
+              <div class="w-full bg-gray-200 rounded-full h-2">
+                <div class="bg-blue-600 h-2 rounded-full" style="width: 92%"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-2">
+                <span class="text-gray-700">Administrative</span>
+                <span class="font-semibold text-blue-600">5%</span>
+              </div>
+              <div class="w-full bg-gray-200 rounded-full h-2">
+                <div class="bg-blue-600 h-2 rounded-full" style="width: 5%"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-2">
+                <span class="text-gray-700">Fundraising</span>
+                <span class="font-semibold text-blue-600">3%</span>
+              </div>
+              <div class="w-full bg-gray-200 rounded-full h-2">
+                <div class="bg-blue-600 h-2 rounded-full" style="width: 3%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">Our Commitment to You</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start">
+              <svg class="w-6 h-6 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span class="text-gray-700">Regular financial audits</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-6 h-6 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span class="text-gray-700">Transparent reporting</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-6 h-6 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span class="text-gray-700">Impact metrics shared quarterly</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-6 h-6 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span class="text-gray-700">Secure donation processing</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,302 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const opportunities = [
+  {
+    title: 'Education Tutor',
+    commitment: '4 hours/week',
+    description: 'Help students with homework and academic skills in our after-school program.',
+    skills: ['Teaching', 'Patience', 'Subject expertise'],
+  },
+  {
+    title: 'Event Coordinator',
+    commitment: 'Flexible',
+    description: 'Assist with planning and executing community events and fundraisers.',
+    skills: ['Organization', 'Communication', 'Event planning'],
+  },
+  {
+    title: 'Food Bank Assistant',
+    commitment: '3 hours/week',
+    description: 'Help sort, organize, and distribute food to families in need.',
+    skills: ['Physical fitness', 'Teamwork', 'Reliability'],
+  },
+  {
+    title: 'Mentor',
+    commitment: '2 hours/week',
+    description: 'Provide guidance and support to youth participants in our mentorship program.',
+    skills: ['Listening', 'Empathy', 'Life experience'],
+  },
+  {
+    title: 'Administrative Support',
+    commitment: 'Flexible',
+    description: 'Assist with office tasks, data entry, and program administration.',
+    skills: ['Computer skills', 'Organization', 'Attention to detail'],
+  },
+  {
+    title: 'Social Media Volunteer',
+    commitment: '2-3 hours/week',
+    description: 'Help share our impact stories and engage with our online community.',
+    skills: ['Social media', 'Writing', 'Photography'],
+  },
+];
+
+const benefits = [
+  'Make a real difference in your community',
+  'Develop new skills and experience',
+  'Meet like-minded people',
+  'Receive volunteer hours documentation',
+  'Invitations to volunteer appreciation events',
+  'Professional development opportunities',
+];
+
+const testimonials = [
+  {
+    name: 'Emily Rodriguez',
+    role: 'Education Tutor',
+    duration: '2 years',
+    quote: 'Volunteering with Hope Foundation has been incredibly rewarding. Seeing the students grow and succeed makes every moment worthwhile.',
+    image: null,
+  },
+  {
+    name: 'David Park',
+    role: 'Event Coordinator',
+    duration: '3 years',
+    quote: 'I\'ve gained so much experience in event planning and met amazing people. The team makes you feel valued and appreciated.',
+    image: null,
+  },
+];
+---
+
+<Layout
+  title="Volunteer - Join Hope Foundation's Team"
+  description="Make a difference in your community by volunteering with Hope Foundation. Explore opportunities to share your time and talents."
+>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">Volunteer With Us</h1>
+      <p class="text-xl text-blue-100">
+        Share your time, skills, and passion to help create lasting change in our community
+      </p>
+    </div>
+  </section>
+
+  <!-- Why Volunteer -->
+  <section class="py-16 md:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Why Volunteer?</h2>
+        <p class="text-xl text-gray-600 leading-relaxed">
+          Volunteering is more than giving back—it's about being part of a community dedicated to
+          creating positive change. Whether you have a few hours a week or can help with special events,
+          there's a place for you on our team.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {benefits.map(benefit => (
+          <div class="flex items-start bg-white p-6 rounded-lg shadow-md">
+            <svg class="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            <span class="text-gray-700">{benefit}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Volunteer Opportunities -->
+  <section class="py-16 md:py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-12">Current Opportunities</h2>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {opportunities.map(opp => (
+          <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition-shadow">
+            <div class="flex items-start justify-between mb-4">
+              <h3 class="text-xl font-bold text-gray-900">{opp.title}</h3>
+              <span class="px-3 py-1 bg-blue-100 text-blue-700 text-xs rounded-full whitespace-nowrap ml-2">
+                {opp.commitment}
+              </span>
+            </div>
+
+            <p class="text-gray-600 mb-4">
+              {opp.description}
+            </p>
+
+            <div class="mb-4">
+              <h4 class="text-sm font-semibold text-gray-700 mb-2">Skills Needed:</h4>
+              <div class="flex flex-wrap gap-2">
+                {opp.skills.map(skill => (
+                  <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <a
+              href="#volunteer-form"
+              class="block w-full text-center px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors font-semibold"
+            >
+              Apply Now
+            </a>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-12 text-center">
+        <p class="text-gray-600 mb-4">
+          Don't see the right opportunity? We're always looking for dedicated volunteers.
+        </p>
+        <a href="#volunteer-form" class="text-blue-600 hover:text-blue-700 font-semibold">
+          Contact us about custom opportunities →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="py-16 md:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">Volunteer Stories</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        {testimonials.map(testimonial => (
+          <div class="bg-white p-8 rounded-lg shadow-md">
+            <div class="flex items-center mb-6">
+              <div class="w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-2xl mr-4">
+                {testimonial.name.charAt(0)}
+              </div>
+              <div>
+                <div class="font-semibold text-gray-900 text-lg">{testimonial.name}</div>
+                <div class="text-sm text-gray-600">{testimonial.role}</div>
+                <div class="text-xs text-blue-600">Volunteering for {testimonial.duration}</div>
+              </div>
+            </div>
+            <p class="text-gray-700 italic text-lg leading-relaxed">
+              "{testimonial.quote}"
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="py-16 md:py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">How to Get Started</h2>
+
+      <div class="grid md:grid-cols-4 gap-8">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+            1
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">Apply</h3>
+          <p class="text-gray-600">
+            Fill out our volunteer application form with your interests and availability
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+            2
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">Interview</h3>
+          <p class="text-gray-600">
+            We'll schedule a brief conversation to learn more about you and match you with opportunities
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+            3
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">Orientation</h3>
+          <p class="text-gray-600">
+            Attend a volunteer orientation to learn about our programs and policies
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+            4
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">Start Helping</h3>
+          <p class="text-gray-600">
+            Begin making a difference in your community!
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Application Form -->
+  <section id="volunteer-form" class="py-16 md:py-20">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white rounded-lg shadow-lg p-8 md:p-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6 text-center">Volunteer Application</h2>
+        <p class="text-gray-600 text-center mb-8">
+          Take the first step toward making a difference. Fill out the form below to get started.
+        </p>
+
+        <!-- Placeholder for form integration -->
+        <div class="bg-gray-50 border-2 border-dashed border-gray-300 rounded-lg p-12">
+          <div class="text-center">
+            <svg class="w-16 h-16 mx-auto text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">Volunteer Form Integration</h3>
+            <p class="text-gray-600 mb-4">
+              Integrate with Google Forms, Typeform, Airtable Forms, or a custom solution
+            </p>
+            <div class="text-sm text-gray-500">
+              <p class="mb-2">Form should collect:</p>
+              <ul class="space-y-1 text-left max-w-sm mx-auto">
+                <li>• Name and contact information</li>
+                <li>• Availability and time commitment</li>
+                <li>• Skills and interests</li>
+                <li>• Previous volunteer experience</li>
+                <li>• Emergency contact information</li>
+                <li>• Background check consent (if required)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Alternative contact -->
+        <div class="mt-8 text-center">
+          <p class="text-gray-600 mb-4">Have questions about volunteering?</p>
+          <a href="/contact" class="text-blue-600 hover:text-blue-700 font-semibold">
+            Contact our volunteer coordinator →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 md:py-20 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Make an Impact?</h2>
+      <p class="text-xl text-blue-100 mb-8">
+        Join our team of dedicated volunteers and help create positive change in our community.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href="#volunteer-form"
+          class="px-8 py-4 bg-white text-blue-600 rounded-md font-semibold hover:bg-blue-50 transition-colors"
+        >
+          Apply to Volunteer
+        </a>
+        <a
+          href="/contact"
+          class="px-8 py-4 border-2 border-white text-white rounded-md font-semibold hover:bg-white hover:bg-opacity-10 transition-colors"
+        >
+          Ask Questions
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

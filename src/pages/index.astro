@@ -1,16 +1,189 @@
 ---
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro';
+import NewsletterForm from '../components/NewsletterForm.astro';
+import BlogCard from '../components/BlogCard.astro';
+import EventCard from '../components/EventCard.astro';
+import { getCollection } from 'astro:content';
 
+// Get latest blog posts (will need sample content first)
+const allBlogPosts = await getCollection('blog');
+const recentPosts = allBlogPosts
+  .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime())
+  .slice(0, 3);
+
+// Get upcoming events (will need sample content first)
+const allEvents = await getCollection('events');
+const upcomingEvents = allEvents
+  .filter(event => !event.data.isPast)
+  .sort((a, b) => a.data.eventDate.getTime() - b.data.eventDate.getTime())
+  .slice(0, 3);
+
+const stats = [
+  { value: '$2.5M+', label: 'Donations Raised' },
+  { value: '15,000+', label: 'People Helped' },
+  { value: '500+', label: 'Active Volunteers' },
+  { value: '25', label: 'Community Programs' },
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout
+  title="Hope Foundation - Making a Difference in Our Community"
+  description="Join us in transforming lives through dedicated service, sustainable programs, and community empowerment."
+>
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-r from-blue-600 to-blue-800 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
+      <div class="max-w-3xl">
+        <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+          Empowering Communities, Transforming Lives
+        </h1>
+        <p class="text-xl md:text-2xl mb-8 text-blue-100 leading-relaxed">
+          Together, we're building a brighter future through education, healthcare, and sustainable community development.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <Button href="/donate" variant="secondary" size="lg">
+            Make a Donation
+          </Button>
+          <Button href="/volunteer" variant="outline" size="lg" class="bg-white bg-opacity-10 border-white text-white hover:bg-white hover:text-blue-600">
+            Become a Volunteer
+          </Button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Decorative bottom wave -->
+    <div class="absolute bottom-0 left-0 right-0">
+      <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-12 md:h-20">
+        <path d="M0 0L60 10C120 20 240 40 360 46.7C480 53 600 47 720 43.3C840 40 960 40 1080 46.7C1200 53 1320 67 1380 73.3L1440 80V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0V0Z" fill="rgb(249 250 251)"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Mission Statement -->
+  <section class="py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Our Mission</h2>
+        <p class="text-xl text-gray-600 leading-relaxed mb-8">
+          We are dedicated to creating lasting positive change in our community by providing essential services,
+          educational opportunities, and sustainable programs that empower individuals and families to build better futures.
+        </p>
+        <Button href="/about">Learn More About Us</Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Impact Statistics -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Impact</h2>
+        <p class="text-xl text-gray-600">Making a measurable difference in our community</p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        {stats.map(stat => (
+          <div class="text-center">
+            <div class="text-4xl md:text-5xl font-bold text-blue-600 mb-2">
+              {stat.value}
+            </div>
+            <div class="text-gray-600 font-medium">
+              {stat.label}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Recent Blog Posts -->
+  {recentPosts.length > 0 && (
+    <section class="py-16 md:py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center mb-12">
+          <div>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Latest Stories</h2>
+            <p class="text-xl text-gray-600">Updates from our community and programs</p>
+          </div>
+          <Button href="/blog" variant="outline">View All Posts</Button>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {recentPosts.map(post => (
+            <BlogCard
+              title={post.data.title}
+              description={post.data.description}
+              publishDate={post.data.publishDate}
+              author={post.data.author}
+              slug={post.slug}
+              image={post.data.image}
+              imageAlt={post.data.imageAlt}
+              tags={post.data.tags}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Upcoming Events -->
+  {upcomingEvents.length > 0 && (
+    <section class="py-16 md:py-24 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center mb-12">
+          <div>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Upcoming Events</h2>
+            <p class="text-xl text-gray-600">Join us in making a difference</p>
+          </div>
+          <Button href="/events" variant="outline">View All Events</Button>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {upcomingEvents.map(event => (
+            <EventCard
+              title={event.data.title}
+              description={event.data.description}
+              eventDate={event.data.eventDate}
+              eventTime={event.data.eventTime}
+              location={event.data.location}
+              slug={event.slug}
+              image={event.data.image}
+              imageAlt={event.data.imageAlt}
+              registrationLink={event.data.registrationLink}
+              isPast={event.data.isPast}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Call to Action -->
+  <section class="py-16 md:py-24 bg-gradient-to-r from-orange-500 to-orange-600 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Make a Difference?</h2>
+      <p class="text-xl mb-8 text-orange-100 max-w-2xl mx-auto">
+        Your support helps us continue our vital work in the community. Every contribution makes a real impact.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button href="/donate" class="bg-white text-orange-600 hover:bg-gray-100">
+          Donate Now
+        </Button>
+        <Button href="/membership" variant="outline" class="border-white text-white hover:bg-white hover:bg-opacity-10">
+          Become a Member
+        </Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Signup -->
+  <section class="py-16 md:py-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <NewsletterForm
+        title="Stay Connected"
+        description="Get the latest news, event updates, and impact stories delivered to your inbox."
+      />
+    </div>
+  </section>
+</Layout>

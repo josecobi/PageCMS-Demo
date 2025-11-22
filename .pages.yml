@@ -1,0 +1,181 @@
+# PageCMS Configuration for Hope Foundation
+# This configuration enables non-technical users to manage content through PageCMS
+
+# Media Configuration
+media:
+  input: public/images
+  output: public/images
+
+# Content Collections Configuration
+collections:
+  # Blog Posts Collection
+  - name: "blog"
+    label: "Blog Posts"
+    label_singular: "Blog Post"
+    folder: "src/content/blog"
+    create: true
+    delete: true
+    extension: "mdx"
+    format: "frontmatter"
+    fields:
+      - label: "Title"
+        name: "title"
+        widget: "string"
+        required: true
+      - label: "Description"
+        name: "description"
+        widget: "text"
+        required: true
+      - label: "Publish Date"
+        name: "publishDate"
+        widget: "datetime"
+        required: true
+        default: ""
+        date_format: "YYYY-MM-DD"
+        time_format: false
+      - label: "Author"
+        name: "author"
+        widget: "string"
+        required: true
+      - label: "Featured Image"
+        name: "image"
+        widget: "string"
+        required: false
+        hint: "URL to the featured image"
+      - label: "Image Alt Text"
+        name: "imageAlt"
+        widget: "string"
+        required: false
+      - label: "Tags"
+        name: "tags"
+        widget: "list"
+        required: false
+        default: []
+      - label: "Featured Post"
+        name: "featured"
+        widget: "boolean"
+        required: false
+        default: false
+      - label: "Body"
+        name: "body"
+        widget: "markdown"
+        required: true
+
+  # Events Collection
+  - name: "events"
+    label: "Events"
+    label_singular: "Event"
+    folder: "src/content/events"
+    create: true
+    delete: true
+    extension: "mdx"
+    format: "frontmatter"
+    fields:
+      - label: "Event Title"
+        name: "title"
+        widget: "string"
+        required: true
+      - label: "Description"
+        name: "description"
+        widget: "text"
+        required: true
+      - label: "Event Date"
+        name: "eventDate"
+        widget: "datetime"
+        required: true
+        default: ""
+        date_format: "YYYY-MM-DD"
+        time_format: false
+      - label: "Event Time"
+        name: "eventTime"
+        widget: "string"
+        required: false
+        hint: "e.g., 6:00 PM - 9:00 PM"
+      - label: "Location"
+        name: "location"
+        widget: "string"
+        required: true
+      - label: "Featured Image"
+        name: "image"
+        widget: "string"
+        required: false
+        hint: "URL to the event image"
+      - label: "Image Alt Text"
+        name: "imageAlt"
+        widget: "string"
+        required: false
+      - label: "Registration Link"
+        name: "registrationLink"
+        widget: "string"
+        required: false
+        hint: "URL for event registration"
+      - label: "Past Event"
+        name: "isPast"
+        widget: "boolean"
+        required: false
+        default: false
+      - label: "Featured Event"
+        name: "featured"
+        widget: "boolean"
+        required: false
+        default: false
+      - label: "Event Details"
+        name: "body"
+        widget: "markdown"
+        required: true
+
+  # Team Members Collection
+  - name: "team"
+    label: "Team Members"
+    label_singular: "Team Member"
+    folder: "src/content/team"
+    create: true
+    delete: true
+    extension: "mdx"
+    format: "frontmatter"
+    fields:
+      - label: "Name"
+        name: "name"
+        widget: "string"
+        required: true
+      - label: "Role/Position"
+        name: "role"
+        widget: "string"
+        required: true
+      - label: "Short Bio"
+        name: "bio"
+        widget: "text"
+        required: true
+        hint: "Brief description shown on team cards"
+      - label: "Profile Image"
+        name: "image"
+        widget: "string"
+        required: false
+        hint: "URL to profile photo"
+      - label: "Image Alt Text"
+        name: "imageAlt"
+        widget: "string"
+        required: false
+      - label: "Email"
+        name: "email"
+        widget: "string"
+        required: false
+        pattern: ['^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', 'Must be a valid email address']
+      - label: "LinkedIn Profile"
+        name: "linkedin"
+        widget: "string"
+        required: false
+        hint: "Full LinkedIn URL"
+      - label: "Display Order"
+        name: "order"
+        widget: "number"
+        required: true
+        default: 99
+        value_type: "int"
+        min: 1
+        hint: "Lower numbers appear first"
+      - label: "Full Bio"
+        name: "body"
+        widget: "markdown"
+        required: false
+        hint: "Extended biography (optional)"

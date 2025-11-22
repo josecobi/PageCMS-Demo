@@ -1,0 +1,266 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const membershipTiers = [
+  {
+    name: 'Individual',
+    price: '$50',
+    period: 'per year',
+    benefits: [
+      'Monthly newsletter',
+      'Member-only events',
+      'Voting rights at annual meeting',
+      'Hope Foundation membership card',
+      'Tax-deductible receipt',
+    ],
+  },
+  {
+    name: 'Family',
+    price: '$100',
+    period: 'per year',
+    benefits: [
+      'All Individual benefits',
+      'Coverage for up to 4 family members',
+      'Free workshop attendance',
+      'Priority event registration',
+      'Family volunteer opportunities',
+    ],
+    featured: true,
+  },
+  {
+    name: 'Sustaining',
+    price: '$250',
+    period: 'per year',
+    benefits: [
+      'All Family benefits',
+      'Quarterly impact reports',
+      'Recognition on website',
+      'Exclusive community gatherings',
+      'Program visit opportunities',
+    ],
+  },
+];
+
+const testimonials = [
+  {
+    name: 'Sarah Johnson',
+    role: 'Family Member since 2020',
+    quote: 'Being a member has allowed my whole family to get involved in meaningful community service. The events are well-organized and truly make a difference.',
+  },
+  {
+    name: 'Michael Chen',
+    role: 'Sustaining Member since 2018',
+    quote: 'I love seeing the direct impact of my membership. The quarterly reports show exactly how our community is growing and improving.',
+  },
+];
+---
+
+<Layout
+  title="Membership - Join the Hope Foundation Community"
+  description="Become a member of Hope Foundation and join a community of people committed to positive change."
+>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">Become a Member</h1>
+      <p class="text-xl text-blue-100">
+        Join a community of changemakers committed to empowering our community
+      </p>
+    </div>
+  </section>
+
+  <!-- Why Join Section -->
+  <section class="py-16 md:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Why Become a Member?</h2>
+        <p class="text-xl text-gray-600 leading-relaxed">
+          Membership is more than just a donation—it's joining a movement of people dedicated
+          to creating lasting positive change in our community.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Community</h3>
+          <p class="text-gray-600">
+            Connect with like-minded individuals who share your passion for making a difference
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Learning</h3>
+          <p class="text-gray-600">
+            Access exclusive workshops, events, and insights about community development
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Voice</h3>
+          <p class="text-gray-600">
+            Have a say in our programs and direction through voting rights and feedback opportunities
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Membership Tiers -->
+  <section class="py-16 md:py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-12">Membership Levels</h2>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        {membershipTiers.map(tier => (
+          <div class={`bg-white rounded-lg shadow-md p-8 flex flex-col ${tier.featured ? 'ring-2 ring-blue-600 transform scale-105' : ''}`}>
+            {tier.featured && (
+              <div class="text-center mb-4">
+                <span class="inline-block px-3 py-1 bg-blue-600 text-white text-sm font-semibold rounded-full">
+                  Most Popular
+                </span>
+              </div>
+            )}
+            <div class="text-center mb-6">
+              <h3 class="text-2xl font-bold text-gray-900 mb-2">{tier.name}</h3>
+              <div class="text-4xl font-bold text-blue-600 mb-1">{tier.price}</div>
+              <div class="text-gray-600 text-sm">{tier.period}</div>
+            </div>
+            <ul class="space-y-3 flex-grow mb-6">
+              {tier.benefits.map(benefit => (
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span class="text-gray-600 text-sm">{benefit}</span>
+                </li>
+              ))}
+            </ul>
+            <a
+              href="#membership-form"
+              class={`block text-center px-6 py-3 rounded-md font-semibold transition-colors ${
+                tier.featured
+                  ? 'bg-blue-600 text-white hover:bg-blue-700'
+                  : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
+              }`}
+            >
+              Join as {tier.name}
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="py-16 md:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">What Our Members Say</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        {testimonials.map(testimonial => (
+          <div class="bg-white p-8 rounded-lg shadow-md">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl mr-4">
+                {testimonial.name.charAt(0)}
+              </div>
+              <div>
+                <div class="font-semibold text-gray-900">{testimonial.name}</div>
+                <div class="text-sm text-gray-600">{testimonial.role}</div>
+              </div>
+            </div>
+            <p class="text-gray-700 italic">"{testimonial.quote}"</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Registration Form -->
+  <section id="membership-form" class="py-16 md:py-20 bg-gray-50">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white rounded-lg shadow-lg p-8 md:p-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6 text-center">Join Today</h2>
+        <p class="text-gray-600 text-center mb-8">
+          Fill out the form below or use our integrated registration system
+        </p>
+
+        <!-- Placeholder for form integration -->
+        <div class="bg-gray-50 border-2 border-dashed border-gray-300 rounded-lg p-12">
+          <div class="text-center">
+            <svg class="w-16 h-16 mx-auto text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">Membership Form Integration</h3>
+            <p class="text-gray-600 mb-4">
+              Integrate with Google Forms, Typeform, Airtable Forms, or a custom form solution
+            </p>
+            <div class="text-sm text-gray-500">
+              <p class="mb-2">Recommended options:</p>
+              <ul class="space-y-1">
+                <li>• Google Forms (free, easy setup)</li>
+                <li>• Typeform (beautiful UX)</li>
+                <li>• Airtable Forms (with database)</li>
+                <li>• Custom form with payment integration</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Alternative contact -->
+        <div class="mt-8 text-center">
+          <p class="text-gray-600 mb-4">Prefer to sign up another way?</p>
+          <a href="/contact" class="text-blue-600 hover:text-blue-700 font-semibold">
+            Contact us directly →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16 md:py-20">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">Frequently Asked Questions</h2>
+      <div class="space-y-6">
+        <div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">When does my membership start?</h3>
+          <p class="text-gray-600">
+            Your membership begins immediately upon registration and lasts for one year from your join date.
+          </p>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">Can I cancel my membership?</h3>
+          <p class="text-gray-600">
+            Yes, you can cancel at any time. However, membership fees are non-refundable as they go directly toward our programs.
+          </p>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">Is my membership tax-deductible?</h3>
+          <p class="text-gray-600">
+            Yes! Hope Foundation is a 501(c)(3) organization, and your membership is fully tax-deductible.
+          </p>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">How do I access member benefits?</h3>
+          <p class="text-gray-600">
+            You'll receive a welcome email with instructions for accessing member-only events and resources. You'll also receive your membership card by mail.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

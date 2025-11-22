@@ -1,0 +1,224 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro';
+import { getCollection } from 'astro:content';
+
+// Get team members preview
+const allTeamMembers = await getCollection('team');
+const featuredTeam = allTeamMembers
+  .sort((a, b) => a.data.order - b.data.order)
+  .slice(0, 3);
+
+const values = [
+  {
+    title: 'Compassion',
+    description: 'We lead with empathy and understanding in everything we do.',
+  },
+  {
+    title: 'Integrity',
+    description: 'We operate with transparency and accountability.',
+  },
+  {
+    title: 'Empowerment',
+    description: 'We help individuals and communities build sustainable futures.',
+  },
+  {
+    title: 'Collaboration',
+    description: 'We work together to create lasting positive change.',
+  },
+];
+
+const milestones = [
+  { year: '2010', event: 'Hope Foundation established with 5 founding members' },
+  { year: '2013', event: 'Launched our first education program serving 100 students' },
+  { year: '2016', event: 'Expanded to 5 community centers across the region' },
+  { year: '2019', event: 'Reached milestone of serving 10,000 community members' },
+  { year: '2022', event: 'Introduced sustainable development initiatives' },
+  { year: '2024', event: 'Celebrating 15,000+ lives impacted and counting' },
+];
+---
+
+<Layout
+  title="About Hope Foundation - Our Mission and Impact"
+  description="Learn about Hope Foundation's mission to create lasting positive change through education, healthcare, and sustainable community programs."
+>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">About Hope Foundation</h1>
+      <p class="text-xl text-blue-100 max-w-3xl mx-auto">
+        Building stronger communities through dedicated service and sustainable programs since 2010
+      </p>
+    </div>
+  </section>
+
+  <!-- Mission & Vision -->
+  <section class="py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 gap-12">
+        <div class="bg-white p-8 rounded-lg shadow-md">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">Our Mission</h2>
+          <p class="text-gray-600 leading-relaxed">
+            To empower individuals and families through comprehensive programs in education, healthcare,
+            and community development. We believe in creating sustainable solutions that address root causes
+            and build lasting positive change.
+          </p>
+        </div>
+
+        <div class="bg-white p-8 rounded-lg shadow-md">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">Our Vision</h2>
+          <p class="text-gray-600 leading-relaxed">
+            A world where every person has access to the resources, opportunities, and support they need
+            to thrive. We envision thriving communities built on foundations of equity, compassion, and
+            sustainable development.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Story -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8 text-center">Our Story</h2>
+        <div class="prose prose-lg max-w-none text-gray-600">
+          <p class="mb-4">
+            Hope Foundation was born from a simple observation: our community had immense potential,
+            but many individuals and families lacked access to the resources and support needed to realize it.
+          </p>
+          <p class="mb-4">
+            In 2010, a group of passionate community leaders came together with a shared vision of
+            creating lasting change. What started as a small grassroots effort has grown into a
+            comprehensive nonprofit organization serving thousands of community members each year.
+          </p>
+          <p>
+            Today, we operate multiple community centers, educational programs, healthcare initiatives,
+            and sustainable development projects. But our core mission remains the same: empowering
+            individuals to build better futures for themselves and their families.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">Our Values</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {values.map(value => (
+          <div class="bg-white p-6 rounded-lg shadow-md text-center">
+            <h3 class="text-xl font-bold text-blue-600 mb-3">{value.title}</h3>
+            <p class="text-gray-600">{value.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">Our Journey</h2>
+      <div class="max-w-3xl mx-auto">
+        <div class="space-y-8">
+          {milestones.map((milestone, index) => (
+            <div class="flex gap-6">
+              <div class="flex-shrink-0 w-24 text-right">
+                <span class="text-2xl font-bold text-blue-600">{milestone.year}</span>
+              </div>
+              <div class="flex-shrink-0 w-px bg-blue-600 relative">
+                <div class="absolute -left-2 top-2 w-4 h-4 rounded-full bg-blue-600"></div>
+              </div>
+              <div class="flex-grow pb-8">
+                <p class="text-gray-700 text-lg">{milestone.event}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Impact Metrics -->
+  <section class="py-16 md:py-24 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">Our Impact by the Numbers</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div class="text-center">
+          <div class="text-5xl font-bold mb-2">15,000+</div>
+          <div class="text-blue-100">People Served</div>
+        </div>
+        <div class="text-center">
+          <div class="text-5xl font-bold mb-2">25</div>
+          <div class="text-blue-100">Active Programs</div>
+        </div>
+        <div class="text-center">
+          <div class="text-5xl font-bold mb-2">500+</div>
+          <div class="text-blue-100">Volunteers</div>
+        </div>
+        <div class="text-center">
+          <div class="text-5xl font-bold mb-2">$2.5M+</div>
+          <div class="text-blue-100">Annual Impact</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Preview -->
+  {featuredTeam.length > 0 && (
+    <section class="py-16 md:py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Meet Our Leadership</h2>
+          <p class="text-xl text-gray-600">Dedicated professionals committed to making a difference</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 mb-8">
+          {featuredTeam.map(member => (
+            <div class="bg-white rounded-lg shadow-md overflow-hidden text-center">
+              <div class="aspect-square overflow-hidden bg-gray-200">
+                {member.data.image ? (
+                  <img
+                    src={member.data.image}
+                    alt={member.data.imageAlt || member.data.name}
+                    class="w-full h-full object-cover"
+                  />
+                ) : (
+                  <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-400 to-blue-600">
+                    <span class="text-6xl font-bold text-white">
+                      {member.data.name.split(' ').map(n => n[0]).join('')}
+                    </span>
+                  </div>
+                )}
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold text-gray-900 mb-1">{member.data.name}</h3>
+                <p class="text-blue-600 font-semibold">{member.data.role}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div class="text-center">
+          <Button href="/team">Meet the Full Team</Button>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- CTA -->
+  <section class="py-16 md:py-24 bg-gray-100">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Join Us in Our Mission</h2>
+      <p class="text-xl text-gray-600 mb-8">
+        Whether through volunteering, donating, or becoming a member, there are many ways to get involved.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button href="/volunteer" variant="primary" size="lg">Volunteer With Us</Button>
+        <Button href="/donate" variant="secondary" size="lg">Make a Donation</Button>
+      </div>
+    </div>
+  </section>
+</Layout>

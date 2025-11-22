@@ -1,0 +1,98 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  eventDate: Date;
+  eventTime?: string;
+  location: string;
+  slug: string;
+  image?: string;
+  imageAlt?: string;
+  registrationLink?: string;
+  isPast?: boolean;
+}
+
+const { title, description, eventDate, eventTime, location, slug, image, imageAlt, registrationLink, isPast = false } = Astro.props;
+
+const formattedDate = eventDate.toLocaleDateString('en-US', {
+  weekday: 'long',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+
+const monthShort = eventDate.toLocaleDateString('en-US', { month: 'short' }).toUpperCase();
+const day = eventDate.getDate();
+---
+
+<article class={`bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 ${isPast ? 'opacity-75' : ''}`}>
+  <a href={`/events/${slug}`} class="block">
+    <div class="relative">
+      {image && (
+        <div class="aspect-video overflow-hidden bg-gray-200">
+          <img
+            src={image}
+            alt={imageAlt || title}
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+          />
+        </div>
+      )}
+
+      <!-- Date Badge -->
+      <div class="absolute top-4 left-4 bg-white rounded-lg shadow-lg p-3 text-center min-w-[4rem]">
+        <div class="text-xs font-bold text-blue-600">{monthShort}</div>
+        <div class="text-2xl font-bold text-gray-900">{day}</div>
+      </div>
+
+      {isPast && (
+        <div class="absolute top-4 right-4 bg-gray-900 bg-opacity-75 text-white px-3 py-1 rounded-full text-sm font-semibold">
+          Past Event
+        </div>
+      )}
+    </div>
+
+    <div class="p-6">
+      <h3 class="text-xl font-bold text-gray-900 mb-2 hover:text-blue-600 transition-colors">
+        {title}
+      </h3>
+
+      <div class="space-y-2 mb-4 text-sm text-gray-600">
+        <div class="flex items-center">
+          <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+          <span>{formattedDate}</span>
+        </div>
+
+        {eventTime && (
+          <div class="flex items-center">
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>{eventTime}</span>
+          </div>
+        )}
+
+        <div class="flex items-center">
+          <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
+          <span>{location}</span>
+        </div>
+      </div>
+
+      <p class="text-gray-600 mb-4 line-clamp-2">
+        {description}
+      </p>
+
+      {registrationLink && !isPast && (
+        <div class="pt-4 border-t border-gray-200">
+          <span class="text-blue-600 font-semibold hover:text-blue-700 transition-colors">
+            Register Now →
+          </span>
+        </div>
+      )}
+    </div>
+  </a>
+</article>
