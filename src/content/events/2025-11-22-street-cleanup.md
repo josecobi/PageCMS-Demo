@@ -6,6 +6,7 @@ description: Test Content Lorem Ipsum is simply dummy text of the printing and
 eventDate: 2025-11-29
 eventTime: 10:00 AM
 location: Eastern Avenue
+image: /images/basement-before.jpg
 imageAlt: test image cleanup
 registrationLink: https://pagecms-demo.netlify.ap
 isPast: false
