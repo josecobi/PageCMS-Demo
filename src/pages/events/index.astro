@@ -6,17 +6,25 @@ import { getCollection } from 'astro:content';
 // Get all events
 const allEvents = await getCollection('events');
 
-// Separate upcoming and past events
+// Separate upcoming and past events based on actual dates
 const today = new Date();
 today.setHours(0, 0, 0, 0);
 
 const upcomingEvents = allEvents
-  .filter(event => event.data.eventDate >= today || !event.data.isPast)
-  .sort((a, b) => a.data.eventDate.getTime() - b.data.eventDate.getTime());
+  .filter(event => {
+    const eventDate = new Date(event.data.eventDate);
+    eventDate.setHours(0, 0, 0, 0);
+    return eventDate >= today; // Only events today or in the future
+  })
+  .sort((a, b) => a.data.eventDate.getTime() - b.data.eventDate.getTime()); // Soonest first
 
 const pastEvents = allEvents
-  .filter(event => event.data.eventDate < today || event.data.isPast)
-  .sort((a, b) => b.data.eventDate.getTime() - a.data.eventDate.getTime());
+  .filter(event => {
+    const eventDate = new Date(event.data.eventDate);
+    eventDate.setHours(0, 0, 0, 0);
+    return eventDate < today; // Only events before today
+  })
+  .sort((a, b) => b.data.eventDate.getTime() - a.data.eventDate.getTime()); // Most recent first
 
 const featuredEvents = allEvents.filter(event => event.data.featured);
 ---

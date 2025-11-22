@@ -12,11 +12,18 @@ const recentPosts = allBlogPosts
   .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime())
   .slice(0, 3);
 
-// Get upcoming events (will need sample content first)
+// Get upcoming events - filter by actual date, not just isPast flag
 const allEvents = await getCollection('events');
+const today = new Date();
+today.setHours(0, 0, 0, 0); // Reset time to start of day for accurate comparison
+
 const upcomingEvents = allEvents
-  .filter(event => !event.data.isPast)
-  .sort((a, b) => a.data.eventDate.getTime() - b.data.eventDate.getTime())
+  .filter(event => {
+    const eventDate = new Date(event.data.eventDate);
+    eventDate.setHours(0, 0, 0, 0);
+    return eventDate >= today; // Only show events today or in the future
+  })
+  .sort((a, b) => a.data.eventDate.getTime() - b.data.eventDate.getTime()) // Soonest first
   .slice(0, 3);
 
 const stats = [
