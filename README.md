@@ -258,6 +258,37 @@ Replace placeholder images with your own:
 - **Cloudflare Pages**: See [Astro deployment docs](https://docs.astro.build/en/guides/deploy/cloudflare/)
 - **AWS Amplify**: See [Astro deployment docs](https://docs.astro.build/en/guides/deploy/aws/)
 
+
+
+ ### Accessing PageCMS
+
+  ## PageCMS is accessed through their web platform, not directly on your Netlify site:
+
+  1. Go to https://pagescms.org
+  2. Sign in with GitHub
+    - Click "Sign in with GitHub"
+    - Authorize PagesCMS to access your repositories
+  3. Select your repository
+    - Choose your nonprofit-demo repository (or whatever you named it)
+    - PagesCMS will detect the .pages.yml configuration file
+  4. Start editing content
+    - You'll see three content collections:
+        - Blog Posts - Create/edit blog posts
+      - Events - Manage events
+      - Team Members - Update team profiles
+      - Media - Upload images to public/images
+
+  ## How it works
+
+  PageCMS connects directly to your GitHub repository and commits changes when you save content. Since your Netlify site is connected to your GitHub repo:
+
+  1. You edit content in PagesCMS
+  2. PagesCMS commits the changes to GitHub
+  3. Netlify detects the commit and automatically rebuilds/deploys your site
+  4. Your changes go live in a few minutes
+
+  No additional setup is needed on Netlify - it all works through GitHub integration!
+  
 ## 📊 Performance Optimization
 
 This site is built for exceptional performance:
