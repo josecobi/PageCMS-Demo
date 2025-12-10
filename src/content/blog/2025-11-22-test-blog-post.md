@@ -1,11 +1,9 @@
 ---
-title: Test Blog Post-
+title: Test Post
 description: Test description
 publishDate: 2025-11-22
 author: Jose
-image: /images/31072152-3346112079-cinematic film still, close up, photo of
-  redheaded girl near grasses, fictional landscapes, (intense sunlight_1.4),
-  realist deta.png
+image: /images/2024-01-26.webp
 imageAlt: test-image
 tags: Test, golden hour
 featured: false
