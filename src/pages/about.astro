@@ -82,8 +82,13 @@ const committeeChairs = [
   description="Learn about FPCA's mission to represent and serve residents and businesses in the Fells Prospect neighborhood of Baltimore, Maryland."
 >
   <!-- Hero Section -->
-  <section class="relative py-20 md:py-28" style="background: linear-gradient(135deg, #C1503D 0%, #A84636 100%);">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+  <section class="relative py-20 md:py-28 overflow-hidden" style="background: linear-gradient(135deg, #C1503D 0%, #A84636 100%);">
+    <!-- Pagoda Silhouette - Bottom right emerging -->
+    <div class="absolute -bottom-20 right-8 md:right-16 h-96 w-auto opacity-15 pointer-events-none" style="filter: brightness(0) saturate(100%) invert(98%) sepia(4%) saturate(352%) hue-rotate(343deg) brightness(103%) contrast(96%);">
+      <img src="/images/pagoda.svg" alt="" class="h-full w-auto" />
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
       <h1 class="text-5xl md:text-6xl font-bold mb-6" style="font-family: Georgia, serif; color: #FAF8F4;">
         About FPCA
       </h1>
