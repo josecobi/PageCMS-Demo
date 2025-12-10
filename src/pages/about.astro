@@ -1,223 +1,249 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Button from '../components/Button.astro';
-import { getCollection } from 'astro:content';
 
-// Get team members preview
-const allTeamMembers = await getCollection('team');
-const featuredTeam = allTeamMembers
-  .sort((a, b) => a.data.order - b.data.order)
-  .slice(0, 3);
-
-const values = [
+const executiveBoard = [
   {
-    title: 'Compassion',
-    description: 'We lead with empathy and understanding in everything we do.',
+    name: 'Ryan Dowdell',
+    role: 'President',
+    image: '/images/ryan.avif',
   },
   {
-    title: 'Integrity',
-    description: 'We operate with transparency and accountability.',
+    name: 'Jamie Reed',
+    role: 'Vice President',
+    image: '/images/JReed Headshot.avif',
   },
   {
-    title: 'Empowerment',
-    description: 'We help individuals and communities build sustainable futures.',
+    name: 'Cathy Baldino',
+    role: 'Treasurer',
+    image: '/images/Cathy_Baldino.avif',
   },
   {
-    title: 'Collaboration',
-    description: 'We work together to create lasting positive change.',
+    name: 'Geoff Parnell',
+    role: 'Secretary (acting)',
+    image: '/images/geoff.avif',
   },
 ];
 
-const milestones = [
-  { year: '2010', event: 'Hope Foundation established with 5 founding members' },
-  { year: '2013', event: 'Launched our first education program serving 100 students' },
-  { year: '2016', event: 'Expanded to 5 community centers across the region' },
-  { year: '2019', event: 'Reached milestone of serving 10,000 community members' },
-  { year: '2022', event: 'Introduced sustainable development initiatives' },
-  { year: '2024', event: 'Celebrating 15,000+ lives impacted and counting' },
+const boardMembersAtLarge = [
+  {
+    name: 'Barri Yanowitz',
+    image: '/images/FPCA-logo.avif',
+  },
+  {
+    name: 'John Muschelli',
+    image: '/images/john-muschelli.avif',
+  },
+  {
+    name: 'Geoff Parnell',
+    image: '/images/geoff.avif',
+  },
+  {
+    name: 'Harold Dams',
+    image: '/images/harold-dams.avif',
+  },
+];
+
+const committeeChairs = [
+  {
+    name: 'Kat Cerny-Chipman',
+    role: 'Beautification',
+    image: '/images/FPCA-logo.avif',
+  },
+  {
+    name: 'Vacancy',
+    role: 'Land Use',
+    image: '/images/FPCA-logo.avif',
+  },
+  {
+    name: 'Chelsea Moreau',
+    role: 'Social & Events',
+    image: '/images/FPCA-logo.avif',
+  },
+  {
+    name: 'Vacancy',
+    role: 'Community Engagement',
+    image: '/images/FPCA-logo.avif',
+  },
+  {
+    name: 'Vacancy',
+    role: 'Public Safety',
+    image: '/images/FPCA-logo.avif',
+  },
+  {
+    name: 'Vacancy',
+    role: 'Transportation',
+    image: '/images/FPCA-logo.avif',
+  },
 ];
 ---
 
 <Layout
-  title="About Hope Foundation - Our Mission and Impact"
-  description="Learn about Hope Foundation's mission to create lasting positive change through education, healthcare, and sustainable community programs."
+  title="About Us - Fells Prospect Community Association"
+  description="Learn about FPCA's mission to represent and serve residents and businesses in the Fells Prospect neighborhood of Baltimore, Maryland."
 >
   <!-- Hero Section -->
-  <section class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
+  <section class="relative py-20 md:py-28" style="background: linear-gradient(135deg, #C1503D 0%, #A84636 100%);">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h1 class="text-4xl md:text-5xl font-bold mb-6">About Hope Foundation</h1>
-      <p class="text-xl text-blue-100 max-w-3xl mx-auto">
-        Building stronger communities through dedicated service and sustainable programs since 2010
+      <h1 class="text-5xl md:text-6xl font-bold mb-6" style="font-family: Georgia, serif; color: #FAF8F4;">
+        About FPCA
+      </h1>
+      <p class="text-xl md:text-2xl max-w-3xl mx-auto" style="color: #EFE9DC;">
+        Serving the residents and businesses of Fells Prospect since our founding
       </p>
     </div>
-  </section>
-
-  <!-- Mission & Vision -->
-  <section class="py-16 md:py-24">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid md:grid-cols-2 gap-12">
-        <div class="bg-white p-8 rounded-lg shadow-md">
-          <h2 class="text-3xl font-bold text-gray-900 mb-4">Our Mission</h2>
-          <p class="text-gray-600 leading-relaxed">
-            To empower individuals and families through comprehensive programs in education, healthcare,
-            and community development. We believe in creating sustainable solutions that address root causes
-            and build lasting positive change.
-          </p>
-        </div>
-
-        <div class="bg-white p-8 rounded-lg shadow-md">
-          <h2 class="text-3xl font-bold text-gray-900 mb-4">Our Vision</h2>
-          <p class="text-gray-600 leading-relaxed">
-            A world where every person has access to the resources, opportunities, and support they need
-            to thrive. We envision thriving communities built on foundations of equity, compassion, and
-            sustainable development.
-          </p>
-        </div>
-      </div>
+    <!-- Decorative bottom -->
+    <div class="absolute bottom-0 left-0 right-0">
+      <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full">
+        <path d="M0 0L60 5C120 10 240 20 360 23.3C480 27 600 23 720 21.7C840 20 960 20 1080 23.3C1200 27 1320 33 1380 36.7L1440 40V60H0V0Z" fill="#FAF8F4"/>
+      </svg>
     </div>
   </section>
 
-  <!-- Our Story -->
-  <section class="py-16 md:py-24 bg-white">
+  <!-- Mission & About -->
+  <section class="py-16 md:py-24" style="background-color: #FAF8F4;">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-4xl mx-auto">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8 text-center">Our Story</h2>
-        <div class="prose prose-lg max-w-none text-gray-600">
-          <p class="mb-4">
-            Hope Foundation was born from a simple observation: our community had immense potential,
-            but many individuals and families lacked access to the resources and support needed to realize it.
-          </p>
-          <p class="mb-4">
-            In 2010, a group of passionate community leaders came together with a shared vision of
-            creating lasting change. What started as a small grassroots effort has grown into a
-            comprehensive nonprofit organization serving thousands of community members each year.
-          </p>
-          <p>
-            Today, we operate multiple community centers, educational programs, healthcare initiatives,
-            and sustainable development projects. But our core mission remains the same: empowering
-            individuals to build better futures for themselves and their families.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Values -->
-  <section class="py-16 md:py-24">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">Our Values</h2>
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-        {values.map(value => (
-          <div class="bg-white p-6 rounded-lg shadow-md text-center">
-            <h3 class="text-xl font-bold text-blue-600 mb-3">{value.title}</h3>
-            <p class="text-gray-600">{value.description}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Timeline -->
-  <section class="py-16 md:py-24 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">Our Journey</h2>
-      <div class="max-w-3xl mx-auto">
-        <div class="space-y-8">
-          {milestones.map((milestone, index) => (
-            <div class="flex gap-6">
-              <div class="flex-shrink-0 w-24 text-right">
-                <span class="text-2xl font-bold text-blue-600">{milestone.year}</span>
-              </div>
-              <div class="flex-shrink-0 w-px bg-blue-600 relative">
-                <div class="absolute -left-2 top-2 w-4 h-4 rounded-full bg-blue-600"></div>
-              </div>
-              <div class="flex-grow pb-8">
-                <p class="text-gray-700 text-lg">{milestone.event}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Impact Metrics -->
-  <section class="py-16 md:py-24 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">Our Impact by the Numbers</h2>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-        <div class="text-center">
-          <div class="text-5xl font-bold mb-2">15,000+</div>
-          <div class="text-blue-100">People Served</div>
-        </div>
-        <div class="text-center">
-          <div class="text-5xl font-bold mb-2">25</div>
-          <div class="text-blue-100">Active Programs</div>
-        </div>
-        <div class="text-center">
-          <div class="text-5xl font-bold mb-2">500+</div>
-          <div class="text-blue-100">Volunteers</div>
-        </div>
-        <div class="text-center">
-          <div class="text-5xl font-bold mb-2">$2.5M+</div>
-          <div class="text-blue-100">Annual Impact</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Team Preview -->
-  {featuredTeam.length > 0 && (
-    <section class="py-16 md:py-24">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12">
-          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Meet Our Leadership</h2>
-          <p class="text-xl text-gray-600">Dedicated professionals committed to making a difference</p>
+          <div class="inline-block p-4 rounded-full mb-6" style="background: linear-gradient(135deg, #2D5832, #3A6B3F);">
+            <svg class="w-12 h-12" style="color: #C59D5F;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+            </svg>
+          </div>
+          <h2 class="text-4xl md:text-5xl font-bold mb-4" style="font-family: Georgia, serif; color: #3E2723;">
+            Our Mission
+          </h2>
+          <div class="w-32 h-1 mx-auto" style="background-color: #C59D5F;"></div>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-8 mb-8">
-          {featuredTeam.map(member => (
-            <div class="bg-white rounded-lg shadow-md overflow-hidden text-center">
-              <div class="aspect-square overflow-hidden bg-gray-200">
-                {member.data.image ? (
-                  <img
-                    src={member.data.image}
-                    alt={member.data.imageAlt || member.data.name}
-                    class="w-full h-full object-cover"
-                  />
-                ) : (
-                  <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-400 to-blue-600">
-                    <span class="text-6xl font-bold text-white">
-                      {member.data.name.split(' ').map(n => n[0]).join('')}
-                    </span>
-                  </div>
-                )}
+        <div class="rounded-2xl shadow-xl p-8 md:p-12" style="background: linear-gradient(to bottom right, #F5F1E8, #EFE9DC);">
+          <p class="text-xl mb-6 leading-relaxed" style="color: #3E2723;">
+            The Fells Prospect Community Association (FPCA) represents the residents and businesses of the Fells Prospect neighborhood in Baltimore, Maryland. Our neighborhood encompasses the eastern portion of Upper Fells Point and the western tip of Canton, creating a unique community with a distinct identity and character.
+          </p>
+
+          <p class="text-xl mb-6 leading-relaxed" style="color: #3E2723;">
+            As a community association, we work to enhance the quality of life for everyone in Fells Prospect. We advocate for our neighborhood's interests, organize community events, support local businesses, maintain the beauty of our streets and public spaces, and foster connections among neighbors.
+          </p>
+
+          <p class="text-xl mb-6 leading-relaxed" style="color: #3E2723;">
+            FPCA serves as a voice for our community in discussions with the City of Baltimore and other organizations that impact our neighborhood. Through our various committees and volunteer efforts, we address issues ranging from public safety and transportation to beautification and community engagement.
+          </p>
+
+          <p class="text-xl leading-relaxed" style="color: #3E2723;">
+            Whether you're a long-time resident or new to the neighborhood, we invite you to get involved with FPCA. Together, we can continue to make Fells Prospect a great place to live, work, and thrive.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Board of Directors -->
+  <section class="py-16 md:py-24" style="background: linear-gradient(to bottom, #EFE9DC, #F5F1E8);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <div class="inline-block p-4 rounded-full mb-6" style="background: linear-gradient(135deg, #C59D5F, #B8914E);">
+          <svg class="w-12 h-12" style="color: #3E2723;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+          </svg>
+        </div>
+        <h2 class="text-4xl md:text-5xl font-bold mb-4" style="font-family: Georgia, serif; color: #3E2723;">
+          FPCA Board of Directors
+        </h2>
+        <div class="w-32 h-1 mx-auto" style="background-color: #C59D5F;"></div>
+      </div>
+
+      <!-- Executive Board -->
+      <div class="mb-16">
+        <h3 class="text-3xl md:text-4xl font-bold mb-10 text-center" style="font-family: Georgia, serif; color: #C1503D;">Executive Board</h3>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {executiveBoard.map(member => (
+            <div class="rounded-2xl shadow-xl overflow-hidden text-center transition-transform hover:scale-105" style="background: linear-gradient(to bottom right, #F5F1E8, #EFE9DC);">
+              <div class="aspect-square overflow-hidden" style="background-color: #EFE9DC; border-bottom: 4px solid #C1503D;">
+                <img
+                  src={member.image}
+                  alt={member.name}
+                  class="w-full h-full object-cover"
+                />
               </div>
               <div class="p-6">
-                <h3 class="text-xl font-bold text-gray-900 mb-1">{member.data.name}</h3>
-                <p class="text-blue-600 font-semibold">{member.data.role}</p>
+                <h4 class="text-xl font-bold mb-2" style="font-family: Georgia, serif; color: #3E2723;">{member.name}</h4>
+                <p class="font-semibold" style="color: #C1503D;">{member.role}</p>
               </div>
             </div>
           ))}
         </div>
+      </div>
 
-        <div class="text-center">
-          <Button href="/team">Meet the Full Team</Button>
+      <!-- Board Members At-Large -->
+      <div class="mb-16">
+        <h3 class="text-3xl md:text-4xl font-bold mb-10 text-center" style="font-family: Georgia, serif; color: #2D5832;">Board Members At-Large</h3>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto">
+          {boardMembersAtLarge.map(member => (
+            <div class="rounded-2xl shadow-xl overflow-hidden text-center transition-transform hover:scale-105" style="background: linear-gradient(to bottom right, #F5F1E8, #EFE9DC);">
+              <div class="aspect-square overflow-hidden" style="background-color: #EFE9DC; border-bottom: 4px solid #2D5832;">
+                <img
+                  src={member.image}
+                  alt={member.name}
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-6">
+                <h4 class="text-xl font-bold" style="font-family: Georgia, serif; color: #3E2723;">{member.name}</h4>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
-    </section>
-  )}
+
+      <!-- Committee Chairs -->
+      <div>
+        <h3 class="text-3xl md:text-4xl font-bold mb-10 text-center" style="font-family: Georgia, serif; color: #C59D5F;">Committee Chairs</h3>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {committeeChairs.map(chair => (
+            <div class="rounded-2xl shadow-xl overflow-hidden text-center transition-transform hover:scale-105" style="background: linear-gradient(to bottom right, #F5F1E8, #EFE9DC);">
+              <div class="aspect-square overflow-hidden" style="background-color: #EFE9DC; border-bottom: 4px solid #C59D5F;">
+                <img
+                  src={chair.image}
+                  alt={chair.name}
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-6">
+                <h4 class="text-xl font-bold mb-2" style="font-family: Georgia, serif; color: #3E2723;">{chair.name}</h4>
+                <p class="font-semibold" style="color: #C59D5F;">{chair.role}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- CTA -->
-  <section class="py-16 md:py-24 bg-gray-100">
+  <section class="py-16 md:py-24" style="background: linear-gradient(135deg, #2D5832 0%, #3A6B3F 100%); color: #FAF8F4;">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Join Us in Our Mission</h2>
-      <p class="text-xl text-gray-600 mb-8">
-        Whether through volunteering, donating, or becoming a member, there are many ways to get involved.
+      <h2 class="text-3xl md:text-4xl font-bold mb-6" style="font-family: Georgia, serif;">Join Our Community</h2>
+      <p class="text-xl mb-8" style="color: #EFE9DC;">
+        Become a member of FPCA and help shape the future of our neighborhood. Your involvement makes a difference.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <Button href="/volunteer" variant="primary" size="lg">Volunteer With Us</Button>
-        <Button href="/donate" variant="secondary" size="lg">Make a Donation</Button>
+        <a
+          href="/membership"
+          class="inline-block px-8 py-4 font-semibold rounded-lg transition-all shadow-lg text-lg"
+          style="background-color: #FAF8F4; color: #2D5832;"
+          onmouseover="this.style.backgroundColor='#EFE9DC'"
+          onmouseout="this.style.backgroundColor='#FAF8F4'"
+        >
+          Become a Member
+        </a>
+        <a
+          href="/contact"
+          class="inline-block px-8 py-4 font-semibold rounded-lg transition-all border-2 text-lg"
+          style="border-color: #FAF8F4; color: #FAF8F4;"
+          onmouseover="this.style.backgroundColor='rgba(250, 248, 244, 0.1)'"
+          onmouseout="this.style.backgroundColor='transparent'"
+        >
+          Contact Us
+        </a>
       </div>
     </div>
   </section>

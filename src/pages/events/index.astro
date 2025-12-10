@@ -30,26 +30,88 @@ const featuredEvents = allEvents.filter(event => event.data.featured);
 ---
 
 <Layout
-  title="Events - Hope Foundation Community Gatherings"
-  description="Join us at our upcoming events and see how we're making a difference in the community."
+  title="Events - Fells Prospect Community Association"
+  description="Join us at our upcoming events and monthly membership meetings. Be part of the Fells Prospect community."
 >
   <!-- Hero Section -->
-  <section class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h1 class="text-4xl md:text-5xl font-bold mb-4">Events</h1>
-      <p class="text-xl text-blue-100 max-w-2xl">
-        Join us at our upcoming events and be part of the change in our community
+  <section class="relative py-20 md:py-28" style="background: linear-gradient(135deg, #C1503D 0%, #A84636 100%);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-5xl md:text-6xl font-bold mb-6" style="font-family: Georgia, serif; color: #FAF8F4;">
+        Events & Meetings
+      </h1>
+      <p class="text-xl md:text-2xl max-w-3xl mx-auto" style="color: #EFE9DC;">
+        Join us at our upcoming events and be part of the Fells Prospect community
       </p>
+    </div>
+    <!-- Decorative bottom -->
+    <div class="absolute bottom-0 left-0 right-0">
+      <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full">
+        <path d="M0 0L60 5C120 10 240 20 360 23.3C480 27 600 23 720 21.7C840 20 960 20 1080 23.3C1200 27 1320 33 1380 36.7L1440 40V60H0V0Z" fill="#FAF8F4"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Membership Meetings Section - PROMINENT -->
+  <section class="py-16 md:py-20" style="background-color: #FAF8F4;">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="rounded-2xl shadow-2xl p-8 md:p-12 relative overflow-hidden" style="background: linear-gradient(135deg, #2D5832 0%, #3A6B3F 100%); color: #FAF8F4;">
+        <div class="absolute top-0 right-0 w-64 h-64 opacity-10" style="background: radial-gradient(circle, #FAF8F4, transparent);"></div>
+        <div class="relative z-10">
+          <div class="text-center mb-10">
+            <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6" style="background-color: #C59D5F;">
+              <svg class="w-10 h-10" style="color: #3E2723;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold mb-4" style="font-family: Georgia, serif;">
+              General Membership Meetings
+            </h2>
+            <div class="w-32 h-1 mx-auto" style="background-color: #C59D5F;"></div>
+          </div>
+
+          <div class="max-w-3xl mx-auto text-center mb-10">
+            <p class="text-xl md:text-2xl mb-8 leading-relaxed" style="color: #EFE9DC;">
+              General Membership Meetings are held on the <strong>last Thursday of each month</strong> at <strong>Kisling's Tavern (Upstairs)</strong> beginning at <strong>7:00PM</strong>.
+            </p>
+            <p class="text-lg italic" style="color: #C59D5F;">
+              Unless otherwise noted.
+            </p>
+          </div>
+
+          <!-- Note about viewing upcoming meetings -->
+          <div class="mt-10 p-6 rounded-xl text-center" style="background-color: rgba(250, 248, 244, 0.1); border: 2px solid #C59D5F;">
+            <p class="text-lg font-semibold mb-2" style="color: #C59D5F;">
+              📅 View Upcoming Meetings Below
+            </p>
+            <p style="color: #EFE9DC;">
+              Scroll down to see our upcoming membership meetings in the Featured Events section
+            </p>
+          </div>
+
+          <!-- Location Info -->
+          <div class="mt-10 p-6 rounded-xl text-center" style="background-color: rgba(250, 248, 244, 0.1); border: 2px solid #C59D5F;">
+            <p class="text-lg font-semibold mb-2" style="color: #C59D5F;">
+              📍 Kisling's Tavern (Upstairs)
+            </p>
+            <p style="color: #EFE9DC;">
+              Join us for our monthly meetings and help shape the future of our community!
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- Main Content -->
-  <section class="py-12 md:py-16">
+  <section class="py-12 md:py-16" style="background: linear-gradient(to bottom, #EFE9DC, #F5F1E8);">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Featured Events -->
       {featuredEvents.length > 0 && (
         <div class="mb-16">
-          <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6">Featured Events</h2>
+          <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center" style="font-family: Georgia, serif; color: #3E2723;">
+            Featured <span style="color: #C1503D;">Events</span>
+          </h2>
+          <div class="w-32 h-1 mx-auto mb-10" style="background-color: #C59D5F;"></div>
           <div class="grid md:grid-cols-2 gap-8">
             {featuredEvents.slice(0, 2).map(event => (
               <EventCard
@@ -72,7 +134,10 @@ const featuredEvents = allEvents.filter(event => event.data.featured);
       <!-- Upcoming Events -->
       {upcomingEvents.length > 0 && (
         <div class="mb-16">
-          <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6">Upcoming Events</h2>
+          <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center" style="font-family: Georgia, serif; color: #3E2723;">
+            Upcoming <span style="color: #C1503D;">Events</span>
+          </h2>
+          <div class="w-32 h-1 mx-auto mb-10" style="background-color: #C59D5F;"></div>
           <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {upcomingEvents.map(event => (
               <EventCard
@@ -93,19 +158,22 @@ const featuredEvents = allEvents.filter(event => event.data.featured);
       )}
 
       {upcomingEvents.length === 0 && (
-        <div class="text-center py-12 bg-gray-50 rounded-lg mb-16">
-          <svg class="w-16 h-16 mx-auto text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div class="text-center py-12 rounded-2xl mb-16" style="background: linear-gradient(to bottom right, #F5F1E8, #EFE9DC);">
+          <svg class="w-16 h-16 mx-auto mb-4" style="color: #C59D5F;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
           </svg>
-          <h3 class="text-xl font-semibold text-gray-900 mb-2">No Upcoming Events</h3>
-          <p class="text-gray-600">Check back soon for new events!</p>
+          <h3 class="text-xl font-semibold mb-2" style="color: #3E2723; font-family: Georgia, serif;">No Upcoming Events</h3>
+          <p style="color: #4A3933;">Check back soon for new events!</p>
         </div>
       )}
 
       <!-- Past Events -->
       {pastEvents.length > 0 && (
         <div>
-          <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6">Past Events</h2>
+          <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center" style="font-family: Georgia, serif; color: #3E2723;">
+            Past <span style="color: #4A3933;">Events</span>
+          </h2>
+          <div class="w-32 h-1 mx-auto mb-10" style="background-color: #C59D5F;"></div>
           <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {pastEvents.slice(0, 6).map(event => (
               <EventCard
@@ -127,15 +195,18 @@ const featuredEvents = allEvents.filter(event => event.data.featured);
   </section>
 
   <!-- CTA -->
-  <section class="py-16 md:py-20 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
+  <section class="py-16 md:py-20" style="background: linear-gradient(135deg, #C1503D 0%, #A84636 100%); color: #FAF8F4;">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-3xl md:text-4xl font-bold mb-6">Want to Stay Updated?</h2>
-      <p class="text-xl text-blue-100 mb-8">
-        Subscribe to our newsletter to receive updates about upcoming events and programs.
+      <h2 class="text-3xl md:text-4xl font-bold mb-6" style="font-family: Georgia, serif;">Want to Stay Updated?</h2>
+      <p class="text-xl mb-8" style="color: #EFE9DC;">
+        Subscribe to our newsletter to receive updates about upcoming events and monthly meetings.
       </p>
       <a
         href="/newsletter"
-        class="inline-block px-8 py-4 bg-white text-blue-600 rounded-md font-semibold hover:bg-blue-50 transition-colors"
+        class="inline-block px-8 py-4 rounded-lg font-semibold transition-all shadow-lg"
+        style="background-color: #FAF8F4; color: #C1503D;"
+        onmouseover="this.style.backgroundColor='#EFE9DC'"
+        onmouseout="this.style.backgroundColor='#FAF8F4'"
       >
         Subscribe to Newsletter
       </a>

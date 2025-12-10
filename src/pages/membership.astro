@@ -1,266 +1,381 @@
 ---
 import Layout from '../layouts/Layout.astro';
-
-const membershipTiers = [
-  {
-    name: 'Individual',
-    price: '$50',
-    period: 'per year',
-    benefits: [
-      'Monthly newsletter',
-      'Member-only events',
-      'Voting rights at annual meeting',
-      'Hope Foundation membership card',
-      'Tax-deductible receipt',
-    ],
-  },
-  {
-    name: 'Family',
-    price: '$100',
-    period: 'per year',
-    benefits: [
-      'All Individual benefits',
-      'Coverage for up to 4 family members',
-      'Free workshop attendance',
-      'Priority event registration',
-      'Family volunteer opportunities',
-    ],
-    featured: true,
-  },
-  {
-    name: 'Sustaining',
-    price: '$250',
-    period: 'per year',
-    benefits: [
-      'All Family benefits',
-      'Quarterly impact reports',
-      'Recognition on website',
-      'Exclusive community gatherings',
-      'Program visit opportunities',
-    ],
-  },
-];
-
-const testimonials = [
-  {
-    name: 'Sarah Johnson',
-    role: 'Family Member since 2020',
-    quote: 'Being a member has allowed my whole family to get involved in meaningful community service. The events are well-organized and truly make a difference.',
-  },
-  {
-    name: 'Michael Chen',
-    role: 'Sustaining Member since 2018',
-    quote: 'I love seeing the direct impact of my membership. The quarterly reports show exactly how our community is growing and improving.',
-  },
-];
 ---
 
 <Layout
-  title="Membership - Join the Hope Foundation Community"
-  description="Become a member of Hope Foundation and join a community of people committed to positive change."
+  title="Membership - Fells Prospect Community Association"
+  description="Join the Fells Prospect Community Association - $10/person annual membership. Support your neighborhood and have a voice in our community."
 >
   <!-- Hero Section -->
-  <section class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h1 class="text-4xl md:text-5xl font-bold mb-6">Become a Member</h1>
-      <p class="text-xl text-blue-100">
-        Join a community of changemakers committed to empowering our community
+  <section class="relative py-20 md:py-28" style="background: linear-gradient(135deg, #C1503D 0%, #A84636 100%);">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-5xl md:text-6xl font-bold mb-6" style="font-family: Georgia, serif; color: #FAF8F4;">
+        Membership
+      </h1>
+      <p class="text-2xl md:text-3xl font-light mb-4" style="color: #EFE9DC;">
+        We are community funded.
       </p>
+      <p class="text-2xl md:text-3xl font-semibold" style="color: #FAF8F4;">
+        You are our community!
+      </p>
+    </div>
+    <!-- Decorative bottom -->
+    <div class="absolute bottom-0 left-0 right-0">
+      <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full">
+        <path d="M0 0L60 5C120 10 240 20 360 23.3C480 27 600 23 720 21.7C840 20 960 20 1080 23.3C1200 27 1320 33 1380 36.7L1440 40V60H0V0Z" fill="#FAF8F4"/>
+      </svg>
     </div>
   </section>
 
-  <!-- Why Join Section -->
-  <section class="py-16 md:py-20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-3xl mx-auto text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Why Become a Member?</h2>
-        <p class="text-xl text-gray-600 leading-relaxed">
-          Membership is more than just a donation—it's joining a movement of people dedicated
-          to creating lasting positive change in our community.
-        </p>
+  <!-- Membership Price Section -->
+  <section class="py-16 md:py-20" style="background-color: #FAF8F4;">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Main Price Card -->
+      <div class="rounded-2xl shadow-2xl p-10 md:p-14 mb-12 text-center" style="background: linear-gradient(to bottom right, #F5F1E8, #EFE9DC); border: 3px solid #C1503D;">
+        <div class="mb-8">
+          <div class="inline-block px-6 py-2 rounded-full mb-4" style="background-color: #2D5832; color: #FAF8F4;">
+            <span class="font-semibold">Annual Membership</span>
+          </div>
+          <div class="text-7xl md:text-8xl font-bold mb-4" style="font-family: Georgia, serif; color: #C1503D;">
+            $10
+          </div>
+          <div class="text-xl" style="color: #4A3933;">
+            per person, per year
+          </div>
+          <div class="mt-4 px-4 py-2 rounded-lg inline-block" style="background-color: #EFE9DC;">
+            <p class="text-sm font-semibold" style="color: #2D5832;">
+              Dues are renewed in January of each year
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-8 p-6 rounded-xl" style="background-color: #FAF8F4; border-left: 6px solid #C59D5F;">
+          <p class="text-lg leading-relaxed" style="color: #3E2723;">
+            <strong style="color: #C1503D;">Note:</strong> We are changing from a $20/household to a $10/person model in 2026.
+          </p>
+        </div>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="text-center">
-          <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <!-- Benefits Grid -->
+      <div class="grid md:grid-cols-2 gap-8 mb-12">
+        <!-- Voting Rights -->
+        <div class="rounded-xl shadow-lg p-8 transition-transform hover:scale-105" style="background: linear-gradient(135deg, #2D5832, #3A6B3F); color: #FAF8F4;">
+          <div class="w-16 h-16 rounded-full flex items-center justify-center mb-4 mx-auto" style="background-color: #C59D5F;">
+            <svg class="w-8 h-8" style="color: #3E2723;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3 text-center" style="font-family: Georgia, serif;">Voting Rights</h3>
+          <p class="leading-relaxed text-center">
+            Residents who maintain membership are entitled to vote on matters that control the direction of the community association and its recommendations to the city & state.
+          </p>
+        </div>
+
+        <!-- Open Events -->
+        <div class="rounded-xl shadow-lg p-8 transition-transform hover:scale-105" style="background: linear-gradient(135deg, #C1503D, #A84636); color: #FAF8F4;">
+          <div class="w-16 h-16 rounded-full flex items-center justify-center mb-4 mx-auto" style="background-color: #C59D5F;">
+            <svg class="w-8 h-8" style="color: #3E2723;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
             </svg>
           </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-2">Community</h3>
-          <p class="text-gray-600">
-            Connect with like-minded individuals who share your passion for making a difference
-          </p>
-        </div>
-
-        <div class="text-center">
-          <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-2">Learning</h3>
-          <p class="text-gray-600">
-            Access exclusive workshops, events, and insights about community development
-          </p>
-        </div>
-
-        <div class="text-center">
-          <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-2">Voice</h3>
-          <p class="text-gray-600">
-            Have a say in our programs and direction through voting rights and feedback opportunities
+          <h3 class="text-xl font-bold mb-3 text-center" style="font-family: Georgia, serif;">Open to All</h3>
+          <p class="leading-relaxed text-center">
+            You are not required to be a paying member to attend our meetings or most events. Everyone is welcome!
           </p>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- Membership Tiers -->
-  <section class="py-16 md:py-20 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-12">Membership Levels</h2>
-
-      <div class="grid md:grid-cols-3 gap-8">
-        {membershipTiers.map(tier => (
-          <div class={`bg-white rounded-lg shadow-md p-8 flex flex-col ${tier.featured ? 'ring-2 ring-blue-600 transform scale-105' : ''}`}>
-            {tier.featured && (
-              <div class="text-center mb-4">
-                <span class="inline-block px-3 py-1 bg-blue-600 text-white text-sm font-semibold rounded-full">
-                  Most Popular
-                </span>
-              </div>
-            )}
-            <div class="text-center mb-6">
-              <h3 class="text-2xl font-bold text-gray-900 mb-2">{tier.name}</h3>
-              <div class="text-4xl font-bold text-blue-600 mb-1">{tier.price}</div>
-              <div class="text-gray-600 text-sm">{tier.period}</div>
-            </div>
-            <ul class="space-y-3 flex-grow mb-6">
-              {tier.benefits.map(benefit => (
-                <li class="flex items-start">
-                  <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span class="text-gray-600 text-sm">{benefit}</span>
-                </li>
-              ))}
-            </ul>
-            <a
-              href="#membership-form"
-              class={`block text-center px-6 py-3 rounded-md font-semibold transition-colors ${
-                tier.featured
-                  ? 'bg-blue-600 text-white hover:bg-blue-700'
-                  : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
-              }`}
-            >
-              Join as {tier.name}
-            </a>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Testimonials -->
-  <section class="py-16 md:py-20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">What Our Members Say</h2>
-      <div class="grid md:grid-cols-2 gap-8">
-        {testimonials.map(testimonial => (
-          <div class="bg-white p-8 rounded-lg shadow-md">
-            <div class="flex items-center mb-4">
-              <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl mr-4">
-                {testimonial.name.charAt(0)}
-              </div>
-              <div>
-                <div class="font-semibold text-gray-900">{testimonial.name}</div>
-                <div class="text-sm text-gray-600">{testimonial.role}</div>
-              </div>
-            </div>
-            <p class="text-gray-700 italic">"{testimonial.quote}"</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Registration Form -->
-  <section id="membership-form" class="py-16 md:py-20 bg-gray-50">
-    <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="bg-white rounded-lg shadow-lg p-8 md:p-12">
-        <h2 class="text-3xl font-bold text-gray-900 mb-6 text-center">Join Today</h2>
-        <p class="text-gray-600 text-center mb-8">
-          Fill out the form below or use our integrated registration system
-        </p>
-
-        <!-- Placeholder for form integration -->
-        <div class="bg-gray-50 border-2 border-dashed border-gray-300 rounded-lg p-12">
-          <div class="text-center">
-            <svg class="w-16 h-16 mx-auto text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-            </svg>
-            <h3 class="text-xl font-semibold text-gray-900 mb-2">Membership Form Integration</h3>
-            <p class="text-gray-600 mb-4">
-              Integrate with Google Forms, Typeform, Airtable Forms, or a custom form solution
-            </p>
-            <div class="text-sm text-gray-500">
-              <p class="mb-2">Recommended options:</p>
-              <ul class="space-y-1">
-                <li>• Google Forms (free, easy setup)</li>
-                <li>• Typeform (beautiful UX)</li>
-                <li>• Airtable Forms (with database)</li>
-                <li>• Custom form with payment integration</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <!-- Alternative contact -->
-        <div class="mt-8 text-center">
-          <p class="text-gray-600 mb-4">Prefer to sign up another way?</p>
-          <a href="/contact" class="text-blue-600 hover:text-blue-700 font-semibold">
-            Contact us directly →
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="py-16 md:py-20">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">Frequently Asked Questions</h2>
+      <!-- Important Information Cards -->
       <div class="space-y-6">
-        <div>
-          <h3 class="text-lg font-semibold text-gray-900 mb-2">When does my membership start?</h3>
-          <p class="text-gray-600">
-            Your membership begins immediately upon registration and lasts for one year from your join date.
-          </p>
+        <!-- Tax Deductible -->
+        <div class="rounded-xl shadow-md p-8" style="background-color: #F5F1E8; border-left: 6px solid #2D5832;">
+          <div class="flex items-start">
+            <svg class="w-6 h-6 mr-4 flex-shrink-0 mt-1" style="color: #2D5832;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <div>
+              <h3 class="text-lg font-bold mb-2" style="color: #2D5832; font-family: Georgia, serif;">Tax Deductible</h3>
+              <p class="leading-relaxed" style="color: #3E2723;">
+                You may be able to claim your membership dues as a charitable donation on your income taxes.
+              </p>
+            </div>
+          </div>
         </div>
-        <div>
-          <h3 class="text-lg font-semibold text-gray-900 mb-2">Can I cancel my membership?</h3>
-          <p class="text-gray-600">
-            Yes, you can cancel at any time. However, membership fees are non-refundable as they go directly toward our programs.
-          </p>
+
+        <!-- Eligibility -->
+        <div class="rounded-xl shadow-md p-8" style="background-color: #F5F1E8; border-left: 6px solid #C1503D;">
+          <div class="flex items-start">
+            <svg class="w-6 h-6 mr-4 flex-shrink-0 mt-1" style="color: #C1503D;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            <div>
+              <h3 class="text-lg font-bold mb-2" style="color: #C1503D; font-family: Georgia, serif;">Membership Eligibility</h3>
+              <p class="leading-relaxed" style="color: #3E2723;">
+                Membership is limited to current residents of at least 18 years of age, living within our geographic boundaries.
+              </p>
+            </div>
+          </div>
         </div>
-        <div>
-          <h3 class="text-lg font-semibold text-gray-900 mb-2">Is my membership tax-deductible?</h3>
-          <p class="text-gray-600">
-            Yes! Hope Foundation is a 501(c)(3) organization, and your membership is fully tax-deductible.
-          </p>
-        </div>
-        <div>
-          <h3 class="text-lg font-semibold text-gray-900 mb-2">How do I access member benefits?</h3>
-          <p class="text-gray-600">
-            You'll receive a welcome email with instructions for accessing member-only events and resources. You'll also receive your membership card by mail.
-          </p>
+
+        <!-- Business Sponsorship - Enhanced -->
+        <div class="rounded-2xl shadow-2xl p-8 md:p-10 relative overflow-hidden" style="background: linear-gradient(135deg, #C59D5F 0%, #B8914E 100%);">
+          <div class="absolute bottom-0 left-0 w-48 h-48 opacity-10" style="background: radial-gradient(circle, #FAF8F4, transparent);"></div>
+          <div class="relative z-10">
+            <div class="flex flex-col md:flex-row items-center md:items-start gap-6">
+              <div class="w-24 h-24 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg" style="background-color: #FAF8F4;">
+                <svg class="w-12 h-12" style="color: #C59D5F;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                </svg>
+              </div>
+              <div class="flex-1 text-center md:text-left">
+                <h3 class="text-2xl md:text-3xl font-bold mb-3" style="color: #3E2723; font-family: Georgia, serif;">Explore Business Sponsorship Opportunities</h3>
+                <p class="leading-relaxed mb-4 text-lg" style="color: #3E2723;">
+                  Businesses may support the organization through our sponsorship programs, but may not vote on community association business.
+                </p>
+                <a
+                  href="/sponsorship"
+                  class="inline-block px-8 py-3 rounded-lg font-bold shadow-lg transition-all transform hover:scale-105"
+                  style="background-color: #FAF8F4; color: #C59D5F;"
+                  onmouseover="this.style.backgroundColor='#EFE9DC'; this.style.boxShadow='0 20px 25px -5px rgba(0, 0, 0, 0.3)'"
+                  onmouseout="this.style.backgroundColor='#FAF8F4'; this.style.boxShadow='0 10px 15px -3px rgba(0, 0, 0, 0.1)'"
+                >
+                  Learn More About Sponsorships
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- PayPal Payment Section -->
+  <section class="py-16 md:py-20" style="background-color: #FAF8F4;">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="rounded-2xl shadow-2xl p-8 md:p-12 text-center relative overflow-hidden" style="background: linear-gradient(135deg, #C59D5F 0%, #B8914E 100%); color: #3E2723;">
+        <div class="absolute top-0 right-0 w-64 h-64 opacity-10" style="background: radial-gradient(circle, #FAF8F4, transparent);"></div>
+        <div class="relative z-10">
+          <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6" style="background-color: #FAF8F4;">
+            <svg class="w-10 h-10" style="color: #C59D5F;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+          </div>
+
+          <h2 class="text-3xl md:text-4xl font-bold mb-4" style="font-family: Georgia, serif; color: #3E2723;">
+            Pay Your 2026 Membership Dues
+          </h2>
+
+          <p class="text-lg md:text-xl mb-6 leading-relaxed" style="color: #3E2723;">
+            Looking to pay your 2026 membership dues? Use this button to visit our PayPal site.
+          </p>
+
+          <a
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-block px-10 py-4 rounded-lg font-bold text-lg shadow-xl transition-all transform hover:scale-105 mb-6"
+            style="background-color: #FAF8F4; color: #C59D5F;"
+            onmouseover="this.style.backgroundColor='#EFE9DC'; this.style.boxShadow='0 20px 25px -5px rgba(0, 0, 0, 0.3)'"
+            onmouseout="this.style.backgroundColor='#FAF8F4'; this.style.boxShadow='0 10px 15px -3px rgba(0, 0, 0, 0.1)'"
+          >
+            Pay with PayPal
+          </a>
+
+          <div class="mt-6 p-5 rounded-xl" style="background-color: rgba(62, 39, 35, 0.1);">
+            <p class="font-semibold text-base" style="color: #3E2723;">
+              ⚠️ Please be sure to include your address and to specify your payment is for membership dues!
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Membership Form -->
+  <section class="py-16 md:py-20" style="background: linear-gradient(to bottom, #EFE9DC, #F5F1E8);">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl md:text-5xl font-bold mb-4" style="font-family: Georgia, serif; color: #3E2723;">
+          Become a <span style="color: #C1503D;">Member</span>
+        </h2>
+        <div class="w-32 h-1 mx-auto mb-4" style="background-color: #C59D5F;"></div>
+        <p class="text-lg" style="color: #4A3933;">Fill out the form below to join our community</p>
+      </div>
+
+      <div class="rounded-2xl shadow-2xl p-8 md:p-12" style="background-color: #FAF8F4;">
+        <form action="#" method="POST">
+          <!-- Name Fields -->
+          <div class="grid md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <label for="firstName" class="block text-sm font-semibold mb-2" style="color: #3E2723;">
+                First name <span style="color: #C1503D;">*</span>
+              </label>
+              <input
+                type="text"
+                id="firstName"
+                name="firstName"
+                required
+                class="w-full px-4 py-3 rounded-lg border-2 focus:outline-none focus:ring-2 transition-all"
+                style="border-color: #EFE9DC; background-color: #F5F1E8; color: #3E2723;"
+                onfocus="this.style.borderColor='#C1503D'; this.style.backgroundColor='#FAF8F4'"
+                onblur="this.style.borderColor='#EFE9DC'; this.style.backgroundColor='#F5F1E8'"
+              />
+            </div>
+            <div>
+              <label for="lastName" class="block text-sm font-semibold mb-2" style="color: #3E2723;">
+                Last name <span style="color: #C1503D;">*</span>
+              </label>
+              <input
+                type="text"
+                id="lastName"
+                name="lastName"
+                required
+                class="w-full px-4 py-3 rounded-lg border-2 focus:outline-none focus:ring-2 transition-all"
+                style="border-color: #EFE9DC; background-color: #F5F1E8; color: #3E2723;"
+                onfocus="this.style.borderColor='#C1503D'; this.style.backgroundColor='#FAF8F4'"
+                onblur="this.style.borderColor='#EFE9DC'; this.style.backgroundColor='#F5F1E8'"
+              />
+            </div>
+          </div>
+
+          <!-- Address -->
+          <div class="mb-6">
+            <label for="address" class="block text-sm font-semibold mb-2" style="color: #3E2723;">
+              Address (block and street name) <span style="color: #C1503D;">*</span>
+            </label>
+            <input
+              type="text"
+              id="address"
+              name="address"
+              required
+              placeholder="e.g., 300 Chester"
+              class="w-full px-4 py-3 rounded-lg border-2 focus:outline-none focus:ring-2 transition-all"
+              style="border-color: #EFE9DC; background-color: #F5F1E8; color: #3E2723;"
+              onfocus="this.style.borderColor='#C1503D'; this.style.backgroundColor='#FAF8F4'"
+              onblur="this.style.borderColor='#EFE9DC'; this.style.backgroundColor='#F5F1E8'"
+            />
+            <p class="mt-2 text-sm" style="color: #4A3933;">
+              Please indicate the block number and street name of your primary residence. This will be used to validate your membership eligibility.
+            </p>
+          </div>
+
+          <!-- Email -->
+          <div class="mb-8">
+            <label for="email" class="block text-sm font-semibold mb-2" style="color: #3E2723;">
+              Email <span class="text-sm font-normal" style="color: #4A3933;">(optional)</span>
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="w-full px-4 py-3 rounded-lg border-2 focus:outline-none focus:ring-2 transition-all"
+              style="border-color: #EFE9DC; background-color: #F5F1E8; color: #3E2723;"
+              onfocus="this.style.borderColor='#C1503D'; this.style.backgroundColor='#FAF8F4'"
+              onblur="this.style.borderColor='#EFE9DC'; this.style.backgroundColor='#F5F1E8'"
+            />
+            <p class="mt-3 text-sm font-semibold mb-3" style="color: #3E2723;">
+              Check the boxes below to indicate which email distribution lists you'd like to join:
+            </p>
+
+            <!-- Email Preferences -->
+            <div class="space-y-3 p-4 rounded-lg" style="background-color: #F5F1E8;">
+              <label class="flex items-start cursor-pointer">
+                <input
+                  type="checkbox"
+                  name="emailLists"
+                  value="newsletter"
+                  class="mt-1 mr-3 w-5 h-5 rounded transition-all"
+                  style="accent-color: #2D5832;"
+                />
+                <span style="color: #3E2723;">Monthly newsletter and meeting agendas</span>
+              </label>
+              <label class="flex items-start cursor-pointer">
+                <input
+                  type="checkbox"
+                  name="emailLists"
+                  value="cityUpdates"
+                  class="mt-1 mr-3 w-5 h-5 rounded transition-all"
+                  style="accent-color: #2D5832;"
+                />
+                <span style="color: #3E2723;">Updates from city/state partners that affect neighborhood life</span>
+              </label>
+              <label class="flex items-start cursor-pointer">
+                <input
+                  type="checkbox"
+                  name="emailLists"
+                  value="events"
+                  class="mt-1 mr-3 w-5 h-5 rounded transition-all"
+                  style="accent-color: #2D5832;"
+                />
+                <span style="color: #3E2723;">Events and activities</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Volunteering Interests -->
+          <div class="mb-6">
+            <label for="volunteering" class="block text-sm font-semibold mb-2" style="color: #3E2723;">
+              Are you interested in volunteering opportunities? <span class="text-sm font-normal" style="color: #4A3933;">(optional)</span>
+            </label>
+            <textarea
+              id="volunteering"
+              name="volunteering"
+              rows="4"
+              placeholder="Please provide a few words about your interests so we can follow up with you..."
+              class="w-full px-4 py-3 rounded-lg border-2 focus:outline-none focus:ring-2 transition-all"
+              style="border-color: #EFE9DC; background-color: #F5F1E8; color: #3E2723; resize: vertical;"
+              onfocus="this.style.borderColor='#C1503D'; this.style.backgroundColor='#FAF8F4'"
+              onblur="this.style.borderColor='#EFE9DC'; this.style.backgroundColor='#F5F1E8'"
+            ></textarea>
+          </div>
+
+          <!-- How did you hear about us -->
+          <div class="mb-8">
+            <label for="referral" class="block text-sm font-semibold mb-2" style="color: #3E2723;">
+              How did you hear about FPCA? <span class="text-sm font-normal" style="color: #4A3933;">(optional)</span>
+            </label>
+            <input
+              type="text"
+              id="referral"
+              name="referral"
+              class="w-full px-4 py-3 rounded-lg border-2 focus:outline-none focus:ring-2 transition-all"
+              style="border-color: #EFE9DC; background-color: #F5F1E8; color: #3E2723;"
+              onfocus="this.style.borderColor='#C1503D'; this.style.backgroundColor='#FAF8F4'"
+              onblur="this.style.borderColor='#EFE9DC'; this.style.backgroundColor='#F5F1E8'"
+            />
+          </div>
+
+          <!-- Submit Button -->
+          <div class="text-center">
+            <button
+              type="submit"
+              class="px-10 py-4 rounded-lg font-bold text-lg shadow-xl transition-all transform hover:scale-105"
+              style="background: linear-gradient(135deg, #C1503D, #A84636); color: #FAF8F4;"
+              onmouseover="this.style.boxShadow='0 20px 25px -5px rgba(193, 80, 61, 0.3)'"
+              onmouseout="this.style.boxShadow='0 10px 15px -3px rgba(0, 0, 0, 0.1)'"
+            >
+              Submit Membership Application
+            </button>
+            <p class="mt-4 text-sm" style="color: #4A3933;">
+              <span style="color: #C1503D;">*</span> Required fields
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="py-16 md:py-20" style="background: linear-gradient(135deg, #2D5832 0%, #3A6B3F 100%); color: #FAF8F4;">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6" style="font-family: Georgia, serif;">Questions?</h2>
+      <p class="text-xl mb-8" style="color: #EFE9DC;">
+        If you have any questions about membership, feel free to reach out
+      </p>
+      <a href="/contact" class="inline-block px-8 py-4 font-semibold rounded-lg transition-all shadow-lg text-lg" style="background-color: #FAF8F4; color: #2D5832;" onmouseover="this.style.backgroundColor='#EFE9DC'" onmouseout="this.style.backgroundColor='#FAF8F4'">
+        Contact Us
+      </a>
     </div>
   </section>
 </Layout>

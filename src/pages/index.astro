@@ -26,35 +26,44 @@ const upcomingEvents = allEvents
   .sort((a, b) => a.data.eventDate.getTime() - b.data.eventDate.getTime()) // Soonest first
   .slice(0, 3);
 
-const stats = [
-  { value: '$2.5M+', label: 'Donations Raised' },
-  { value: '15,000+', label: 'People Helped' },
-  { value: '500+', label: 'Active Volunteers' },
-  { value: '25', label: 'Community Programs' },
-];
 ---
 
 <Layout
-  title="Hope Foundation - Making a Difference in Our Community"
-  description="Join us in transforming lives through dedicated service, sustainable programs, and community empowerment."
+  title="Fells Prospect Community Association - FPCA - Baltimore, MD"
+  description="Fells Prospect Community Association - Representing residents and businesses in the Baltimore neighborhood encompassing eastern Upper Fells Point and western Canton."
 >
   <!-- Hero Section -->
-  <section class="relative bg-gradient-to-r from-blue-600 to-blue-800 text-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
-      <div class="max-w-3xl">
-        <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-          Empowering Communities, Transforming Lives
-        </h1>
-        <p class="text-xl md:text-2xl mb-8 text-blue-100 leading-relaxed">
-          Together, we're building a brighter future through education, healthcare, and sustainable community development.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4">
-          <Button href="/donate" variant="secondary" size="lg">
-            Make a Donation
-          </Button>
-          <Button href="/volunteer" variant="outline" size="lg" class="bg-white bg-opacity-10 border-white text-white hover:bg-white hover:text-blue-600">
-            Become a Volunteer
-          </Button>
+  <section class="relative" style="background: linear-gradient(135deg, #C1503D 0%, #A84636 100%);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+      <div class="grid md:grid-cols-[45%_55%] gap-8 md:gap-12 items-center">
+        <!-- Hero Text -->
+        <div style="color: #FAF8F4;">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight" style="font-family: Georgia, serif; color: #FAF8F4;">
+            Fells Prospect Community Association
+          </h1>
+          <h2 class="text-2xl md:text-3xl font-semibold mb-6" style="color: #F5F1E8;">
+            Welcome to Fells Prospect
+          </h2>
+          <p class="text-lg md:text-xl mb-8 leading-relaxed" style="color: #EFE9DC;">
+            Fells Prospect is the Baltimore, Maryland neighborhood which encompasses the eastern portion of Upper Fells Point and the western tip of Canton. We are the community association which represents its residents and businesses. Welcome!
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="/membership" class="inline-block px-8 py-4 text-center font-semibold rounded-lg transition-all shadow-lg text-lg" style="background-color: #2D5832; color: #FAF8F4;" onmouseover="this.style.backgroundColor='#3A6B3F'" onmouseout="this.style.backgroundColor='#2D5832'">
+              Become a Member
+            </a>
+            <a href="/about" class="inline-block px-8 py-4 text-center font-semibold rounded-lg transition-all border-2 text-lg" style="border-color: #FAF8F4; color: #FAF8F4;" onmouseover="this.style.backgroundColor='rgba(250, 248, 244, 0.1)'" onmouseout="this.style.backgroundColor='transparent'">
+              Learn More
+            </a>
+          </div>
+        </div>
+
+        <!-- Hero Image -->
+        <div class="rounded-2xl overflow-hidden shadow-2xl" style="border: 4px solid #FAF8F4;">
+          <img
+            src="/images/header.avif"
+            alt="Fells Prospect neighborhood"
+            class="w-full object-cover"
+          />
         </div>
       </div>
     </div>
@@ -62,77 +71,10 @@ const stats = [
     <!-- Decorative bottom wave -->
     <div class="absolute bottom-0 left-0 right-0">
       <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-12 md:h-20">
-        <path d="M0 0L60 10C120 20 240 40 360 46.7C480 53 600 47 720 43.3C840 40 960 40 1080 46.7C1200 53 1320 67 1380 73.3L1440 80V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0V0Z" fill="rgb(249 250 251)"/>
+        <path d="M0 0L60 10C120 20 240 40 360 46.7C480 53 600 47 720 43.3C840 40 960 40 1080 46.7C1200 53 1320 67 1380 73.3L1440 80V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0V0Z" fill="#FAF8F4"/>
       </svg>
     </div>
   </section>
-
-  <!-- Mission Statement -->
-  <section class="py-16 md:py-24">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Our Mission</h2>
-        <p class="text-xl text-gray-600 leading-relaxed mb-8">
-          We are dedicated to creating lasting positive change in our community by providing essential services,
-          educational opportunities, and sustainable programs that empower individuals and families to build better futures.
-        </p>
-        <Button href="/about">Learn More About Us</Button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Impact Statistics -->
-  <section class="py-16 md:py-24 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Impact</h2>
-        <p class="text-xl text-gray-600">Making a measurable difference in our community</p>
-      </div>
-
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-        {stats.map(stat => (
-          <div class="text-center">
-            <div class="text-4xl md:text-5xl font-bold text-blue-600 mb-2">
-              {stat.value}
-            </div>
-            <div class="text-gray-600 font-medium">
-              {stat.label}
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Recent Blog Posts -->
-  {recentPosts.length > 0 && (
-    <section class="py-16 md:py-24">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center mb-12">
-          <div>
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Latest Stories</h2>
-            <p class="text-xl text-gray-600">Updates from our community and programs</p>
-          </div>
-          <Button href="/blog" variant="outline">View All Posts</Button>
-        </div>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {recentPosts.map(post => (
-            <BlogCard
-              title={post.data.title}
-              description={post.data.description}
-              publishDate={post.data.publishDate}
-              author={post.data.author}
-              slug={post.slug}
-              image={post.data.image}
-              imageAlt={post.data.imageAlt}
-              tags={post.data.tags}
-            />
-          ))}
-        </div>
-      </div>
-    </section>
-  )}
 
   <!-- Upcoming Events -->
   {upcomingEvents.length > 0 && (
@@ -166,20 +108,50 @@ const stats = [
     </section>
   )}
 
+  <!-- Recent News -->
+  {recentPosts.length > 0 && (
+    <section class="py-16 md:py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center mb-12">
+          <div>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Latest News</h2>
+            <p class="text-xl text-gray-600">Updates from our community</p>
+          </div>
+          <Button href="/blog" variant="outline">View All News</Button>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {recentPosts.map(post => (
+            <BlogCard
+              title={post.data.title}
+              description={post.data.description}
+              publishDate={post.data.publishDate}
+              author={post.data.author}
+              slug={post.slug}
+              image={post.data.image}
+              imageAlt={post.data.imageAlt}
+              tags={post.data.tags}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
   <!-- Call to Action -->
-  <section class="py-16 md:py-24 bg-gradient-to-r from-orange-500 to-orange-600 text-white">
+  <section class="py-16 md:py-24" style="background: linear-gradient(135deg, #2D5832 0%, #3A6B3F 100%); color: #FAF8F4;">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Make a Difference?</h2>
-      <p class="text-xl mb-8 text-orange-100 max-w-2xl mx-auto">
-        Your support helps us continue our vital work in the community. Every contribution makes a real impact.
+      <h2 class="text-3xl md:text-4xl font-bold mb-6" style="font-family: Georgia, serif;">Get Involved</h2>
+      <p class="text-xl mb-8 max-w-2xl mx-auto" style="color: #EFE9DC;">
+        Join your neighbors in making Fells Prospect a great place to live and work. Become a member and stay connected with your community.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <Button href="/donate" class="bg-white text-orange-600 hover:bg-gray-100">
-          Donate Now
-        </Button>
-        <Button href="/membership" variant="outline" class="border-white text-white hover:bg-white hover:bg-opacity-10">
+        <a href="/membership" class="inline-block px-8 py-3 font-semibold rounded-lg transition-all shadow-lg" style="background-color: #FAF8F4; color: #2D5832;" onmouseover="this.style.backgroundColor='#EFE9DC'" onmouseout="this.style.backgroundColor='#FAF8F4'">
           Become a Member
-        </Button>
+        </a>
+        <a href="/contact" class="inline-block px-8 py-3 font-semibold rounded-lg transition-all border-2" style="border-color: #FAF8F4; color: #FAF8F4;" onmouseover="this.style.backgroundColor='rgba(250, 248, 244, 0.1)'" onmouseout="this.style.backgroundColor='transparent'">
+          Contact Us
+        </a>
       </div>
     </div>
   </section>
