@@ -25,45 +25,61 @@ const featuredPosts = sortedPosts.filter(post => post.data.featured);
 ---
 
 <Layout
-  title="Blog - Hope Foundation Stories and Updates"
-  description="Read stories of impact, updates from our programs, and insights from our team."
+  title="News & Updates - Fells Prospect Community Association"
+  description="Read the latest news, updates, and stories from the Fells Prospect neighborhood."
 >
   <!-- Hero Section -->
-  <section class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h1 class="text-4xl md:text-5xl font-bold mb-4">Our Blog</h1>
-      <p class="text-xl text-blue-100 max-w-2xl">
-        Stories of impact, program updates, and insights from our community
+  <section class="relative py-20 md:py-28 overflow-hidden" style="background: linear-gradient(135deg, #C1503D 0%, #A84636 100%);">
+    <!-- Fox Silhouette - Bottom left emerging -->
+    <div class="absolute -bottom-20 left-8 md:left-16 h-96 w-auto opacity-15 pointer-events-none" style="filter: brightness(0) saturate(100%) invert(98%) sepia(4%) saturate(352%) hue-rotate(343deg) brightness(103%) contrast(96%);">
+      <img src="/images/fox.svg" alt="" class="h-full w-auto" />
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      <h1 class="text-5xl md:text-6xl font-bold mb-6" style="font-family: Georgia, serif; color: #FAF8F4;">
+        News & Updates
+      </h1>
+      <p class="text-xl md:text-2xl max-w-3xl mx-auto" style="color: #EFE9DC;">
+        Stories, updates, and insights from the Fells Prospect community
       </p>
+    </div>
+
+    <!-- Decorative bottom -->
+    <div class="absolute bottom-0 left-0 right-0">
+      <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full">
+        <path d="M0 0L60 5C120 10 240 20 360 23.3C480 27 600 23 720 21.7C840 20 960 20 1080 23.3C1200 27 1320 33 1380 36.7L1440 40V60H0V0Z" fill="#FAF8F4"/>
+      </svg>
     </div>
   </section>
 
   <!-- Main Content -->
-  <section class="py-12 md:py-16">
+  <section class="py-12 md:py-16" style="background-color: #FAF8F4;">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Tag Filter -->
       {allTags.length > 0 && (
         <div class="mb-12">
-          <h2 class="text-lg font-semibold text-gray-900 mb-4">Filter by Topic</h2>
+          <h2 class="text-lg font-semibold mb-4" style="color: #3E2723;">Filter by Topic</h2>
           <div class="flex flex-wrap gap-3">
             <a
               href="/blog"
-              class={`px-4 py-2 rounded-full transition-colors ${
-                !selectedTag
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-              }`}
+              class="px-4 py-2 rounded-full transition-all"
+              style={!selectedTag
+                ? 'background-color: #2D5832; color: #FAF8F4;'
+                : 'background-color: #EFE9DC; color: #3E2723;'}
+              onmouseover={!selectedTag ? '' : "this.style.backgroundColor='#E5DFD0'"}
+              onmouseout={!selectedTag ? '' : "this.style.backgroundColor='#EFE9DC'"}
             >
               All Posts
             </a>
             {allTags.map(tag => (
               <a
                 href={`/blog?tag=${encodeURIComponent(tag)}`}
-                class={`px-4 py-2 rounded-full transition-colors ${
-                  selectedTag === tag
-                    ? 'bg-blue-600 text-white'
-                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                }`}
+                class="px-4 py-2 rounded-full transition-all"
+                style={selectedTag === tag
+                  ? 'background-color: #2D5832; color: #FAF8F4;'
+                  : 'background-color: #EFE9DC; color: #3E2723;'}
+                onmouseover={selectedTag === tag ? '' : "this.style.backgroundColor='#E5DFD0'"}
+                onmouseout={selectedTag === tag ? '' : "this.style.backgroundColor='#EFE9DC'"}
               >
                 {tag}
               </a>
@@ -75,7 +91,7 @@ const featuredPosts = sortedPosts.filter(post => post.data.featured);
       <!-- Featured Posts -->
       {!selectedTag && featuredPosts.length > 0 && (
         <div class="mb-16">
-          <h2 class="text-2xl font-bold text-gray-900 mb-6">Featured Stories</h2>
+          <h2 class="text-3xl md:text-4xl font-bold mb-8" style="font-family: Georgia, serif; color: #C1503D;">Featured Stories</h2>
           <div class="grid md:grid-cols-2 gap-8">
             {featuredPosts.slice(0, 2).map(post => (
               <BlogCard
@@ -95,7 +111,7 @@ const featuredPosts = sortedPosts.filter(post => post.data.featured);
 
       <!-- All Posts -->
       <div>
-        <h2 class="text-2xl font-bold text-gray-900 mb-6">
+        <h2 class="text-3xl md:text-4xl font-bold mb-8" style="font-family: Georgia, serif; color: #2D5832;">
           {selectedTag ? `Posts tagged "${selectedTag}"` : 'All Posts'}
         </h2>
 
@@ -116,7 +132,7 @@ const featuredPosts = sortedPosts.filter(post => post.data.featured);
           </div>
         ) : (
           <div class="text-center py-12">
-            <p class="text-xl text-gray-600">
+            <p class="text-xl" style="color: #4A3933;">
               {selectedTag
                 ? `No posts found with tag "${selectedTag}"`
                 : 'No blog posts yet. Check back soon!'}

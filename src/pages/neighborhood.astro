@@ -7,8 +7,13 @@ import Layout from '../layouts/Layout.astro';
   description="Information about the Fells Prospect neighborhood in Baltimore, MD - encompassing eastern Upper Fells Point and western Canton."
 >
   <!-- Page Header -->
-  <section class="relative py-20 md:py-28" style="background: linear-gradient(135deg, #C1503D 0%, #A84636 100%);">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+  <section class="relative py-32 md:py-40 overflow-hidden" style="background: linear-gradient(135deg, #C1503D 0%, #A84636 100%);">
+    <!-- Rowhouses Silhouette - Bottom right emerging -->
+    <div class="absolute -bottom-16 right-0 md:right-8 h-[400px] w-auto opacity-15 pointer-events-none" style="filter: brightness(0) saturate(100%) invert(98%) sepia(4%) saturate(352%) hue-rotate(343deg) brightness(103%) contrast(96%);">
+      <img src="/images/rowhouses.png" alt="" class="h-full w-auto" />
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
       <h1 class="text-5xl md:text-6xl font-bold mb-6" style="font-family: Georgia, serif; color: #FAF8F4;">
         Our Neighborhood
       </h1>
@@ -16,6 +21,7 @@ import Layout from '../layouts/Layout.astro';
         Discover the rich history and vibrant community of Fells Prospect
       </p>
     </div>
+
     <!-- Decorative bottom -->
     <div class="absolute bottom-0 left-0 right-0">
       <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full">
