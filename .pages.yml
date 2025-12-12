@@ -36,7 +36,7 @@ content:
       - name: tags
         label: Tags
         type: list
-        items:
+        field:
           type: string
       - name: featured
         label: Featured Post
