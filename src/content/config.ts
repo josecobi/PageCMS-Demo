@@ -50,8 +50,23 @@ const teamCollection = defineCollection({
   }),
 });
 
+// Documents collection schema
+const documentsCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    documentDate: z.date(),
+    category: z.enum(['Meeting Minutes', 'Governance Documents']),
+    documentFile: z.string(), // Path to PDF file
+    fileSize: z.string().optional(), // e.g., "2.3 MB"
+    featured: z.boolean().default(false),
+  }),
+});
+
 export const collections = {
   blog: blogCollection,
   events: eventsCollection,
   team: teamCollection,
+  documents: documentsCollection,
 };

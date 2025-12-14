@@ -1,4 +1,4 @@
-# Hope Foundation - Nonprofit Website Demo
+# Fells Prospect Community - Nonprofit Website Demo
 
 A complete, production-ready nonprofit organization website built with Astro and PageCMS. This demo showcases how non-technical users can easily manage content through an intuitive CMS interface.
 

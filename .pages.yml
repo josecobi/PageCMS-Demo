@@ -7,6 +7,11 @@ media:
     input: public/images
     output: /images
     path: /images
+  - name: documents
+    label: Documents (PDFs)
+    input: public/documents
+    output: /documents
+    path: /documents
 
 content:
   # Blog Posts
@@ -117,4 +122,38 @@ content:
         type: number
       - name: body
         label: Full Bio
+        type: rich-text
+
+  # Documents
+  - name: documents
+    label: Documents
+    type: collection
+    path: src/content/documents
+    fields:
+      - name: title
+        label: Document Title
+        type: string
+      - name: description
+        label: Description
+        type: text
+      - name: documentDate
+        label: Document Date
+        type: date
+      - name: category
+        label: Category
+        type: select
+        options:
+          - Meeting Minutes
+          - Governance Documents
+      - name: documentFile
+        label: PDF File Path
+        type: string
+      - name: fileSize
+        label: File Size (optional)
+        type: string
+      - name: featured
+        label: Featured Document
+        type: boolean
+      - name: body
+        label: Additional Notes
         type: rich-text

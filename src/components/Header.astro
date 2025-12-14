@@ -68,6 +68,16 @@ const currentPath = Astro.url.pathname;
             Events
           </a>
           <a
+            href="/documents"
+            class={`${currentPath.startsWith('/documents') ? 'font-semibold' : ''} px-3 py-2 transition-colors rounded-md text-sm`}
+            style={currentPath.startsWith('/documents') ? 'color: #C1503D; background-color: #EFE9DC;' : 'color: #4A3933;'}
+            onmouseover="if (this.getAttribute('data-active') !== 'true') this.style.color='#C1503D'"
+            onmouseout="if (this.getAttribute('data-active') !== 'true') this.style.color='#4A3933'"
+            data-active={currentPath.startsWith('/documents') ? 'true' : 'false'}
+          >
+            Documents
+          </a>
+          <a
             href="/committees"
             class={`${currentPath === '/committees' ? 'font-semibold' : ''} px-3 py-2 transition-colors rounded-md text-sm`}
             style={currentPath === '/committees' ? 'color: #C1503D; background-color: #EFE9DC;' : 'color: #4A3933;'}
@@ -159,6 +169,7 @@ const currentPath = Astro.url.pathname;
         <a href="/neighborhood" class="block px-3 py-2 rounded-md transition-colors" style="color: #4A3933;">Our Neighborhood</a>
         <a href="/blog" class="block px-3 py-2 rounded-md transition-colors" style="color: #4A3933;">News</a>
         <a href="/events" class="block px-3 py-2 rounded-md transition-colors" style="color: #4A3933;">Events</a>
+        <a href="/documents" class="block px-3 py-2 rounded-md transition-colors" style="color: #4A3933;">Documents</a>
         <a href="/committees" class="block px-3 py-2 rounded-md transition-colors" style="color: #4A3933;">Committees</a>
         <a href="/membership" class="block px-3 py-2 rounded-md transition-colors" style="color: #4A3933;">Membership</a>
         <a href="/resources" class="block px-3 py-2 rounded-md transition-colors" style="color: #4A3933;">Local Resources</a>
