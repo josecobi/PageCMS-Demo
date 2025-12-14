@@ -1,6 +1,6 @@
 ---
 name: Geoff Parnell
-role: Secretary
+role: Secretary (acting)
 boardCategory: Executive Board
 bio: Geoff Parnell serves as Secretary (acting) of the Fells Prospect Community
   Association.
