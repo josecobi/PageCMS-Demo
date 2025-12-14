@@ -1,5 +1,44 @@
 ---
 const currentPath = Astro.url.pathname;
+
+// Navigation structure organized by user intent
+const navigation = [
+  {
+    label: 'About',
+    children: [
+      { label: 'About FPCA', href: '/about' },
+      { label: 'Our Neighborhood', href: '/neighborhood' },
+      { label: 'Committees', href: '/committees' }
+    ]
+  },
+  {
+    label: 'Community',
+    children: [
+      { label: 'Documents', href: '/documents' },
+      { label: 'Local Resources', href: '/resources' }
+    ]
+  },
+  {
+    label: 'Get Involved',
+    children: [
+      { label: 'Membership', href: '/membership' },
+      { label: 'Sponsorship', href: '/sponsorship' },
+      { label: 'Contact Us', href: '/contact' }
+    ]
+  },
+  {
+    label: 'News & Events',
+    children: [
+      { label: 'Latest News', href: '/blog' },
+      { label: 'Upcoming Events', href: '/events' }
+    ]
+  }
+];
+
+// Helper to check if a dropdown is active (any child matches current path)
+const isDropdownActive = (children: Array<{href: string}>) => {
+  return children.some(child => currentPath.startsWith(child.href));
+};
 ---
 
 <header class="sticky top-0 z-50" style="background-color: #F5F1E8; box-shadow: 0 4px 6px -1px rgba(62, 39, 35, 0.1), 0 2px 4px -1px rgba(62, 39, 35, 0.06);">
@@ -17,6 +56,7 @@ const currentPath = Astro.url.pathname;
       <!-- Desktop Navigation -->
       <div class="hidden lg:block">
         <div class="ml-10 flex items-baseline space-x-1">
+          <!-- Home Link -->
           <a
             href="/"
             class={`${currentPath === '/' ? 'font-semibold' : ''} px-3 py-2 transition-colors rounded-md text-sm`}
@@ -27,106 +67,49 @@ const currentPath = Astro.url.pathname;
           >
             Home
           </a>
-          <a
-            href="/about"
-            class={`${currentPath === '/about' ? 'font-semibold' : ''} px-3 py-2 transition-colors rounded-md text-sm`}
-            style={currentPath === '/about' ? 'color: #C1503D; background-color: #EFE9DC;' : 'color: #4A3933;'}
-            onmouseover="if (this.getAttribute('data-active') !== 'true') this.style.color='#C1503D'"
-            onmouseout="if (this.getAttribute('data-active') !== 'true') this.style.color='#4A3933'"
-            data-active={currentPath === '/about' ? 'true' : 'false'}
-          >
-            About
-          </a>
-          <a
-            href="/neighborhood"
-            class={`${currentPath === '/neighborhood' ? 'font-semibold' : ''} px-3 py-2 transition-colors rounded-md text-sm`}
-            style={currentPath === '/neighborhood' ? 'color: #C1503D; background-color: #EFE9DC;' : 'color: #4A3933;'}
-            onmouseover="if (this.getAttribute('data-active') !== 'true') this.style.color='#C1503D'"
-            onmouseout="if (this.getAttribute('data-active') !== 'true') this.style.color='#4A3933'"
-            data-active={currentPath === '/neighborhood' ? 'true' : 'false'}
-          >
-            Our Neighborhood
-          </a>
-          <a
-            href="/blog"
-            class={`${currentPath.startsWith('/blog') ? 'font-semibold' : ''} px-3 py-2 transition-colors rounded-md text-sm`}
-            style={currentPath.startsWith('/blog') ? 'color: #C1503D; background-color: #EFE9DC;' : 'color: #4A3933;'}
-            onmouseover="if (this.getAttribute('data-active') !== 'true') this.style.color='#C1503D'"
-            onmouseout="if (this.getAttribute('data-active') !== 'true') this.style.color='#4A3933'"
-            data-active={currentPath.startsWith('/blog') ? 'true' : 'false'}
-          >
-            News
-          </a>
-          <a
-            href="/events"
-            class={`${currentPath.startsWith('/events') ? 'font-semibold' : ''} px-3 py-2 transition-colors rounded-md text-sm`}
-            style={currentPath.startsWith('/events') ? 'color: #C1503D; background-color: #EFE9DC;' : 'color: #4A3933;'}
-            onmouseover="if (this.getAttribute('data-active') !== 'true') this.style.color='#C1503D'"
-            onmouseout="if (this.getAttribute('data-active') !== 'true') this.style.color='#4A3933'"
-            data-active={currentPath.startsWith('/events') ? 'true' : 'false'}
-          >
-            Events
-          </a>
-          <a
-            href="/documents"
-            class={`${currentPath.startsWith('/documents') ? 'font-semibold' : ''} px-3 py-2 transition-colors rounded-md text-sm`}
-            style={currentPath.startsWith('/documents') ? 'color: #C1503D; background-color: #EFE9DC;' : 'color: #4A3933;'}
-            onmouseover="if (this.getAttribute('data-active') !== 'true') this.style.color='#C1503D'"
-            onmouseout="if (this.getAttribute('data-active') !== 'true') this.style.color='#4A3933'"
-            data-active={currentPath.startsWith('/documents') ? 'true' : 'false'}
-          >
-            Documents
-          </a>
-          <a
-            href="/committees"
-            class={`${currentPath === '/committees' ? 'font-semibold' : ''} px-3 py-2 transition-colors rounded-md text-sm`}
-            style={currentPath === '/committees' ? 'color: #C1503D; background-color: #EFE9DC;' : 'color: #4A3933;'}
-            onmouseover="if (this.getAttribute('data-active') !== 'true') this.style.color='#C1503D'"
-            onmouseout="if (this.getAttribute('data-active') !== 'true') this.style.color='#4A3933'"
-            data-active={currentPath === '/committees' ? 'true' : 'false'}
-          >
-            Committees
-          </a>
-          <a
-            href="/membership"
-            class={`${currentPath === '/membership' ? 'font-semibold' : ''} px-3 py-2 transition-colors rounded-md text-sm`}
-            style={currentPath === '/membership' ? 'color: #C1503D; background-color: #EFE9DC;' : 'color: #4A3933;'}
-            onmouseover="if (this.getAttribute('data-active') !== 'true') this.style.color='#C1503D'"
-            onmouseout="if (this.getAttribute('data-active') !== 'true') this.style.color='#4A3933'"
-            data-active={currentPath === '/membership' ? 'true' : 'false'}
-          >
-            Membership
-          </a>
-          <a
-            href="/resources"
-            class={`${currentPath === '/resources' ? 'font-semibold' : ''} px-3 py-2 transition-colors rounded-md text-sm`}
-            style={currentPath === '/resources' ? 'color: #C1503D; background-color: #EFE9DC;' : 'color: #4A3933;'}
-            onmouseover="if (this.getAttribute('data-active') !== 'true') this.style.color='#C1503D'"
-            onmouseout="if (this.getAttribute('data-active') !== 'true') this.style.color='#4A3933'"
-            data-active={currentPath === '/resources' ? 'true' : 'false'}
-          >
-            Local Resources
-          </a>
-          <a
-            href="/sponsorship"
-            class={`${currentPath === '/sponsorship' ? 'font-semibold' : ''} px-3 py-2 transition-colors rounded-md text-sm`}
-            style={currentPath === '/sponsorship' ? 'color: #C1503D; background-color: #EFE9DC;' : 'color: #4A3933;'}
-            onmouseover="if (this.getAttribute('data-active') !== 'true') this.style.color='#C1503D'"
-            onmouseout="if (this.getAttribute('data-active') !== 'true') this.style.color='#4A3933'"
-            data-active={currentPath === '/sponsorship' ? 'true' : 'false'}
-          >
-            Sponsorship
-          </a>
-          <a
-            href="/contact"
-            class={`${currentPath === '/contact' ? 'font-semibold' : ''} px-3 py-2 transition-colors rounded-md text-sm`}
-            style={currentPath === '/contact' ? 'color: #C1503D; background-color: #EFE9DC;' : 'color: #4A3933;'}
-            onmouseover="if (this.getAttribute('data-active') !== 'true') this.style.color='#C1503D'"
-            onmouseout="if (this.getAttribute('data-active') !== 'true') this.style.color='#4A3933'"
-            data-active={currentPath === '/contact' ? 'true' : 'false'}
-          >
-            Contact
-          </a>
+
+          <!-- Dropdown Menus -->
+          {navigation.map((dropdown, index) => {
+            const isActive = isDropdownActive(dropdown.children);
+            return (
+              <div class="relative dropdown-container" data-dropdown={`dropdown-${index}`}>
+                <button
+                  type="button"
+                  class={`${isActive ? 'font-semibold' : ''} px-3 py-2 transition-colors rounded-md text-sm flex items-center gap-1`}
+                  style={isActive ? 'color: #C1503D; background-color: #EFE9DC;' : 'color: #4A3933;'}
+                  data-active={isActive ? 'true' : 'false'}
+                  aria-expanded="false"
+                  aria-haspopup="true"
+                >
+                  {dropdown.label}
+                  <svg class="w-4 h-4 transition-transform dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+
+                <!-- Dropdown Panel -->
+                <div
+                  class="dropdown-panel absolute left-0 mt-2 w-56 rounded-lg shadow-lg hidden opacity-0 transition-opacity duration-200 z-50"
+                  style="background-color: #FAF8F4; border: 1px solid #EFE9DC;"
+                  role="menu"
+                  aria-orientation="vertical"
+                >
+                  <div class="py-2">
+                    {dropdown.children.map((item) => (
+                      <a
+                        href={item.href}
+                        class={`${currentPath.startsWith(item.href) ? 'font-semibold' : ''} block px-4 py-2.5 text-sm transition-colors`}
+                        style={currentPath.startsWith(item.href) ? 'color: #C1503D; background-color: #EFE9DC;' : 'color: #4A3933;'}
+                        role="menuitem"
+                      >
+                        {item.label}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
 
@@ -164,19 +147,55 @@ const currentPath = Astro.url.pathname;
     <!-- Mobile menu -->
     <div id="mobile-menu" class="hidden lg:hidden pb-4">
       <div class="space-y-1">
-        <a href="/" class="block px-3 py-2 rounded-md transition-colors" style="color: #4A3933;">Home</a>
-        <a href="/about" class="block px-3 py-2 rounded-md transition-colors" style="color: #4A3933;">About</a>
-        <a href="/neighborhood" class="block px-3 py-2 rounded-md transition-colors" style="color: #4A3933;">Our Neighborhood</a>
-        <a href="/blog" class="block px-3 py-2 rounded-md transition-colors" style="color: #4A3933;">News</a>
-        <a href="/events" class="block px-3 py-2 rounded-md transition-colors" style="color: #4A3933;">Events</a>
-        <a href="/documents" class="block px-3 py-2 rounded-md transition-colors" style="color: #4A3933;">Documents</a>
-        <a href="/committees" class="block px-3 py-2 rounded-md transition-colors" style="color: #4A3933;">Committees</a>
-        <a href="/membership" class="block px-3 py-2 rounded-md transition-colors" style="color: #4A3933;">Membership</a>
-        <a href="/resources" class="block px-3 py-2 rounded-md transition-colors" style="color: #4A3933;">Local Resources</a>
-        <a href="/sponsorship" class="block px-3 py-2 rounded-md transition-colors" style="color: #4A3933;">Sponsorship</a>
-        <a href="/contact" class="block px-3 py-2 rounded-md transition-colors" style="color: #4A3933;">Contact</a>
+        <!-- Home Link -->
+        <a
+          href="/"
+          class={`block px-3 py-2 rounded-md transition-colors ${currentPath === '/' ? 'font-semibold' : ''}`}
+          style={currentPath === '/' ? 'color: #C1503D; background-color: #EFE9DC;' : 'color: #4A3933;'}
+        >
+          Home
+        </a>
+
+        <!-- Mobile Accordions -->
+        {navigation.map((dropdown, index) => {
+          const isActive = isDropdownActive(dropdown.children);
+          return (
+            <div class="mobile-accordion" data-mobile-accordion={`mobile-${index}`}>
+              <button
+                type="button"
+                class={`w-full flex items-center justify-between px-3 py-2 rounded-md transition-colors text-left ${isActive ? 'font-semibold' : ''}`}
+                style={isActive ? 'color: #C1503D; background-color: #EFE9DC;' : 'color: #4A3933;'}
+                aria-expanded="false"
+              >
+                <span>{dropdown.label}</span>
+                <svg class="w-4 h-4 transition-transform mobile-accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div class="mobile-accordion-content hidden pl-4 mt-1 space-y-1">
+                {dropdown.children.map((item) => (
+                  <a
+                    href={item.href}
+                    class={`block px-3 py-2 rounded-md text-sm transition-colors ${currentPath.startsWith(item.href) ? 'font-semibold' : ''}`}
+                    style={currentPath.startsWith(item.href) ? 'color: #C1503D; background-color: #EFE9DC;' : 'color: #4A3933;'}
+                  >
+                    {item.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+          );
+        })}
+
+        <!-- Donate Button -->
         <div class="pt-4 space-y-2">
-          <a href="/donate" class="block w-full text-center px-4 py-2 text-white rounded-md font-semibold" style="background-color: #2D5832;">Donate</a>
+          <a
+            href="/donate"
+            class="block w-full text-center px-4 py-2 text-white rounded-md font-semibold"
+            style="background-color: #2D5832;"
+          >
+            Donate
+          </a>
         </div>
       </div>
     </div>
@@ -197,5 +216,123 @@ const currentPath = Astro.url.pathname;
       mobileMenu?.classList.add('hidden');
       menuButton?.setAttribute('aria-expanded', 'false');
     }
+  });
+
+  // Desktop dropdown functionality with hover delays
+  const dropdownContainers = document.querySelectorAll('.dropdown-container');
+
+  dropdownContainers.forEach(container => {
+    const button = container.querySelector('button');
+    const panel = container.querySelector('.dropdown-panel');
+    const icon = container.querySelector('.dropdown-icon');
+    let openTimeout: number | undefined;
+    let closeTimeout: number | undefined;
+
+    const openDropdown = () => {
+      clearTimeout(closeTimeout);
+      openTimeout = window.setTimeout(() => {
+        panel?.classList.remove('hidden', 'opacity-0');
+        panel?.classList.add('opacity-100');
+        icon?.classList.add('rotate-180');
+        button?.setAttribute('aria-expanded', 'true');
+      }, 150); // 150ms delay before opening
+    };
+
+    const closeDropdown = () => {
+      clearTimeout(openTimeout);
+      closeTimeout = window.setTimeout(() => {
+        panel?.classList.remove('opacity-100');
+        panel?.classList.add('opacity-0');
+        icon?.classList.remove('rotate-180');
+        button?.setAttribute('aria-expanded', 'false');
+        // Wait for opacity transition before hiding
+        setTimeout(() => {
+          if (panel?.classList.contains('opacity-0')) {
+            panel?.classList.add('hidden');
+          }
+        }, 200);
+      }, 100); // 100ms delay before closing
+    };
+
+    // Hover events for container (includes button and panel)
+    container.addEventListener('mouseenter', openDropdown);
+    container.addEventListener('mouseleave', closeDropdown);
+
+    // Keyboard navigation
+    button?.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        const isOpen = button.getAttribute('aria-expanded') === 'true';
+        if (isOpen) {
+          closeDropdown();
+        } else {
+          openDropdown();
+        }
+      } else if (e.key === 'Escape') {
+        closeDropdown();
+      }
+    });
+
+    // Close on click outside
+    document.addEventListener('click', (e) => {
+      if (!container.contains(e.target as Node)) {
+        closeDropdown();
+      }
+    });
+
+    // Hover effect for dropdown button (when not active)
+    if (button?.getAttribute('data-active') !== 'true') {
+      button?.addEventListener('mouseenter', () => {
+        if (button.getAttribute('data-active') !== 'true') {
+          (button as HTMLElement).style.color = '#C1503D';
+        }
+      });
+      button?.addEventListener('mouseleave', () => {
+        if (button.getAttribute('data-active') !== 'true') {
+          (button as HTMLElement).style.color = '#4A3933';
+        }
+      });
+    }
+
+    // Hover effects for dropdown items
+    const items = panel?.querySelectorAll('a[role="menuitem"]');
+    items?.forEach(item => {
+      const link = item as HTMLElement;
+      const isActive = link.classList.contains('font-semibold');
+
+      if (!isActive) {
+        link.addEventListener('mouseenter', () => {
+          link.style.backgroundColor = '#EFE9DC';
+          link.style.color = '#C1503D';
+        });
+        link.addEventListener('mouseleave', () => {
+          link.style.backgroundColor = 'transparent';
+          link.style.color = '#4A3933';
+        });
+      }
+    });
+  });
+
+  // Mobile accordion functionality
+  const mobileAccordions = document.querySelectorAll('.mobile-accordion');
+
+  mobileAccordions.forEach(accordion => {
+    const button = accordion.querySelector('button');
+    const content = accordion.querySelector('.mobile-accordion-content');
+    const icon = accordion.querySelector('.mobile-accordion-icon');
+
+    button?.addEventListener('click', () => {
+      const isExpanded = button.getAttribute('aria-expanded') === 'true';
+
+      if (isExpanded) {
+        content?.classList.add('hidden');
+        icon?.classList.remove('rotate-180');
+        button.setAttribute('aria-expanded', 'false');
+      } else {
+        content?.classList.remove('hidden');
+        icon?.classList.add('rotate-180');
+        button.setAttribute('aria-expanded', 'true');
+      }
+    });
   });
 </script>
