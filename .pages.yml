@@ -143,8 +143,9 @@ content:
         label: Category
         type: select
         options:
-          - Meeting Minutes
-          - Governance Documents
+          values:
+            - Meeting Minutes
+            - Governance Documents
       - name: documentFile
         label: PDF File Path
         type: string
