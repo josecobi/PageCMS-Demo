@@ -54,33 +54,33 @@ const featuredEvents = allEvents.filter(event => event.data.featured);
   <!-- Membership Meetings Section - PROMINENT -->
   <section class="py-16 md:py-20" style="background-color: #FAF8F4;">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="rounded-2xl shadow-2xl p-8 md:p-12 relative overflow-hidden" style="background: linear-gradient(135deg, #2D5832 0%, #3A6B3F 100%); color: #FAF8F4;">
+      <div class="rounded-2xl shadow-2xl p-8 md:p-12 relative overflow-hidden" style="background: linear-gradient(135deg, #1B365D 0%, #4A7C9D 100%); color: #FAF8F4;">
         <div class="absolute top-0 right-0 w-64 h-64 opacity-10" style="background: radial-gradient(circle, #FAF8F4, transparent);"></div>
         <div class="relative z-10">
           <div class="text-center mb-10">
-            <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6" style="background-color: #C59D5F;">
-              <svg class="w-10 h-10" style="color: #3E2723;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6" style="background-color: #D4A574;">
+              <svg class="w-10 h-10" style="color: #3D3D3D;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>
             </div>
             <h2 class="text-3xl md:text-4xl font-bold mb-4" style="font-family: Georgia, serif;">
               General Membership Meetings
             </h2>
-            <div class="w-32 h-1 mx-auto" style="background-color: #C59D5F;"></div>
+            <div class="w-32 h-1 mx-auto" style="background-color: #D4A574;"></div>
           </div>
 
           <div class="max-w-3xl mx-auto text-center mb-10">
             <p class="text-xl md:text-2xl mb-8 leading-relaxed" style="color: #EFE9DC;">
               General Membership Meetings are held on the <strong>last Thursday of each month</strong> at <strong>Kisling's Tavern (Upstairs)</strong> beginning at <strong>7:00PM</strong>.
             </p>
-            <p class="text-lg italic" style="color: #C59D5F;">
+            <p class="text-lg italic" style="color: #D4A574;">
               Unless otherwise noted.
             </p>
           </div>
 
           <!-- Note about viewing upcoming meetings -->
-          <div class="mt-10 p-6 rounded-xl text-center" style="background-color: rgba(250, 248, 244, 0.1); border: 2px solid #C59D5F;">
-            <p class="text-lg font-semibold mb-2" style="color: #C59D5F;">
+          <div class="mt-10 p-6 rounded-xl text-center" style="background-color: rgba(250, 248, 244, 0.1); border: 2px solid #D4A574;">
+            <p class="text-lg font-semibold mb-2" style="color: #D4A574;">
               📅 View Upcoming Meetings Below
             </p>
             <p style="color: #EFE9DC;">
@@ -89,8 +89,8 @@ const featuredEvents = allEvents.filter(event => event.data.featured);
           </div>
 
           <!-- Location Info -->
-          <div class="mt-10 p-6 rounded-xl text-center" style="background-color: rgba(250, 248, 244, 0.1); border: 2px solid #C59D5F;">
-            <p class="text-lg font-semibold mb-2" style="color: #C59D5F;">
+          <div class="mt-10 p-6 rounded-xl text-center" style="background-color: rgba(250, 248, 244, 0.1); border: 2px solid #D4A574;">
+            <p class="text-lg font-semibold mb-2" style="color: #D4A574;">
               📍 Kisling's Tavern (Upstairs)
             </p>
             <p style="color: #EFE9DC;">
@@ -108,10 +108,10 @@ const featuredEvents = allEvents.filter(event => event.data.featured);
       <!-- Featured Events -->
       {featuredEvents.length > 0 && (
         <div class="mb-16">
-          <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center" style="font-family: Georgia, serif; color: #3E2723;">
+          <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center" style="font-family: Georgia, serif; color: #3D3D3D;">
             Featured <span style="color: #C1503D;">Events</span>
           </h2>
-          <div class="w-32 h-1 mx-auto mb-10" style="background-color: #C59D5F;"></div>
+          <div class="w-32 h-1 mx-auto mb-10" style="background-color: #D4A574;"></div>
           <div class="grid md:grid-cols-2 gap-8">
             {featuredEvents.slice(0, 2).map(event => (
               <EventCard
@@ -134,10 +134,10 @@ const featuredEvents = allEvents.filter(event => event.data.featured);
       <!-- Upcoming Events -->
       {upcomingEvents.length > 0 && (
         <div class="mb-16">
-          <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center" style="font-family: Georgia, serif; color: #3E2723;">
+          <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center" style="font-family: Georgia, serif; color: #3D3D3D;">
             Upcoming <span style="color: #C1503D;">Events</span>
           </h2>
-          <div class="w-32 h-1 mx-auto mb-10" style="background-color: #C59D5F;"></div>
+          <div class="w-32 h-1 mx-auto mb-10" style="background-color: #D4A574;"></div>
           <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {upcomingEvents.map(event => (
               <EventCard
@@ -159,21 +159,21 @@ const featuredEvents = allEvents.filter(event => event.data.featured);
 
       {upcomingEvents.length === 0 && (
         <div class="text-center py-12 rounded-2xl mb-16" style="background: linear-gradient(to bottom right, #F5F1E8, #EFE9DC);">
-          <svg class="w-16 h-16 mx-auto mb-4" style="color: #C59D5F;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-16 h-16 mx-auto mb-4" style="color: #D4A574;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
           </svg>
-          <h3 class="text-xl font-semibold mb-2" style="color: #3E2723; font-family: Georgia, serif;">No Upcoming Events</h3>
-          <p style="color: #4A3933;">Check back soon for new events!</p>
+          <h3 class="text-xl font-semibold mb-2" style="color: #3D3D3D; font-family: Georgia, serif;">No Upcoming Events</h3>
+          <p style="color: #3D3D3D;">Check back soon for new events!</p>
         </div>
       )}
 
       <!-- Past Events -->
       {pastEvents.length > 0 && (
         <div>
-          <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center" style="font-family: Georgia, serif; color: #3E2723;">
-            Past <span style="color: #4A3933;">Events</span>
+          <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center" style="font-family: Georgia, serif; color: #3D3D3D;">
+            Past <span style="color: #3D3D3D;">Events</span>
           </h2>
-          <div class="w-32 h-1 mx-auto mb-10" style="background-color: #C59D5F;"></div>
+          <div class="w-32 h-1 mx-auto mb-10" style="background-color: #D4A574;"></div>
           <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {pastEvents.slice(0, 6).map(event => (
               <EventCard

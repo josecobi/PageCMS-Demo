@@ -18,8 +18,8 @@ const formattedDate = documentDate.toLocaleDateString('en-US', {
   day: 'numeric'
 });
 
-const categoryColor = category === 'Meeting Minutes' ? '#C1503D' : '#2D5832';
-const categoryHoverColor = category === 'Meeting Minutes' ? '#A84636' : '#3A6B3F';
+const categoryColor = category === 'Meeting Minutes' ? '#C1503D' : '#1B365D';
+const categoryHoverColor = category === 'Meeting Minutes' ? '#A84636' : '#4A7C9D';
 const categoryBgColor = category === 'Meeting Minutes' ? 'rgba(193, 80, 61, 0.1)' : 'rgba(45, 88, 50, 0.1)';
 ---
 
@@ -31,21 +31,21 @@ const categoryBgColor = category === 'Meeting Minutes' ? 'rgba(193, 80, 61, 0.1)
         {category}
       </span>
       {featured && (
-        <span class="px-3 py-1 rounded-full text-xs font-semibold" style="background-color: #C59D5F; color: #FAF8F4;">
+        <span class="px-3 py-1 rounded-full text-xs font-semibold" style="background-color: #D4A574; color: #FAF8F4;">
           Featured
         </span>
       )}
     </div>
 
     <!-- Title -->
-    <h3 class="text-xl font-bold mb-3 transition-colors" style="font-family: Georgia, serif; color: #3E2723;">
+    <h3 class="text-xl font-bold mb-3 transition-colors" style="font-family: Georgia, serif; color: #3D3D3D;">
       {title}
     </h3>
 
     <!-- Metadata -->
-    <div class="space-y-2 mb-4 text-sm" style="color: #4A3933;">
+    <div class="space-y-2 mb-4 text-sm" style="color: #3D3D3D;">
       <div class="flex items-center">
-        <svg class="w-4 h-4 mr-2 flex-shrink-0" style="color: #C59D5F;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg class="w-4 h-4 mr-2 flex-shrink-0" style="color: #D4A574;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
         </svg>
         <span>{formattedDate}</span>
@@ -53,7 +53,7 @@ const categoryBgColor = category === 'Meeting Minutes' ? 'rgba(193, 80, 61, 0.1)
 
       {fileSize && (
         <div class="flex items-center">
-          <svg class="w-4 h-4 mr-2 flex-shrink-0" style="color: #C59D5F;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-4 h-4 mr-2 flex-shrink-0" style="color: #D4A574;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
           </svg>
           <span>{fileSize}</span>
@@ -62,12 +62,12 @@ const categoryBgColor = category === 'Meeting Minutes' ? 'rgba(193, 80, 61, 0.1)
     </div>
 
     <!-- Description -->
-    <p class="mb-4 line-clamp-2" style="color: #4A3933;">
+    <p class="mb-4 line-clamp-2" style="color: #3D3D3D;">
       {description}
     </p>
 
     <!-- Download Button -->
-    <div class="pt-4" style="border-top: 2px solid #C59D5F;">
+    <div class="pt-4" style="border-top: 2px solid #D4A574;">
       <a
         href={documentFile}
         target="_blank"

@@ -41,7 +41,7 @@ const isDropdownActive = (children: Array<{href: string}>) => {
 };
 ---
 
-<header class="sticky top-0 z-50" style="background-color: #F5F1E8; box-shadow: 0 4px 6px -1px rgba(62, 39, 35, 0.1), 0 2px 4px -1px rgba(62, 39, 35, 0.06);">
+<header class="sticky top-0 z-50" style="background-color: #F5F1E8; box-shadow: 0 4px 6px -1px rgba(27, 54, 93, 0.1), 0 2px 4px -1px rgba(27, 54, 93, 0.06);">
   <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-20">
       <!-- Logo -->
@@ -60,9 +60,9 @@ const isDropdownActive = (children: Array<{href: string}>) => {
           <a
             href="/"
             class={`${currentPath === '/' ? 'font-semibold' : ''} px-3 py-2 transition-colors rounded-md text-sm`}
-            style={currentPath === '/' ? 'color: #C1503D; background-color: #EFE9DC;' : 'color: #4A3933;'}
+            style={currentPath === '/' ? 'color: #C1503D; background-color: #EFE9DC;' : 'color: #3D3D3D;'}
             onmouseover="if (this.getAttribute('data-active') !== 'true') this.style.color='#C1503D'"
-            onmouseout="if (this.getAttribute('data-active') !== 'true') this.style.color='#4A3933'"
+            onmouseout="if (this.getAttribute('data-active') !== 'true') this.style.color='#3D3D3D'"
             data-active={currentPath === '/' ? 'true' : 'false'}
           >
             Home
@@ -76,7 +76,7 @@ const isDropdownActive = (children: Array<{href: string}>) => {
                 <button
                   type="button"
                   class={`${isActive ? 'font-semibold' : ''} px-3 py-2 transition-colors rounded-md text-sm flex items-center gap-1`}
-                  style={isActive ? 'color: #C1503D; background-color: #EFE9DC;' : 'color: #4A3933;'}
+                  style={isActive ? 'color: #C1503D; background-color: #EFE9DC;' : 'color: #3D3D3D;'}
                   data-active={isActive ? 'true' : 'false'}
                   aria-expanded="false"
                   aria-haspopup="true"
@@ -99,7 +99,7 @@ const isDropdownActive = (children: Array<{href: string}>) => {
                       <a
                         href={item.href}
                         class={`${currentPath.startsWith(item.href) ? 'font-semibold' : ''} block px-4 py-2.5 text-sm transition-colors`}
-                        style={currentPath.startsWith(item.href) ? 'color: #C1503D; background-color: #EFE9DC;' : 'color: #4A3933;'}
+                        style={currentPath.startsWith(item.href) ? 'color: #C1503D; background-color: #EFE9DC;' : 'color: #3D3D3D;'}
                         role="menuitem"
                       >
                         {item.label}
@@ -118,9 +118,9 @@ const isDropdownActive = (children: Array<{href: string}>) => {
         <a
           href="/donate"
           class="px-5 py-2.5 text-white rounded-lg transition-all font-semibold text-sm shadow-md hover:shadow-lg"
-          style="background-color: #2D5832;"
-          onmouseover="this.style.backgroundColor='#3A6B3F'"
-          onmouseout="this.style.backgroundColor='#2D5832'"
+          style="background-color: #1B365D;"
+          onmouseover="this.style.backgroundColor='#4A7C9D'"
+          onmouseout="this.style.backgroundColor='#1B365D'"
         >
           Donate
         </a>
@@ -132,7 +132,7 @@ const isDropdownActive = (children: Array<{href: string}>) => {
           id="mobile-menu-button"
           type="button"
           class="inline-flex items-center justify-center p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-inset"
-          style="color: #4A3933;"
+          style="color: #3D3D3D;"
           aria-expanded="false"
         >
           <span class="sr-only">Open main menu</span>
@@ -151,7 +151,7 @@ const isDropdownActive = (children: Array<{href: string}>) => {
         <a
           href="/"
           class={`block px-3 py-2 rounded-md transition-colors ${currentPath === '/' ? 'font-semibold' : ''}`}
-          style={currentPath === '/' ? 'color: #C1503D; background-color: #EFE9DC;' : 'color: #4A3933;'}
+          style={currentPath === '/' ? 'color: #C1503D; background-color: #EFE9DC;' : 'color: #3D3D3D;'}
         >
           Home
         </a>
@@ -164,7 +164,7 @@ const isDropdownActive = (children: Array<{href: string}>) => {
               <button
                 type="button"
                 class={`w-full flex items-center justify-between px-3 py-2 rounded-md transition-colors text-left ${isActive ? 'font-semibold' : ''}`}
-                style={isActive ? 'color: #C1503D; background-color: #EFE9DC;' : 'color: #4A3933;'}
+                style={isActive ? 'color: #C1503D; background-color: #EFE9DC;' : 'color: #3D3D3D;'}
                 aria-expanded="false"
               >
                 <span>{dropdown.label}</span>
@@ -177,7 +177,7 @@ const isDropdownActive = (children: Array<{href: string}>) => {
                   <a
                     href={item.href}
                     class={`block px-3 py-2 rounded-md text-sm transition-colors ${currentPath.startsWith(item.href) ? 'font-semibold' : ''}`}
-                    style={currentPath.startsWith(item.href) ? 'color: #C1503D; background-color: #EFE9DC;' : 'color: #4A3933;'}
+                    style={currentPath.startsWith(item.href) ? 'color: #C1503D; background-color: #EFE9DC;' : 'color: #3D3D3D;'}
                   >
                     {item.label}
                   </a>
@@ -192,7 +192,7 @@ const isDropdownActive = (children: Array<{href: string}>) => {
           <a
             href="/donate"
             class="block w-full text-center px-4 py-2 text-white rounded-md font-semibold"
-            style="background-color: #2D5832;"
+            style="background-color: #1B365D;"
           >
             Donate
           </a>
@@ -289,7 +289,7 @@ const isDropdownActive = (children: Array<{href: string}>) => {
       });
       button?.addEventListener('mouseleave', () => {
         if (button.getAttribute('data-active') !== 'true') {
-          (button as HTMLElement).style.color = '#4A3933';
+          (button as HTMLElement).style.color = '#3D3D3D';
         }
       });
     }
@@ -307,7 +307,7 @@ const isDropdownActive = (children: Array<{href: string}>) => {
         });
         link.addEventListener('mouseleave', () => {
           link.style.backgroundColor = 'transparent';
-          link.style.color = '#4A3933';
+          link.style.color = '#3D3D3D';
         });
       }
     });

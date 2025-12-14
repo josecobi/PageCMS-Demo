@@ -40,7 +40,7 @@ const day = eventDate.getDate();
         <!-- Date Badge - Only when image exists -->
         <div class="absolute top-4 left-4 rounded-xl shadow-xl p-3 text-center min-w-[4.5rem]" style="background-color: #FAF8F4; border: 2px solid #C1503D;">
           <div class="text-xs font-bold mb-1" style="color: #C1503D;">{monthShort}</div>
-          <div class="text-3xl font-bold" style="font-family: Georgia, serif; color: #3E2723;">{day}</div>
+          <div class="text-3xl font-bold" style="font-family: Georgia, serif; color: #3D3D3D;">{day}</div>
         </div>
 
         {isPast && (
@@ -58,16 +58,16 @@ const day = eventDate.getDate();
           <div class="flex-shrink-0 rounded-xl shadow-md px-4 py-3" style="background-color: #FAF8F4; border-left: 4px solid #C1503D;">
             <div class="text-center">
               <div class="text-xs font-bold" style="color: #C1503D;">{monthShort}</div>
-              <div class="text-2xl font-bold" style="font-family: Georgia, serif; color: #3E2723;">{day}</div>
+              <div class="text-2xl font-bold" style="font-family: Georgia, serif; color: #3D3D3D;">{day}</div>
             </div>
           </div>
           <div class="flex-1">
             <div class="flex items-start justify-between gap-2">
-              <h3 class="text-xl font-bold transition-colors flex-1" style="font-family: Georgia, serif; color: #3E2723;" onmouseover="this.style.color='#C1503D'" onmouseout="this.style.color='#3E2723'">
+              <h3 class="text-xl font-bold transition-colors flex-1" style="font-family: Georgia, serif; color: #3D3D3D;" onmouseover="this.style.color='#C1503D'" onmouseout="this.style.color='#3D3D3D'">
                 {title}
               </h3>
               {isPast && (
-                <span class="text-xs font-semibold px-2 py-1 rounded whitespace-nowrap" style="background-color: #4A3933; color: #FAF8F4;">Past</span>
+                <span class="text-xs font-semibold px-2 py-1 rounded whitespace-nowrap" style="background-color: #3D3D3D; color: #FAF8F4;">Past</span>
               )}
             </div>
           </div>
@@ -75,14 +75,14 @@ const day = eventDate.getDate();
       )}
 
       {image && (
-        <h3 class="text-xl font-bold mb-3 transition-colors" style="font-family: Georgia, serif; color: #3E2723;" onmouseover="this.style.color='#C1503D'" onmouseout="this.style.color='#3E2723'">
+        <h3 class="text-xl font-bold mb-3 transition-colors" style="font-family: Georgia, serif; color: #3D3D3D;" onmouseover="this.style.color='#C1503D'" onmouseout="this.style.color='#3D3D3D'">
           {title}
         </h3>
       )}
 
-      <div class="space-y-2 mb-4 text-sm" style="color: #4A3933;">
+      <div class="space-y-2 mb-4 text-sm" style="color: #3D3D3D;">
         <div class="flex items-center">
-          <svg class="w-4 h-4 mr-2 flex-shrink-0" style="color: #C59D5F;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-4 h-4 mr-2 flex-shrink-0" style="color: #D4A574;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
           </svg>
           <span>{formattedDate}</span>
@@ -90,7 +90,7 @@ const day = eventDate.getDate();
 
         {eventTime && (
           <div class="flex items-center">
-            <svg class="w-4 h-4 mr-2 flex-shrink-0" style="color: #C59D5F;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-4 h-4 mr-2 flex-shrink-0" style="color: #D4A574;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
             <span>{eventTime}</span>
@@ -98,7 +98,7 @@ const day = eventDate.getDate();
         )}
 
         <div class="flex items-center">
-          <svg class="w-4 h-4 mr-2 flex-shrink-0" style="color: #C59D5F;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-4 h-4 mr-2 flex-shrink-0" style="color: #D4A574;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
           </svg>
@@ -106,12 +106,12 @@ const day = eventDate.getDate();
         </div>
       </div>
 
-      <p class="mb-4 line-clamp-2" style="color: #4A3933;">
+      <p class="mb-4 line-clamp-2" style="color: #3D3D3D;">
         {description}
       </p>
 
       {registrationLink && !isPast && (
-        <div class="pt-4" style="border-top: 2px solid #C59D5F;">
+        <div class="pt-4" style="border-top: 2px solid #D4A574;">
           <span class="font-semibold transition-colors" style="color: #C1503D;" onmouseover="this.style.color='#A84636'" onmouseout="this.style.color='#C1503D'">
             Register Now →
           </span>

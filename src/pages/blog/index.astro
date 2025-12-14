@@ -58,14 +58,14 @@ const featuredPosts = sortedPosts.filter(post => post.data.featured);
       <!-- Tag Filter -->
       {allTags.length > 0 && (
         <div class="mb-12">
-          <h2 class="text-lg font-semibold mb-4" style="color: #3E2723;">Filter by Topic</h2>
+          <h2 class="text-lg font-semibold mb-4" style="color: #3D3D3D;">Filter by Topic</h2>
           <div class="flex flex-wrap gap-3">
             <a
               href="/blog"
               class="px-4 py-2 rounded-full transition-all"
               style={!selectedTag
-                ? 'background-color: #2D5832; color: #FAF8F4;'
-                : 'background-color: #EFE9DC; color: #3E2723;'}
+                ? 'background-color: #1B365D; color: #FAF8F4;'
+                : 'background-color: #EFE9DC; color: #3D3D3D;'}
               onmouseover={!selectedTag ? '' : "this.style.backgroundColor='#E5DFD0'"}
               onmouseout={!selectedTag ? '' : "this.style.backgroundColor='#EFE9DC'"}
             >
@@ -76,8 +76,8 @@ const featuredPosts = sortedPosts.filter(post => post.data.featured);
                 href={`/blog?tag=${encodeURIComponent(tag)}`}
                 class="px-4 py-2 rounded-full transition-all"
                 style={selectedTag === tag
-                  ? 'background-color: #2D5832; color: #FAF8F4;'
-                  : 'background-color: #EFE9DC; color: #3E2723;'}
+                  ? 'background-color: #1B365D; color: #FAF8F4;'
+                  : 'background-color: #EFE9DC; color: #3D3D3D;'}
                 onmouseover={selectedTag === tag ? '' : "this.style.backgroundColor='#E5DFD0'"}
                 onmouseout={selectedTag === tag ? '' : "this.style.backgroundColor='#EFE9DC'"}
               >
@@ -111,7 +111,7 @@ const featuredPosts = sortedPosts.filter(post => post.data.featured);
 
       <!-- All Posts -->
       <div>
-        <h2 class="text-3xl md:text-4xl font-bold mb-8" style="font-family: Georgia, serif; color: #2D5832;">
+        <h2 class="text-3xl md:text-4xl font-bold mb-8" style="font-family: Georgia, serif; color: #1B365D;">
           {selectedTag ? `Posts tagged "${selectedTag}"` : 'All Posts'}
         </h2>
 
@@ -132,7 +132,7 @@ const featuredPosts = sortedPosts.filter(post => post.data.featured);
           </div>
         ) : (
           <div class="text-center py-12">
-            <p class="text-xl" style="color: #4A3933;">
+            <p class="text-xl" style="color: #3D3D3D;">
               {selectedTag
                 ? `No posts found with tag "${selectedTag}"`
                 : 'No blog posts yet. Check back soon!'}

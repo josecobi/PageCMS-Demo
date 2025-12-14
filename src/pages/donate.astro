@@ -51,7 +51,7 @@ const supportOptions = [
   description="Support your community by becoming a member of Fells Prospect Community Association. Your membership helps us serve the neighborhood."
 >
   <!-- Hero Section -->
-  <section class="relative py-20" style="background: linear-gradient(135deg, #C59D5F 0%, #C1503D 100%);">
+  <section class="relative py-20" style="background: linear-gradient(135deg, #D4A574 0%, #C1503D 100%);">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <h1 class="text-4xl md:text-5xl font-bold mb-6" style="font-family: Georgia, serif; color: #FAF8F4;">Support Your Community</h1>
       <p class="text-xl" style="color: #EFE9DC;">
@@ -69,24 +69,24 @@ const supportOptions = [
   <!-- Why Support -->
   <section class="py-16 md:py-20" style="background-color: #FAF8F4;">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-3xl md:text-4xl font-bold mb-6" style="font-family: Georgia, serif; color: #3E2723;">Your Support Matters</h2>
-      <p class="text-xl leading-relaxed mb-8" style="color: #4A3933;">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6" style="font-family: Georgia, serif; color: #3D3D3D;">Your Support Matters</h2>
+      <p class="text-xl leading-relaxed mb-8" style="color: #3D3D3D;">
         The Fells Prospect Community Association is a volunteer-run organization dedicated to improving our neighborhood.
         Your membership and contributions help us organize events, advocate for improvements, and keep neighbors connected.
       </p>
 
       <div class="grid md:grid-cols-3 gap-8 mt-12">
         <div class="text-center">
-          <div class="text-5xl font-bold mb-2" style="color: #2D5832;">100%</div>
-          <div style="color: #4A3933;">Volunteer-run</div>
+          <div class="text-5xl font-bold mb-2" style="color: #1B365D;">100%</div>
+          <div style="color: #3D3D3D;">Volunteer-run</div>
         </div>
         <div class="text-center">
           <div class="text-5xl font-bold mb-2" style="color: #C1503D;">12+</div>
-          <div style="color: #4A3933;">Events annually</div>
+          <div style="color: #3D3D3D;">Events annually</div>
         </div>
         <div class="text-center">
-          <div class="text-5xl font-bold mb-2" style="color: #C59D5F;">500+</div>
-          <div style="color: #4A3933;">Neighborhood families</div>
+          <div class="text-5xl font-bold mb-2" style="color: #D4A574;">500+</div>
+          <div style="color: #3D3D3D;">Neighborhood families</div>
         </div>
       </div>
     </div>
@@ -95,30 +95,30 @@ const supportOptions = [
   <!-- Support Levels -->
   <section class="py-16 md:py-20" style="background: linear-gradient(to bottom, #EFE9DC, #F5F1E8);">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12" style="font-family: Georgia, serif; color: #3E2723;">Membership & Support Levels</h2>
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12" style="font-family: Georgia, serif; color: #3D3D3D;">Membership & Support Levels</h2>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
         {supportOptions.map(level => (
-          <div class={`rounded-lg shadow-md p-6 flex flex-col ${level.featured ? 'ring-2 transform scale-105' : ''}`} style={level.featured ? 'background-color: #FAF8F4; ring-color: #C59D5F;' : 'background-color: #FAF8F4;'}>
+          <div class={`rounded-lg shadow-md p-6 flex flex-col ${level.featured ? 'ring-2 transform scale-105' : ''}`} style={level.featured ? 'background-color: #FAF8F4; ring-color: #D4A574;' : 'background-color: #FAF8F4;'}>
             {level.featured && (
               <div class="text-center mb-4">
-                <span class="inline-block px-3 py-1 text-sm font-semibold rounded-full" style="background-color: #C59D5F; color: #FAF8F4;">
+                <span class="inline-block px-3 py-1 text-sm font-semibold rounded-full" style="background-color: #D4A574; color: #FAF8F4;">
                   Most Popular
                 </span>
               </div>
             )}
             <div class="text-center mb-6">
-              <h3 class="text-2xl font-bold mb-2" style="color: #3E2723;">{level.name}</h3>
-              <div class="text-4xl font-bold" style="color: #2D5832;">{level.amount}</div>
-              <p class="text-sm mt-2" style="color: #4A3933;">{level.description}</p>
+              <h3 class="text-2xl font-bold mb-2" style="color: #3D3D3D;">{level.name}</h3>
+              <div class="text-4xl font-bold" style="color: #1B365D;">{level.amount}</div>
+              <p class="text-sm mt-2" style="color: #3D3D3D;">{level.description}</p>
             </div>
             <ul class="space-y-3 flex-grow mb-6">
               {level.benefits.map(benefit => (
                 <li class="flex items-start">
-                  <svg class="w-5 h-5 mr-2 flex-shrink-0 mt-0.5" style="color: #2D5832;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg class="w-5 h-5 mr-2 flex-shrink-0 mt-0.5" style="color: #1B365D;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                   </svg>
-                  <span class="text-sm" style="color: #4A3933;">{benefit}</span>
+                  <span class="text-sm" style="color: #3D3D3D;">{benefit}</span>
                 </li>
               ))}
             </ul>
@@ -126,13 +126,13 @@ const supportOptions = [
               href="/membership"
               class={`block text-center px-6 py-3 rounded-md font-semibold transition-colors ${level.featured ? '' : ''}`}
               style={level.featured
-                ? 'background-color: #2D5832; color: #FAF8F4;'
-                : 'background-color: #EFE9DC; color: #3E2723;'}
+                ? 'background-color: #1B365D; color: #FAF8F4;'
+                : 'background-color: #EFE9DC; color: #3D3D3D;'}
               onmouseover={level.featured
-                ? "this.style.backgroundColor='#3A6B3F'"
+                ? "this.style.backgroundColor='#4A7C9D'"
                 : "this.style.backgroundColor='#E5DFD2'"}
               onmouseout={level.featured
-                ? "this.style.backgroundColor='#2D5832'"
+                ? "this.style.backgroundColor='#1B365D'"
                 : "this.style.backgroundColor='#EFE9DC'"}
             >
               Learn More
@@ -146,64 +146,64 @@ const supportOptions = [
   <!-- How Funds Are Used -->
   <section class="py-16 md:py-20" style="background-color: #FAF8F4;">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl font-bold text-center mb-12" style="font-family: Georgia, serif; color: #3E2723;">How We Use Your Support</h2>
+      <h2 class="text-3xl font-bold text-center mb-12" style="font-family: Georgia, serif; color: #3D3D3D;">How We Use Your Support</h2>
       <div class="grid md:grid-cols-2 gap-8">
         <div class="p-6 rounded-lg shadow-md" style="background: linear-gradient(to bottom right, #F5F1E8, #EFE9DC);">
-          <h3 class="text-xl font-bold mb-4" style="color: #3E2723;">Community Programs</h3>
+          <h3 class="text-xl font-bold mb-4" style="color: #3D3D3D;">Community Programs</h3>
           <ul class="space-y-3">
             <li class="flex items-start">
-              <svg class="w-6 h-6 mr-2 flex-shrink-0" style="color: #2D5832;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-6 h-6 mr-2 flex-shrink-0" style="color: #1B365D;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              <span style="color: #4A3933;">Monthly general meetings and events</span>
+              <span style="color: #3D3D3D;">Monthly general meetings and events</span>
             </li>
             <li class="flex items-start">
-              <svg class="w-6 h-6 mr-2 flex-shrink-0" style="color: #2D5832;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-6 h-6 mr-2 flex-shrink-0" style="color: #1B365D;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              <span style="color: #4A3933;">Community newsletter and communications</span>
+              <span style="color: #3D3D3D;">Community newsletter and communications</span>
             </li>
             <li class="flex items-start">
-              <svg class="w-6 h-6 mr-2 flex-shrink-0" style="color: #2D5832;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-6 h-6 mr-2 flex-shrink-0" style="color: #1B365D;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              <span style="color: #4A3933;">Neighborhood social events</span>
+              <span style="color: #3D3D3D;">Neighborhood social events</span>
             </li>
             <li class="flex items-start">
-              <svg class="w-6 h-6 mr-2 flex-shrink-0" style="color: #2D5832;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-6 h-6 mr-2 flex-shrink-0" style="color: #1B365D;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              <span style="color: #4A3933;">Community beautification projects</span>
+              <span style="color: #3D3D3D;">Community beautification projects</span>
             </li>
           </ul>
         </div>
 
         <div class="p-6 rounded-lg shadow-md" style="background: linear-gradient(to bottom right, #F5F1E8, #EFE9DC);">
-          <h3 class="text-xl font-bold mb-4" style="color: #3E2723;">Advocacy & Operations</h3>
+          <h3 class="text-xl font-bold mb-4" style="color: #3D3D3D;">Advocacy & Operations</h3>
           <ul class="space-y-3">
             <li class="flex items-start">
               <svg class="w-6 h-6 mr-2 flex-shrink-0" style="color: #C1503D;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              <span style="color: #4A3933;">Advocacy with city officials</span>
+              <span style="color: #3D3D3D;">Advocacy with city officials</span>
             </li>
             <li class="flex items-start">
               <svg class="w-6 h-6 mr-2 flex-shrink-0" style="color: #C1503D;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              <span style="color: #4A3933;">Website and communications tools</span>
+              <span style="color: #3D3D3D;">Website and communications tools</span>
             </li>
             <li class="flex items-start">
               <svg class="w-6 h-6 mr-2 flex-shrink-0" style="color: #C1503D;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              <span style="color: #4A3933;">Insurance and administrative costs</span>
+              <span style="color: #3D3D3D;">Insurance and administrative costs</span>
             </li>
             <li class="flex items-start">
               <svg class="w-6 h-6 mr-2 flex-shrink-0" style="color: #C1503D;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              <span style="color: #4A3933;">Community improvement initiatives</span>
+              <span style="color: #3D3D3D;">Community improvement initiatives</span>
             </li>
           </ul>
         </div>
@@ -214,37 +214,37 @@ const supportOptions = [
   <!-- Other Ways to Help -->
   <section class="py-16 md:py-20" style="background: linear-gradient(to bottom, #EFE9DC, #F5F1E8);">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-center mb-8" style="font-family: Georgia, serif; color: #3E2723;">Other Ways to Support</h2>
+      <h2 class="text-2xl font-bold text-center mb-8" style="font-family: Georgia, serif; color: #3D3D3D;">Other Ways to Support</h2>
       <div class="grid md:grid-cols-3 gap-6">
         <a href="/volunteer" class="p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow text-center" style="background-color: #FAF8F4;">
-          <svg class="w-12 h-12 mx-auto mb-3" style="color: #2D5832;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-12 h-12 mx-auto mb-3" style="color: #1B365D;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
           </svg>
-          <h3 class="text-lg font-semibold mb-2" style="color: #3E2723;">Volunteer</h3>
-          <p class="text-sm" style="color: #4A3933;">Share your time and skills with the community</p>
+          <h3 class="text-lg font-semibold mb-2" style="color: #3D3D3D;">Volunteer</h3>
+          <p class="text-sm" style="color: #3D3D3D;">Share your time and skills with the community</p>
         </a>
 
         <a href="/committees" class="p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow text-center" style="background-color: #FAF8F4;">
           <svg class="w-12 h-12 mx-auto mb-3" style="color: #C1503D;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
           </svg>
-          <h3 class="text-lg font-semibold mb-2" style="color: #3E2723;">Join a Committee</h3>
-          <p class="text-sm" style="color: #4A3933;">Help guide community initiatives and decisions</p>
+          <h3 class="text-lg font-semibold mb-2" style="color: #3D3D3D;">Join a Committee</h3>
+          <p class="text-sm" style="color: #3D3D3D;">Help guide community initiatives and decisions</p>
         </a>
 
         <a href="/events" class="p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow text-center" style="background-color: #FAF8F4;">
-          <svg class="w-12 h-12 mx-auto mb-3" style="color: #C59D5F;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-12 h-12 mx-auto mb-3" style="color: #D4A574;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
           </svg>
-          <h3 class="text-lg font-semibold mb-2" style="color: #3E2723;">Attend Events</h3>
-          <p class="text-sm" style="color: #4A3933;">Participate in community gatherings and meetings</p>
+          <h3 class="text-lg font-semibold mb-2" style="color: #3D3D3D;">Attend Events</h3>
+          <p class="text-sm" style="color: #3D3D3D;">Participate in community gatherings and meetings</p>
         </a>
       </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="py-16 md:py-20" style="background: linear-gradient(135deg, #2D5832 0%, #3A6B3F 100%);">
+  <section class="py-16 md:py-20" style="background: linear-gradient(135deg, #1B365D 0%, #4A7C9D 100%);">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <h2 class="text-3xl md:text-4xl font-bold mb-6" style="font-family: Georgia, serif; color: #FAF8F4;">Ready to Join?</h2>
       <p class="text-xl mb-8" style="color: #EFE9DC;">
@@ -254,7 +254,7 @@ const supportOptions = [
         <a
           href="/membership"
           class="px-8 py-4 rounded-md font-semibold transition-colors"
-          style="background-color: #FAF8F4; color: #2D5832;"
+          style="background-color: #FAF8F4; color: #1B365D;"
           onmouseover="this.style.backgroundColor='#EFE9DC'"
           onmouseout="this.style.backgroundColor='#FAF8F4'"
         >

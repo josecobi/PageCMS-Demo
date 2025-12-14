@@ -12,12 +12,12 @@ const {
 } = Astro.props;
 ---
 
-<div class={compact ? "py-8" : "py-12 px-6 rounded-lg"} style={compact ? '' : 'background: linear-gradient(135deg, #2D5832 0%, #3A6B3F 100%);'}>
+<div class={compact ? "py-8" : "py-12 px-6 rounded-lg"} style={compact ? '' : 'background: linear-gradient(135deg, #1B365D 0%, #4A7C9D 100%);'}>
   <div class={compact ? "" : "max-w-2xl mx-auto text-center"}>
-    <h2 class={`font-bold mb-2 ${compact ? 'text-2xl' : 'text-3xl'}`} style={compact ? 'color: #3E2723; font-family: Georgia, serif;' : 'color: #FAF8F4; font-family: Georgia, serif;'}>
+    <h2 class={`font-bold mb-2 ${compact ? 'text-2xl' : 'text-3xl'}`} style={compact ? 'color: #3D3D3D; font-family: Georgia, serif;' : 'color: #FAF8F4; font-family: Georgia, serif;'}>
       {title}
     </h2>
-    <p class={`mb-6`} style={compact ? 'color: #4A3933;' : 'color: #EFE9DC;'}>
+    <p class={`mb-6`} style={compact ? 'color: #3D3D3D;' : 'color: #EFE9DC;'}>
       {description}
     </p>
 
@@ -34,7 +34,7 @@ const {
         class={`flex-1 px-4 py-3 rounded-md focus:outline-none focus:ring-2 ${
           compact ? 'border border-gray-300' : 'border-0'
         }`}
-        style="focus:ring-color: #2D5832;"
+        style="focus:ring-color: #1B365D;"
       />
       <button
         type="submit"
@@ -42,20 +42,20 @@ const {
           compact ? '' : ''
         }`}
         style={compact
-          ? 'background-color: #2D5832; color: #FAF8F4;'
-          : 'background-color: #FAF8F4; color: #2D5832;'}
+          ? 'background-color: #1B365D; color: #FAF8F4;'
+          : 'background-color: #FAF8F4; color: #1B365D;'}
         onmouseover={compact
-          ? "this.style.backgroundColor='#3A6B3F'"
+          ? "this.style.backgroundColor='#4A7C9D'"
           : "this.style.backgroundColor='#EFE9DC'"}
         onmouseout={compact
-          ? "this.style.backgroundColor='#2D5832'"
+          ? "this.style.backgroundColor='#1B365D'"
           : "this.style.backgroundColor='#FAF8F4'"}
       >
         Subscribe
       </button>
     </form>
 
-    <p class={`mt-3 text-xs`} style={compact ? 'color: #4A3933;' : 'color: #C59D5F;'}>
+    <p class={`mt-3 text-xs`} style={compact ? 'color: #3D3D3D;' : 'color: #D4A574;'}>
       We respect your privacy. Unsubscribe at any time.
     </p>
   </div>
