@@ -102,6 +102,14 @@ content:
       - name: role
         label: Role/Position
         type: string
+      - name: boardCategory
+        label: Board Category
+        type: select
+        options:
+          values:
+            - Executive Board
+            - At-Large
+            - Committee Chair
       - name: bio
         label: Short Bio
         type: text
