@@ -3,65 +3,65 @@ import Layout from '../layouts/Layout.astro';
 
 const opportunities = [
   {
-    title: 'Education Tutor',
-    commitment: '4 hours/week',
-    description: 'Help students with homework and academic skills in our after-school program.',
-    skills: ['Teaching', 'Patience', 'Subject expertise'],
+    title: 'Committee Member',
+    commitment: 'Monthly',
+    description: 'Join one of our active committees and help guide community initiatives and decisions.',
+    skills: ['Communication', 'Collaboration', 'Community engagement'],
   },
   {
     title: 'Event Coordinator',
     commitment: 'Flexible',
-    description: 'Assist with planning and executing community events and fundraisers.',
+    description: 'Assist with planning and executing community events, meetings, and neighborhood activities.',
     skills: ['Organization', 'Communication', 'Event planning'],
   },
   {
-    title: 'Food Bank Assistant',
-    commitment: '3 hours/week',
-    description: 'Help sort, organize, and distribute food to families in need.',
-    skills: ['Physical fitness', 'Teamwork', 'Reliability'],
+    title: 'Newsletter Contributor',
+    commitment: '2-3 hours/month',
+    description: 'Help create content for our community newsletter and share neighborhood stories.',
+    skills: ['Writing', 'Photography', 'Communication'],
   },
   {
-    title: 'Mentor',
-    commitment: '2 hours/week',
-    description: 'Provide guidance and support to youth participants in our mentorship program.',
-    skills: ['Listening', 'Empathy', 'Life experience'],
-  },
-  {
-    title: 'Administrative Support',
+    title: 'Neighborhood Ambassador',
     commitment: 'Flexible',
-    description: 'Assist with office tasks, data entry, and program administration.',
-    skills: ['Computer skills', 'Organization', 'Attention to detail'],
+    description: 'Welcome new residents and help connect neighbors to community resources and events.',
+    skills: ['Welcoming', 'Communication', 'Knowledge of neighborhood'],
   },
   {
     title: 'Social Media Volunteer',
     commitment: '2-3 hours/week',
-    description: 'Help share our impact stories and engage with our online community.',
+    description: 'Help share community updates and engage with residents online.',
     skills: ['Social media', 'Writing', 'Photography'],
+  },
+  {
+    title: 'Administrative Support',
+    commitment: 'Flexible',
+    description: 'Assist with office tasks, record-keeping, and administrative needs.',
+    skills: ['Computer skills', 'Organization', 'Attention to detail'],
   },
 ];
 
 const benefits = [
   'Make a real difference in your community',
-  'Develop new skills and experience',
-  'Meet like-minded people',
-  'Receive volunteer hours documentation',
+  'Meet neighbors and build connections',
+  'Gain leadership and organizational skills',
+  'Shape the future of Fells Prospect',
   'Invitations to volunteer appreciation events',
-  'Professional development opportunities',
+  'Recognition for your contributions',
 ];
 
 const testimonials = [
   {
     name: 'Emily Rodriguez',
-    role: 'Education Tutor',
+    role: 'Events Committee',
     duration: '2 years',
-    quote: 'Volunteering with Fells Prospect Community has been incredibly rewarding. Seeing the students grow and succeed makes every moment worthwhile.',
+    quote: 'Volunteering with FPCA has been incredibly rewarding. I\'ve met amazing neighbors and helped organize events that bring our community together.',
     image: null,
   },
   {
     name: 'David Park',
-    role: 'Event Coordinator',
+    role: 'Communications Committee',
     duration: '3 years',
-    quote: 'I\'ve gained so much experience in event planning and met amazing people. The team makes you feel valued and appreciated.',
+    quote: 'Being part of the communications team has allowed me to use my skills to keep neighbors informed and connected. The team makes you feel valued and appreciated.',
     image: null,
   },
 ];
@@ -72,34 +72,40 @@ const testimonials = [
   description="Make a difference in your community by volunteering with Fells Prospect Community. Explore opportunities to share your time and talents."
 >
   <!-- Hero Section -->
-  <section class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
+  <section class="relative py-20" style="background: linear-gradient(135deg, #C1503D 0%, #A84636 100%);">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h1 class="text-4xl md:text-5xl font-bold mb-6">Volunteer With Us</h1>
-      <p class="text-xl text-blue-100">
-        Share your time, skills, and passion to help create lasting change in our community
+      <h1 class="text-4xl md:text-5xl font-bold mb-6" style="font-family: Georgia, serif; color: #FAF8F4;">Volunteer With Us</h1>
+      <p class="text-xl" style="color: #EFE9DC;">
+        Share your time, skills, and passion to help create lasting positive change in our neighborhood
       </p>
+    </div>
+    <!-- Decorative bottom -->
+    <div class="absolute bottom-0 left-0 right-0">
+      <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full">
+        <path d="M0 0L60 5C120 10 240 20 360 23.3C480 27 600 23 720 21.7C840 20 960 20 1080 23.3C1200 27 1320 33 1380 36.7L1440 40V60H0V0Z" fill="#FAF8F4"/>
+      </svg>
     </div>
   </section>
 
   <!-- Why Volunteer -->
-  <section class="py-16 md:py-20">
+  <section class="py-16 md:py-20" style="background-color: #FAF8F4;">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-3xl mx-auto text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Why Volunteer?</h2>
-        <p class="text-xl text-gray-600 leading-relaxed">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6" style="font-family: Georgia, serif; color: #3E2723;">Why Volunteer?</h2>
+        <p class="text-xl leading-relaxed" style="color: #4A3933;">
           Volunteering is more than giving back—it's about being part of a community dedicated to
-          creating positive change. Whether you have a few hours a week or can help with special events,
+          creating positive change. Whether you have a few hours a month or can help with special events,
           there's a place for you on our team.
         </p>
       </div>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {benefits.map(benefit => (
-          <div class="flex items-start bg-white p-6 rounded-lg shadow-md">
-            <svg class="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="flex items-start p-6 rounded-lg shadow-md" style="background: linear-gradient(to bottom right, #F5F1E8, #EFE9DC);">
+            <svg class="w-6 h-6 mr-3 flex-shrink-0 mt-0.5" style="color: #2D5832;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
             </svg>
-            <span class="text-gray-700">{benefit}</span>
+            <span style="color: #4A3933;">{benefit}</span>
           </div>
         ))}
       </div>
@@ -107,29 +113,29 @@ const testimonials = [
   </section>
 
   <!-- Volunteer Opportunities -->
-  <section class="py-16 md:py-20 bg-gray-50">
+  <section class="py-16 md:py-20" style="background: linear-gradient(to bottom, #EFE9DC, #F5F1E8);">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-12">Current Opportunities</h2>
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12" style="font-family: Georgia, serif; color: #3E2723;">Current Opportunities</h2>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {opportunities.map(opp => (
-          <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition-shadow">
+          <div class="rounded-lg shadow-md p-6 hover:shadow-xl transition-shadow" style="background-color: #FAF8F4;">
             <div class="flex items-start justify-between mb-4">
-              <h3 class="text-xl font-bold text-gray-900">{opp.title}</h3>
-              <span class="px-3 py-1 bg-blue-100 text-blue-700 text-xs rounded-full whitespace-nowrap ml-2">
+              <h3 class="text-xl font-bold" style="color: #3E2723;">{opp.title}</h3>
+              <span class="px-3 py-1 text-xs rounded-full whitespace-nowrap ml-2" style="background-color: rgba(197, 157, 95, 0.2); color: #4A3933;">
                 {opp.commitment}
               </span>
             </div>
 
-            <p class="text-gray-600 mb-4">
+            <p class="mb-4" style="color: #4A3933;">
               {opp.description}
             </p>
 
             <div class="mb-4">
-              <h4 class="text-sm font-semibold text-gray-700 mb-2">Skills Needed:</h4>
+              <h4 class="text-sm font-semibold mb-2" style="color: #4A3933;">Skills Needed:</h4>
               <div class="flex flex-wrap gap-2">
                 {opp.skills.map(skill => (
-                  <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">
+                  <span class="px-2 py-1 text-xs rounded" style="background-color: #EFE9DC; color: #4A3933;">
                     {skill}
                   </span>
                 ))}
@@ -138,19 +144,22 @@ const testimonials = [
 
             <a
               href="#volunteer-form"
-              class="block w-full text-center px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors font-semibold"
+              class="block w-full text-center px-4 py-2 rounded-md transition-colors font-semibold"
+              style="background-color: #2D5832; color: #FAF8F4;"
+              onmouseover="this.style.backgroundColor='#3A6B3F'"
+              onmouseout="this.style.backgroundColor='#2D5832'"
             >
-              Apply Now
+              Learn More
             </a>
           </div>
         ))}
       </div>
 
       <div class="mt-12 text-center">
-        <p class="text-gray-600 mb-4">
+        <p class="mb-4" style="color: #4A3933;">
           Don't see the right opportunity? We're always looking for dedicated volunteers.
         </p>
-        <a href="#volunteer-form" class="text-blue-600 hover:text-blue-700 font-semibold">
+        <a href="#volunteer-form" class="font-semibold transition-colors" style="color: #C1503D;" onmouseover="this.style.color='#A84636'" onmouseout="this.style.color='#C1503D'">
           Contact us about custom opportunities →
         </a>
       </div>
@@ -158,23 +167,23 @@ const testimonials = [
   </section>
 
   <!-- Testimonials -->
-  <section class="py-16 md:py-20">
+  <section class="py-16 md:py-20" style="background-color: #FAF8F4;">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">Volunteer Stories</h2>
+      <h2 class="text-3xl font-bold text-center mb-12" style="font-family: Georgia, serif; color: #3E2723;">Volunteer Stories</h2>
       <div class="grid md:grid-cols-2 gap-8">
         {testimonials.map(testimonial => (
-          <div class="bg-white p-8 rounded-lg shadow-md">
+          <div class="p-8 rounded-lg shadow-md" style="background: linear-gradient(to bottom right, #F5F1E8, #EFE9DC);">
             <div class="flex items-center mb-6">
-              <div class="w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-2xl mr-4">
+              <div class="w-16 h-16 rounded-full flex items-center justify-center font-bold text-2xl mr-4" style="background: linear-gradient(135deg, #C59D5F 0%, #C1503D 100%); color: #FAF8F4;">
                 {testimonial.name.charAt(0)}
               </div>
               <div>
-                <div class="font-semibold text-gray-900 text-lg">{testimonial.name}</div>
-                <div class="text-sm text-gray-600">{testimonial.role}</div>
-                <div class="text-xs text-blue-600">Volunteering for {testimonial.duration}</div>
+                <div class="font-semibold text-lg" style="color: #3E2723;">{testimonial.name}</div>
+                <div class="text-sm" style="color: #4A3933;">{testimonial.role}</div>
+                <div class="text-xs" style="color: #C59D5F;">Volunteering for {testimonial.duration}</div>
               </div>
             </div>
-            <p class="text-gray-700 italic text-lg leading-relaxed">
+            <p class="italic text-lg leading-relaxed" style="color: #4A3933;">
               "{testimonial.quote}"
             </p>
           </div>
@@ -184,92 +193,72 @@ const testimonials = [
   </section>
 
   <!-- How It Works -->
-  <section class="py-16 md:py-20 bg-gray-50">
+  <section class="py-16 md:py-20" style="background: linear-gradient(to bottom, #EFE9DC, #F5F1E8);">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">How to Get Started</h2>
+      <h2 class="text-3xl font-bold text-center mb-12" style="font-family: Georgia, serif; color: #3E2723;">How to Get Started</h2>
 
       <div class="grid md:grid-cols-4 gap-8">
         <div class="text-center">
-          <div class="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+          <div class="w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4" style="background-color: #2D5832; color: #FAF8F4;">
             1
           </div>
-          <h3 class="text-lg font-semibold text-gray-900 mb-2">Apply</h3>
-          <p class="text-gray-600">
-            Fill out our volunteer application form with your interests and availability
+          <h3 class="text-lg font-semibold mb-2" style="color: #3E2723;">Reach Out</h3>
+          <p style="color: #4A3933;">
+            Contact us with your interests and availability
           </p>
         </div>
 
         <div class="text-center">
-          <div class="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+          <div class="w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4" style="background-color: #C1503D; color: #FAF8F4;">
             2
           </div>
-          <h3 class="text-lg font-semibold text-gray-900 mb-2">Interview</h3>
-          <p class="text-gray-600">
-            We'll schedule a brief conversation to learn more about you and match you with opportunities
+          <h3 class="text-lg font-semibold mb-2" style="color: #3E2723;">Connect</h3>
+          <p style="color: #4A3933;">
+            We'll match you with opportunities that fit your skills and schedule
           </p>
         </div>
 
         <div class="text-center">
-          <div class="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+          <div class="w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4" style="background-color: #C59D5F; color: #FAF8F4;">
             3
           </div>
-          <h3 class="text-lg font-semibold text-gray-900 mb-2">Orientation</h3>
-          <p class="text-gray-600">
-            Attend a volunteer orientation to learn about our programs and policies
+          <h3 class="text-lg font-semibold mb-2" style="color: #3E2723;">Get Oriented</h3>
+          <p style="color: #4A3933;">
+            Learn about the community and how you can contribute
           </p>
         </div>
 
         <div class="text-center">
-          <div class="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+          <div class="w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4" style="background-color: #2D5832; color: #FAF8F4;">
             4
           </div>
-          <h3 class="text-lg font-semibold text-gray-900 mb-2">Start Helping</h3>
-          <p class="text-gray-600">
-            Begin making a difference in your community!
+          <h3 class="text-lg font-semibold mb-2" style="color: #3E2723;">Start Helping</h3>
+          <p style="color: #4A3933;">
+            Begin making a difference in Fells Prospect!
           </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Application Form -->
-  <section id="volunteer-form" class="py-16 md:py-20">
+  <!-- Contact CTA -->
+  <section id="volunteer-form" class="py-16 md:py-20" style="background-color: #FAF8F4;">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="bg-white rounded-lg shadow-lg p-8 md:p-12">
-        <h2 class="text-3xl font-bold text-gray-900 mb-6 text-center">Volunteer Application</h2>
-        <p class="text-gray-600 text-center mb-8">
-          Take the first step toward making a difference. Fill out the form below to get started.
+      <div class="rounded-lg shadow-lg p-8 md:p-12" style="background: linear-gradient(to bottom right, #F5F1E8, #EFE9DC);">
+        <h2 class="text-3xl font-bold mb-6 text-center" style="font-family: Georgia, serif; color: #3E2723;">Interested in Volunteering?</h2>
+        <p class="text-center mb-8" style="color: #4A3933;">
+          We'd love to hear from you! Reach out to learn more about volunteer opportunities and how you can get involved.
         </p>
 
-        <!-- Placeholder for form integration -->
-        <div class="bg-gray-50 border-2 border-dashed border-gray-300 rounded-lg p-12">
-          <div class="text-center">
-            <svg class="w-16 h-16 mx-auto text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-            </svg>
-            <h3 class="text-xl font-semibold text-gray-900 mb-2">Volunteer Form Integration</h3>
-            <p class="text-gray-600 mb-4">
-              Integrate with Google Forms, Typeform, Airtable Forms, or a custom solution
-            </p>
-            <div class="text-sm text-gray-500">
-              <p class="mb-2">Form should collect:</p>
-              <ul class="space-y-1 text-left max-w-sm mx-auto">
-                <li>• Name and contact information</li>
-                <li>• Availability and time commitment</li>
-                <li>• Skills and interests</li>
-                <li>• Previous volunteer experience</li>
-                <li>• Emergency contact information</li>
-                <li>• Background check consent (if required)</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <!-- Alternative contact -->
-        <div class="mt-8 text-center">
-          <p class="text-gray-600 mb-4">Have questions about volunteering?</p>
-          <a href="/contact" class="text-blue-600 hover:text-blue-700 font-semibold">
-            Contact our volunteer coordinator →
+        <div class="text-center">
+          <a
+            href="/contact"
+            class="inline-block px-8 py-4 rounded-md font-semibold transition-colors text-lg"
+            style="background-color: #2D5832; color: #FAF8F4;"
+            onmouseover="this.style.backgroundColor='#3A6B3F'"
+            onmouseout="this.style.backgroundColor='#2D5832'"
+          >
+            Contact Us
           </a>
         </div>
       </div>
@@ -277,24 +266,30 @@ const testimonials = [
   </section>
 
   <!-- CTA -->
-  <section class="py-16 md:py-20 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
+  <section class="py-16 md:py-20" style="background: linear-gradient(135deg, #2D5832 0%, #3A6B3F 100%);">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Make an Impact?</h2>
-      <p class="text-xl text-blue-100 mb-8">
-        Join our team of dedicated volunteers and help create positive change in our community.
+      <h2 class="text-3xl md:text-4xl font-bold mb-6" style="font-family: Georgia, serif; color: #FAF8F4;">Ready to Make an Impact?</h2>
+      <p class="text-xl mb-8" style="color: #EFE9DC;">
+        Join our team of dedicated volunteers and help create positive change in our neighborhood.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a
-          href="#volunteer-form"
-          class="px-8 py-4 bg-white text-blue-600 rounded-md font-semibold hover:bg-blue-50 transition-colors"
+          href="/contact"
+          class="px-8 py-4 rounded-md font-semibold transition-colors"
+          style="background-color: #FAF8F4; color: #2D5832;"
+          onmouseover="this.style.backgroundColor='#EFE9DC'"
+          onmouseout="this.style.backgroundColor='#FAF8F4'"
         >
-          Apply to Volunteer
+          Get Involved
         </a>
         <a
-          href="/contact"
-          class="px-8 py-4 border-2 border-white text-white rounded-md font-semibold hover:bg-white hover:bg-opacity-10 transition-colors"
+          href="/events"
+          class="px-8 py-4 rounded-md font-semibold transition-colors border-2"
+          style="border-color: #FAF8F4; color: #FAF8F4;"
+          onmouseover="this.style.backgroundColor='rgba(250, 248, 244, 0.1)'"
+          onmouseout="this.style.backgroundColor='transparent'"
         >
-          Ask Questions
+          Upcoming Events
         </a>
       </div>
     </div>
