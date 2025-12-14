@@ -3,7 +3,7 @@ title: 501(c)(3) Tax-Exempt Status Certificate
 description: Official IRS determination letter confirming the Fells Prospect Community Association's status as a 501(c)(3) tax-exempt nonprofit organization.
 documentDate: 2023-06-12
 category: Governance Documents
-documentFile: /documents/governance/501c3-determination-letter.pdf
+documentFile: https://drive.google.com/file/d/YOUR_FILE_ID_HERE/view
 fileSize: 425 KB
 featured: false
 ---

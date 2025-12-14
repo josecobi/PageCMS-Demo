@@ -3,7 +3,7 @@ title: January 2025 General Membership Meeting Minutes
 description: Minutes from the January 30, 2025 general membership meeting held at Kisling's Tavern. Topics included upcoming spring events, park improvement initiatives, and committee updates.
 documentDate: 2025-01-30
 category: Meeting Minutes
-documentFile: /documents/minutes/2025-01-general-meeting-minutes.pdf
+documentFile: https://drive.google.com/file/d/YOUR_FILE_ID_HERE/view
 fileSize: 1.8 MB
 featured: true
 ---

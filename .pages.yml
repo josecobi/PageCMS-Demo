@@ -147,8 +147,9 @@ content:
             - Meeting Minutes
             - Governance Documents
       - name: documentFile
-        label: PDF File Path
+        label: PDF Link (Google Drive or Dropbox)
         type: string
+        hint: 'Paste the shareable link to your PDF (e.g., https://drive.google.com/file/d/...)'
       - name: fileSize
         label: File Size (optional)
         type: string

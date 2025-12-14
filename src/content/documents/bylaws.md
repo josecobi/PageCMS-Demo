@@ -3,7 +3,7 @@ title: FPCA Bylaws
 description: Official bylaws of the Fells Prospect Community Association. These bylaws govern the organization's structure, membership requirements, board composition, and operational procedures.
 documentDate: 2024-03-15
 category: Governance Documents
-documentFile: /documents/governance/fpca-bylaws.pdf
+documentFile: https://drive.google.com/file/d/YOUR_FILE_ID_HERE/view
 fileSize: 850 KB
 featured: true
 ---
