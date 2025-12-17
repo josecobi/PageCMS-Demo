@@ -1,7 +1,7 @@
 ---
 membershipPrice: 10
 membershipPriceModel: per person, per year
-membershipYear: 2025
+membershipYear: 2026
 membershipDuesRenewalPeriod: January
 membershipNote: We are changing from a $20/household to a $10/person model in 2026.
 paypalLink: https://www.paypal.com/donate?token=jpUmYkKX_LnHb7brsZ491S3xmhh8lh8CV0zRynJCbH_Q7waeIJWRdrM0HbPKkVu9I2vSpMMT8tQ3YFZ8
