@@ -277,155 +277,187 @@ content:
     type: file
     path: src/content/settings/settings.md
     fields:
-      # Membership Settings Section
+      # ============================================
+      # MEMBERSHIP PAGE SETTINGS (/membership)
+      # ============================================
+
       - name: membershipPrice
-        label: Membership Price
+        label: '💵 Membership Price — Used on: /membership'
         type: number
         required: true
-        hint: 'Annual membership cost in dollars (e.g., 10 for $10). Must be a positive number.'
+        hint: 'Annual membership cost in dollars displayed on the Membership page. Shows as "$10" in the main price card. Must be a positive number (1-1000).'
         min: 1
         max: 1000
         placeholder: '10'
+
       - name: membershipPriceModel
-        label: Membership Price Model
+        label: '💵 Membership Price Model — Used on: /membership'
         type: string
         required: true
-        hint: 'Description of the pricing model (e.g., "per person, per year" or "per household, per year")'
+        hint: 'Displays below the price on the Membership page (e.g., "per person, per year" or "per household, per year"). This explains the pricing structure.'
         min: 5
         max: 100
         placeholder: 'per person, per year'
+
       - name: membershipYear
-        label: Membership Year
+        label: '💵 Membership Year — Used on: /membership'
         type: number
         required: true
-        hint: 'Current year for membership dues (e.g., 2026). Must be between 2024-2100.'
+        hint: 'Current year for membership dues shown on the Membership page in the "Pay Your 2026 Membership Dues" section. Update this each year.'
         min: 2024
         max: 2100
         placeholder: '2026'
+
       - name: membershipDuesRenewalPeriod
-        label: Dues Renewal Period
+        label: '💵 Dues Renewal Period — Used on: /membership'
         type: string
         required: true
-        hint: 'When membership dues are renewed (e.g., "January", "January of each year")'
+        hint: 'When membership dues renew, shown on the Membership page (e.g., "January", "January of each year"). Appears in the text: "Dues are renewed in [period] of each year".'
         min: 3
         max: 100
         placeholder: 'January'
+
       - name: membershipNote
-        label: Membership Note
+        label: '💵 Membership Note (Optional) — Used on: /membership'
         type: text
         required: false
-        hint: 'Optional note about membership pricing or changes (e.g., announcements about pricing changes)'
+        hint: 'Optional notice displayed on the Membership page about pricing changes or important announcements. Leave blank to hide this notice entirely.'
         max: 500
         placeholder: 'We are changing from a $20/household to a $10/person model in 2026.'
+
       - name: paypalLink
-        label: PayPal Payment Link
+        label: '💵 PayPal Payment Link — Used on: /membership'
         type: string
         required: false
-        hint: 'Full PayPal URL for membership payments. Must start with https://. Leave blank if not using PayPal.'
+        hint: 'Full PayPal URL for the "Pay with PayPal" button on the Membership page. Must start with https://. Leave blank to disable the button (shows # as placeholder).'
         pattern: '^https?://.*'
         placeholder: 'https://www.paypal.com/...'
 
-      # Contact Information Section
+      # ============================================
+      # CONTACT PAGE SETTINGS (/contact)
+      # ============================================
+
       - name: contactAddress
-        label: Contact Address (Line 1)
+        label: '📍 Contact Address (Line 1) — Used on: /contact'
         type: string
         required: true
-        hint: 'Primary address line (e.g., "PO BOX 38291" or street address)'
+        hint: 'Primary address line displayed in the Contact page "Address" section (e.g., "PO BOX 38291" or street address).'
         min: 5
         max: 100
         placeholder: 'PO BOX 38291'
+
       - name: contactAddressLine2
-        label: Contact Address (Line 2)
+        label: '📍 Contact Address (Line 2 - Optional) — Used on: /contact'
         type: string
         required: false
-        hint: 'Optional second address line (e.g., suite number, building name)'
+        hint: 'Optional second address line on the Contact page (e.g., suite number, building name). Leave blank if not needed.'
         max: 100
+
       - name: contactCity
-        label: City
+        label: '📍 City — Used on: /contact'
         type: string
         required: true
-        hint: 'City name (e.g., "BALTIMORE")'
+        hint: 'City name shown on the Contact page address (e.g., "BALTIMORE").'
         min: 2
         max: 50
         placeholder: 'BALTIMORE'
+
       - name: contactState
-        label: State
+        label: '📍 State — Used on: /contact'
         type: string
         required: true
-        hint: 'State abbreviation (e.g., "MD", "VA")'
+        hint: 'State abbreviation on the Contact page (e.g., "MD", "VA"). Must be exactly 2 characters.'
         min: 2
         max: 2
         placeholder: 'MD'
+
       - name: contactZip
-        label: ZIP Code
+        label: '📍 ZIP Code — Used on: /contact'
         type: string
         required: true
-        hint: 'ZIP code (e.g., "21231-8291" or "21231")'
+        hint: 'ZIP code shown on the Contact page (e.g., "21231-8291" or "21231").'
         min: 5
         max: 10
         placeholder: '21231-8291'
+
       - name: contactEmail
-        label: Contact Email
+        label: '📧 Contact Email — Used on: /contact'
         type: string
         required: true
-        hint: 'Primary contact email address (e.g., "President@FellsProspectCommunity.org")'
+        hint: 'Primary contact email displayed on the Contact page. Must be a valid email address (e.g., "President@FellsProspectCommunity.org").'
         pattern: '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
         placeholder: 'President@FellsProspectCommunity.org'
 
-      # Meeting Information Section
+      # ============================================
+      # MEETING INFORMATION — Used on: /contact
+      # ============================================
+
       - name: meetingFrequency
-        label: Meeting Frequency
+        label: '📅 Meeting Frequency — Used on: /contact'
         type: string
         required: true
-        hint: 'How often general meetings occur (e.g., "Last Thursday of each month", "First Monday of each month")'
+        hint: 'How often general meetings occur, shown in the "General Membership Meetings" box on the Contact page (e.g., "Last Thursday of each month", "First Monday of each month").'
         min: 5
         max: 200
         placeholder: 'Last Thursday of each month'
+
       - name: meetingTime
-        label: Meeting Time
+        label: '🕐 Meeting Time — Used on: /contact'
         type: string
         required: true
-        hint: 'Time meetings start (e.g., "7:00 PM", "6:30 PM")'
+        hint: 'Time meetings start, shown in the "General Membership Meetings" box on the Contact page (e.g., "7:00 PM", "6:30 PM").'
         min: 4
         max: 50
         placeholder: '7:00 PM'
+
       - name: meetingLocation
-        label: Meeting Location
+        label: '📌 Meeting Location — Used on: /contact'
         type: string
         required: true
-        hint: 'Venue or location name (e.g., "Kisling''s Tavern (Upstairs)", "Community Center")'
+        hint: 'Venue or location name shown in the "General Membership Meetings" box on the Contact page (e.g., "Kisling''s Tavern (Upstairs)", "Community Center").'
         min: 5
         max: 200
         placeholder: "Kisling's Tavern (Upstairs)"
+
       - name: meetingLocationAddress
-        label: Meeting Location Address
+        label: '📌 Meeting Location Address (Optional) — Used on: /contact'
         type: string
         required: false
-        hint: 'Street address of meeting location (e.g., "2100 Fleet St"). Optional.'
+        hint: 'Street address of meeting location (e.g., "2100 Fleet St"). Currently stored for future use. Leave blank if not needed.'
         max: 200
         placeholder: '2100 Fleet St'
 
-      # Mission Statement Section
+      # ============================================
+      # ABOUT PAGE SETTINGS (/about)
+      # ============================================
+
       - name: missionStatement
-        label: Mission Statement
+        label: '📜 Mission Statement — Used on: /about'
         type: text
         required: true
-        hint: 'Full mission statement text that appears on the About page. This describes FPCA''s purpose and goals.'
+        hint: 'Full mission statement text displayed in the "Our Mission" section on the About page. This describes FPCA''s purpose and goals. Use blank lines to separate paragraphs - each paragraph will be formatted automatically.'
         min: 100
         max: 5000
 
-      # Board Categories Section
+      # ============================================
+      # TEAM MEMBER SETTINGS — Used on: Team Members dropdown
+      # ============================================
+
       - name: boardCategories
-        label: Board Member Categories
+        label: '👥 Board Member Categories — Used in: Team Members form'
         type: list
         required: true
-        hint: 'List of board categories for team members. Each category on a new line. Used in the team member dropdown.'
+        hint: 'List of board categories available in the "Board Category" dropdown when adding/editing team members. Each category on a new line. These categories also control how team members are grouped on the About page.'
         field:
           type: string
           placeholder: 'e.g., Executive Board, At-Large, Committee Chair'
 
+      # ============================================
+      # ADMIN NOTES (Not displayed on website)
+      # ============================================
+
       - name: body
-        label: Notes
+        label: '📝 Admin Notes (Internal Only)'
         type: rich-text
         required: false
-        hint: 'Optional notes about these settings (not displayed on the website)'
+        hint: 'Optional internal notes about these settings. This content is NOT displayed anywhere on the website - use it for documentation or reminders for other admins.'
