@@ -29,7 +29,7 @@ const eventsCollection = defineCollection({
     location: z.string(),
     image: z.string().optional(),
     imageAlt: z.string().optional(),
-    registrationLink: z.string().url().optional(),
+    registrationLink: z.union([z.string().url(), z.literal('')]).optional(),
     isPast: z.boolean().default(false),
     featured: z.boolean().default(false),
   }),

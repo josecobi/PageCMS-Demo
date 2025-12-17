@@ -23,32 +23,54 @@ content:
       - name: title
         label: Title
         type: string
+        required: true
+        hint: 'Clear, descriptive title for the blog post'
+        min: 5
+        max: 100
       - name: description
         label: Description
         type: text
+        required: true
+        hint: 'Brief summary of the post (1-2 sentences, used in previews and SEO)'
+        min: 20
+        max: 300
       - name: publishDate
         label: Publish Date
         type: date
+        required: true
+        hint: 'Date this post was or will be published'
       - name: author
         label: Author
         type: string
+        required: true
+        hint: 'Author name (e.g., "John Smith")'
       - name: image
         label: Featured Image
         type: image
+        required: false
+        hint: 'Optional hero image for the post'
       - name: imageAlt
         label: Image Alt Text
         type: string
+        required: false
+        hint: 'Describe the image for accessibility (required if image is provided)'
       - name: tags
         label: Tags
         type: list
+        required: false
+        hint: 'Topics or categories (e.g., "Community", "Events", "News")'
         field:
           type: string
       - name: featured
         label: Featured Post
         type: boolean
+        required: false
+        hint: 'Check to highlight this post on the homepage'
       - name: body
         label: Content
         type: rich-text
+        required: true
+        hint: 'Main content of the blog post'
 
   # Events
   - name: events
@@ -59,36 +81,63 @@ content:
       - name: title
         label: Event Title
         type: string
+        required: true
+        hint: 'Name of the event'
+        min: 5
+        max: 100
       - name: description
         label: Description
         type: text
+        required: true
+        hint: 'Brief description of the event (1-2 sentences)'
+        min: 20
+        max: 300
       - name: eventDate
         label: Event Date
         type: date
+        required: true
+        hint: 'Date the event occurs'
       - name: eventTime
         label: Event Time
         type: string
+        required: false
+        hint: 'Time of event (e.g., "7:00 PM" or "2:00 PM - 4:00 PM")'
       - name: location
         label: Location
         type: string
+        required: true
+        hint: 'Event venue or address'
       - name: image
         label: Featured Image
         type: image
+        required: false
+        hint: 'Optional image for the event'
       - name: imageAlt
         label: Image Alt Text
         type: string
+        required: false
+        hint: 'Describe the image for accessibility'
       - name: registrationLink
         label: Registration Link
         type: string
+        required: false
+        hint: 'Full URL to registration page (e.g., https://eventbrite.com/...). Leave blank if no registration needed.'
+        pattern: '^https?://.*'
       - name: isPast
         label: Past Event
         type: boolean
+        required: false
+        hint: 'Automatically managed - leave unchecked for upcoming events'
       - name: featured
         label: Featured Event
         type: boolean
+        required: false
+        hint: 'Check to highlight this event'
       - name: body
         label: Event Details
         type: rich-text
+        required: false
+        hint: 'Full event description and details'
 
   # Team Members
   - name: team
@@ -99,12 +148,22 @@ content:
       - name: name
         label: Name
         type: string
+        required: true
+        hint: 'Full name of the board member or "Vacancy" for open positions'
+        min: 2
+        max: 50
       - name: role
         label: Role/Position
         type: string
+        required: true
+        hint: 'Their position (e.g., "President", "Treasurer", "Board Member At-Large")'
+        min: 2
+        max: 50
       - name: boardCategory
         label: Board Category
         type: select
+        required: true
+        hint: 'Which board group this person belongs to'
         options:
           values:
             - Executive Board
@@ -113,27 +172,42 @@ content:
       - name: bio
         label: Short Bio
         type: text
+        required: true
+        hint: 'Brief biography or description (1-2 sentences)'
+        min: 10
+        max: 500
       - name: image
         label: Profile Image
         type: image
+        required: false
+        hint: 'Headshot or profile photo (use FPCA logo for vacancies)'
       - name: imageAlt
         label: Image Alt Text
         type: string
+        required: false
+        hint: 'Describe the image (e.g., "John Smith, President of FPCA")'
       - name: email
         label: Email
         type: string
+        required: false
+        hint: 'Email address (e.g., name@example.com). Leave blank if not public.'
+        pattern: '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
       - name: linkedin
         label: LinkedIn Profile
         type: string
+        required: false
         hint: 'Full URL only (e.g., https://www.linkedin.com/in/username). Leave blank if none.'
         pattern: '^https?://.*'
-        required: false
       - name: order
         label: Display Order
         type: number
+        required: false
+        hint: 'Lower numbers appear first (e.g., 1, 2, 3...)'
       - name: body
         label: Full Bio
         type: rich-text
+        required: false
+        hint: 'Optional extended biography'
 
   # Documents
   - name: documents
@@ -144,15 +218,27 @@ content:
       - name: title
         label: Document Title
         type: string
+        required: true
+        hint: 'Name of the document (e.g., "January 2025 Meeting Minutes" or "FPCA Bylaws")'
+        min: 5
+        max: 100
       - name: description
         label: Description
         type: text
+        required: true
+        hint: 'Brief description of the document contents'
+        min: 10
+        max: 300
       - name: documentDate
         label: Document Date
         type: date
+        required: true
+        hint: 'Date of the meeting or when the document was created'
       - name: category
         label: Category
         type: select
+        required: true
+        hint: 'Type of document'
         options:
           values:
             - Meeting Minutes
@@ -160,13 +246,21 @@ content:
       - name: documentFile
         label: PDF Link (Google Drive or Dropbox)
         type: string
-        hint: 'Paste the shareable link to your PDF (e.g., https://drive.google.com/file/d/...)'
+        required: true
+        hint: 'Full URL to the PDF file (e.g., https://drive.google.com/file/d/... or https://www.dropbox.com/...)'
+        pattern: '^https?://.*'
       - name: fileSize
         label: File Size (optional)
         type: string
+        required: false
+        hint: 'File size (e.g., "2.3 MB", "450 KB"). Leave blank if unknown.'
       - name: featured
         label: Featured Document
         type: boolean
+        required: false
+        hint: 'Check to highlight this document'
       - name: body
         label: Additional Notes
         type: rich-text
+        required: false
+        hint: 'Optional additional information about the document'
