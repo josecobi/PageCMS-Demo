@@ -125,6 +125,9 @@ content:
       - name: linkedin
         label: LinkedIn Profile
         type: string
+        hint: 'Full URL only (e.g., https://www.linkedin.com/in/username). Leave blank if none.'
+        pattern: '^https?://.*'
+        required: false
       - name: order
         label: Display Order
         type: number

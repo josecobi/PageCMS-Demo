@@ -45,8 +45,8 @@ const teamCollection = defineCollection({
     boardCategory: z.enum(['Executive Board', 'At-Large', 'Committee Chair']),
     image: z.string().optional(),
     imageAlt: z.string().optional(),
-    email: z.string().email().optional(),
-    linkedin: z.string().url().optional(),
+    email: z.string().email().optional().or(z.literal('')),
+    linkedin: z.union([z.string().url(), z.literal('')]).optional(),
     order: z.number().default(0),
   }),
 });
