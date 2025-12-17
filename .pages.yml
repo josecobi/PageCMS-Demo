@@ -440,6 +440,18 @@ content:
         max: 5000
 
       # ============================================
+      # EVENTS PAGE SETTINGS (/events)
+      # ============================================
+
+      - name: googleCalendarEmbedUrl
+        label: '📅 Google Calendar Embed Code — Used on: /events'
+        type: text
+        required: false
+        hint: 'Paste the FULL Google Calendar embed code here to display your calendar on the Events page. Leave blank to hide the calendar. STEP-BY-STEP INSTRUCTIONS: (1) Open Google Calendar and click the gear icon → Settings. (2) On the left, click your calendar name under "Settings for my calendars". (3) Scroll to "Integrate calendar" section. (4) Copy the ENTIRE text from the "Embed code" box (starts with <iframe src= and ends with </iframe>). (5) Paste it here. The calendar will appear automatically on the Events page once saved!'
+        max: 2000
+        placeholder: '<iframe src="https://calendar.google.com/calendar/embed?src=..." style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>'
+
+      # ============================================
       # TEAM MEMBER SETTINGS — Used on: Team Members dropdown
       # ============================================
 

@@ -94,6 +94,9 @@ const settingsCollection = defineCollection({
     // About/Mission
     missionStatement: z.string(),
 
+    // Events page
+    googleCalendarEmbedUrl: z.string().optional(),
+
     // Board categories (for the team member dropdown)
     boardCategories: z.union([
       z.array(z.string()),

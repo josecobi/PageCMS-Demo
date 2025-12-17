@@ -1,7 +1,11 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import EventCard from '../../components/EventCard.astro';
-import { getCollection } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
+
+// Fetch site settings for calendar
+const settings = await getEntry('settings', 'settings');
+const { googleCalendarEmbedUrl } = settings.data;
 
 // Get all events
 const allEvents = await getCollection('events');
@@ -101,6 +105,40 @@ const featuredEvents = allEvents.filter(event => event.data.featured);
       </div>
     </div>
   </section>
+
+  <!-- Google Calendar Section (Optional - only shows if calendar is configured) -->
+  {googleCalendarEmbedUrl && (
+    <section class="py-16 md:py-20" style="background: linear-gradient(to bottom, #F5F1E8, #EFE9DC);">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-10">
+          <div class="inline-block p-4 rounded-full mb-6" style="background: linear-gradient(135deg, #C1503D, #A84636);">
+            <svg class="w-12 h-12" style="color: #FAF8F4;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <h2 class="text-4xl md:text-5xl font-bold mb-4" style="font-family: Georgia, serif; color: #3D3D3D;">
+            Event <span style="color: #C1503D;">Calendar</span>
+          </h2>
+          <div class="w-32 h-1 mx-auto mb-6" style="background-color: #C1503D;"></div>
+          <p class="text-lg" style="color: #3D3D3D;">
+            View all our upcoming events and meetings at a glance
+          </p>
+        </div>
+
+        <!-- Calendar Embed Container -->
+        <div class="rounded-2xl shadow-2xl overflow-hidden" style="background-color: #FAF8F4;">
+          <div class="calendar-responsive-wrapper" set:html={googleCalendarEmbedUrl}></div>
+        </div>
+
+        <!-- Calendar Tips -->
+        <div class="mt-8 p-6 rounded-xl text-center" style="background-color: #FAF8F4; border-left: 4px solid #D4A574;">
+          <p class="text-sm" style="color: #3D3D3D;">
+            💡 <strong>Tip:</strong> You can add this calendar to your own Google Calendar by clicking the "+ Google Calendar" button in the bottom-right corner of the calendar above.
+          </p>
+        </div>
+      </div>
+    </section>
+  )}
 
   <!-- Main Content -->
   <section class="py-12 md:py-16" style="background: linear-gradient(to bottom, #EFE9DC, #F5F1E8);">
@@ -213,3 +251,28 @@ const featuredEvents = allEvents.filter(event => event.data.featured);
     </div>
   </section>
 </Layout>
+
+<style>
+  /* Responsive Google Calendar Embed */
+  .calendar-responsive-wrapper {
+    position: relative;
+    padding-bottom: 75%; /* 4:3 aspect ratio */
+    height: 0;
+    overflow: hidden;
+  }
+
+  .calendar-responsive-wrapper :global(iframe) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    border: 0;
+  }
+
+  @media (max-width: 768px) {
+    .calendar-responsive-wrapper {
+      padding-bottom: 120%; /* Taller on mobile for better viewing */
+    }
+  }
+</style>
