@@ -1,5 +1,20 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { getEntry } from 'astro:content';
+
+// Fetch site settings
+const settings = await getEntry('settings', 'settings');
+const {
+  contactAddress,
+  contactAddressLine2,
+  contactCity,
+  contactState,
+  contactZip,
+  contactEmail,
+  meetingFrequency,
+  meetingTime,
+  meetingLocation
+} = settings.data;
 ---
 
 <Layout
@@ -146,8 +161,9 @@ import Layout from '../layouts/Layout.astro';
                 <h3 class="text-lg font-semibold mb-1" style="color: #3D3D3D;">Address</h3>
                 <p style="color: #3D3D3D;">
                   Fells Prospect Community<br />
-                  PO BOX 38291<br />
-                  BALTIMORE, MD 21231-8291
+                  {contactAddress}<br />
+                  {contactAddressLine2 && <>{contactAddressLine2}<br /></>}
+                  {contactCity}, {contactState} {contactZip}
                 </p>
               </div>
             </div>
@@ -161,7 +177,7 @@ import Layout from '../layouts/Layout.astro';
               <div>
                 <h3 class="text-lg font-semibold mb-1" style="color: #3D3D3D;">Email</h3>
                 <p style="color: #3D3D3D;">
-                  General: <a href="mailto:President@FellsProspectCommunity.org" class="transition-colors" style="color: #C1503D;" onmouseover="this.style.color='#A84636'" onmouseout="this.style.color='#C1503D'">President@FellsProspectCommunity.org</a>
+                  General: <a href={`mailto:${contactEmail}`} class="transition-colors" style="color: #C1503D;" onmouseover="this.style.color='#A84636'" onmouseout="this.style.color='#C1503D'">{contactEmail}</a>
                 </p>
               </div>
             </div>
@@ -194,10 +210,10 @@ import Layout from '../layouts/Layout.astro';
             <h3 class="text-xl font-bold mb-4" style="font-family: Georgia, serif; color: #3D3D3D;">General Membership Meetings</h3>
             <div class="space-y-2 text-sm">
               <p style="color: #3D3D3D;">
-                <strong>When:</strong> Last Thursday of each month at 7:00 PM
+                <strong>When:</strong> {meetingFrequency} at {meetingTime}
               </p>
               <p style="color: #3D3D3D;">
-                <strong>Where:</strong> Kisling's Tavern (Upstairs)
+                <strong>Where:</strong> {meetingLocation}
               </p>
               <p class="text-xs mt-4" style="color: #3D3D3D;">
                 Unless otherwise noted. Check our events page for details.

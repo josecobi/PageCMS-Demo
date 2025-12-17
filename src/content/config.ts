@@ -65,9 +65,44 @@ const documentsCollection = defineCollection({
   }),
 });
 
+// Settings collection schema - global site settings
+const settingsCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    // Membership settings
+    membershipPrice: z.number().positive(),
+    membershipPriceModel: z.string(), // e.g., "per person, per year"
+    membershipYear: z.number().int().min(2024).max(2100),
+    membershipDuesRenewalPeriod: z.string(), // e.g., "January"
+    membershipNote: z.string().optional(),
+    paypalLink: z.union([z.string().url(), z.literal('')]).optional(),
+
+    // Contact information
+    contactAddress: z.string(),
+    contactAddressLine2: z.string().optional(),
+    contactCity: z.string(),
+    contactState: z.string(),
+    contactZip: z.string(),
+    contactEmail: z.string().email(),
+
+    // Meeting information
+    meetingFrequency: z.string(), // e.g., "Last Thursday of each month"
+    meetingTime: z.string(), // e.g., "7:00 PM"
+    meetingLocation: z.string(), // e.g., "Kisling's Tavern (Upstairs)"
+    meetingLocationAddress: z.string().optional(),
+
+    // About/Mission
+    missionStatement: z.string(),
+
+    // Board categories (for the team member dropdown)
+    boardCategories: z.array(z.string()).default(['Executive Board', 'At-Large', 'Committee Chair']),
+  }),
+});
+
 export const collections = {
   blog: blogCollection,
   events: eventsCollection,
   team: teamCollection,
   documents: documentsCollection,
+  settings: settingsCollection,
 };

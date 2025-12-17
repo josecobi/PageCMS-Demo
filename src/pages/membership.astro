@@ -1,5 +1,17 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { getEntry } from 'astro:content';
+
+// Fetch site settings
+const settings = await getEntry('settings', 'settings');
+const {
+  membershipPrice,
+  membershipPriceModel,
+  membershipYear,
+  membershipDuesRenewalPeriod,
+  membershipNote,
+  paypalLink
+} = settings.data;
 ---
 
 <Layout
@@ -37,23 +49,25 @@ import Layout from '../layouts/Layout.astro';
             <span class="font-semibold">Annual Membership</span>
           </div>
           <div class="text-7xl md:text-8xl font-bold mb-4" style="font-family: Georgia, serif; color: #C1503D;">
-            $10
+            ${membershipPrice}
           </div>
           <div class="text-xl" style="color: #3D3D3D;">
-            per person, per year
+            {membershipPriceModel}
           </div>
           <div class="mt-4 px-4 py-2 rounded-lg inline-block" style="background-color: #EFE9DC;">
             <p class="text-sm font-semibold" style="color: #1B365D;">
-              Dues are renewed in January of each year
+              Dues are renewed in {membershipDuesRenewalPeriod} of each year
             </p>
           </div>
         </div>
 
-        <div class="mt-8 p-6 rounded-xl" style="background-color: #FAF8F4; border-left: 6px solid #C1503D;">
-          <p class="text-lg leading-relaxed" style="color: #3D3D3D;">
-            <strong style="color: #C1503D;">Note:</strong> We are changing from a $20/household to a $10/person model in 2026.
-          </p>
-        </div>
+        {membershipNote && (
+          <div class="mt-8 p-6 rounded-xl" style="background-color: #FAF8F4; border-left: 6px solid #C1503D;">
+            <p class="text-lg leading-relaxed" style="color: #3D3D3D;">
+              <strong style="color: #C1503D;">Note:</strong> {membershipNote}
+            </p>
+          </div>
+        )}
       </div>
 
       <!-- Benefits Grid -->
@@ -163,15 +177,15 @@ import Layout from '../layouts/Layout.astro';
           </div>
 
           <h2 class="text-3xl md:text-4xl font-bold mb-4" style="font-family: Georgia, serif; color: #3D3D3D;">
-            Pay Your 2026 Membership Dues
+            Pay Your {membershipYear} Membership Dues
           </h2>
 
           <p class="text-lg md:text-xl mb-6 leading-relaxed" style="color: #3D3D3D;">
-            Looking to pay your 2026 membership dues? Use this button to visit our PayPal site.
+            Looking to pay your {membershipYear} membership dues? Use this button to visit our PayPal site.
           </p>
 
           <a
-            href="#"
+            href={paypalLink || '#'}
             target="_blank"
             rel="noopener noreferrer"
             class="inline-block px-10 py-4 rounded-lg font-bold text-lg shadow-xl transition-all transform hover:scale-105 mb-6"

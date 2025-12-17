@@ -1,6 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { getCollection } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
+
+// Fetch site settings
+const settings = await getEntry('settings', 'settings');
+const { missionStatement } = settings.data;
 
 // Fetch all team members
 const allTeamMembers = await getCollection('team');
@@ -63,21 +67,11 @@ const committeeChairs = allTeamMembers
         </div>
 
         <div class="rounded-2xl shadow-xl p-8 md:p-12" style="background: linear-gradient(to bottom right, #F5F1E8, #EFE9DC);">
-          <p class="text-xl mb-6 leading-relaxed" style="color: #3D3D3D;">
-            The Fells Prospect Community Association (FPCA) represents the residents and businesses of the Fells Prospect neighborhood in Baltimore, Maryland. Our neighborhood encompasses the eastern portion of Upper Fells Point and the western tip of Canton, creating a unique community with a distinct identity and character.
-          </p>
-
-          <p class="text-xl mb-6 leading-relaxed" style="color: #3D3D3D;">
-            As a community association, we work to enhance the quality of life for everyone in Fells Prospect. We advocate for our neighborhood's interests, organize community events, support local businesses, maintain the beauty of our streets and public spaces, and foster connections among neighbors.
-          </p>
-
-          <p class="text-xl mb-6 leading-relaxed" style="color: #3D3D3D;">
-            FPCA serves as a voice for our community in discussions with the City of Baltimore and other organizations that impact our neighborhood. Through our various committees and volunteer efforts, we address issues ranging from public safety and transportation to beautification and community engagement.
-          </p>
-
-          <p class="text-xl leading-relaxed" style="color: #3D3D3D;">
-            Whether you're a long-time resident or new to the neighborhood, we invite you to get involved with FPCA. Together, we can continue to make Fells Prospect a great place to live, work, and thrive.
-          </p>
+          {missionStatement.split('\n\n').map((paragraph) => (
+            <p class="text-xl mb-6 leading-relaxed last:mb-0" style="color: #3D3D3D;">
+              {paragraph.trim()}
+            </p>
+          ))}
         </div>
       </div>
     </div>

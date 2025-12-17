@@ -58,9 +58,10 @@ content:
         label: Tags
         type: list
         required: false
-        hint: 'Topics or categories (e.g., "Community", "Events", "News")'
+        hint: 'Topics or categories. Each tag on a new line. Can include multiple words.'
         field:
           type: string
+          placeholder: 'e.g., Community Events, Neighborhood News, Board Meeting'
       - name: featured
         label: Featured Post
         type: boolean
@@ -102,11 +103,13 @@ content:
         type: string
         required: false
         hint: 'Time of event (e.g., "7:00 PM" or "2:00 PM - 4:00 PM")'
+        placeholder: '7:00 PM'
       - name: location
         label: Location
         type: string
         required: true
         hint: 'Event venue or address'
+        placeholder: "Kisling's Tavern (Upstairs), 2100 Fleet St"
       - name: image
         label: Featured Image
         type: image
@@ -123,6 +126,7 @@ content:
         required: false
         hint: 'Full URL to registration page (e.g., https://eventbrite.com/...). Leave blank if no registration needed.'
         pattern: '^https?://.*'
+        placeholder: 'https://www.eventbrite.com/e/your-event'
       - name: isPast
         label: Past Event
         type: boolean
@@ -192,12 +196,14 @@ content:
         required: false
         hint: 'Email address (e.g., name@example.com). Leave blank if not public.'
         pattern: '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+        placeholder: 'name@example.com'
       - name: linkedin
         label: LinkedIn Profile
         type: string
         required: false
         hint: 'Full URL only (e.g., https://www.linkedin.com/in/username). Leave blank if none.'
         pattern: '^https?://.*'
+        placeholder: 'https://www.linkedin.com/in/username'
       - name: order
         label: Display Order
         type: number
@@ -264,3 +270,162 @@ content:
         type: rich-text
         required: false
         hint: 'Optional additional information about the document'
+
+  # Site Settings (Global Configuration)
+  - name: settings
+    label: Site Settings
+    type: file
+    path: src/content/settings/settings.md
+    fields:
+      # Membership Settings Section
+      - name: membershipPrice
+        label: Membership Price
+        type: number
+        required: true
+        hint: 'Annual membership cost in dollars (e.g., 10 for $10). Must be a positive number.'
+        min: 1
+        max: 1000
+        placeholder: '10'
+      - name: membershipPriceModel
+        label: Membership Price Model
+        type: string
+        required: true
+        hint: 'Description of the pricing model (e.g., "per person, per year" or "per household, per year")'
+        min: 5
+        max: 100
+        placeholder: 'per person, per year'
+      - name: membershipYear
+        label: Membership Year
+        type: number
+        required: true
+        hint: 'Current year for membership dues (e.g., 2026). Must be between 2024-2100.'
+        min: 2024
+        max: 2100
+        placeholder: '2026'
+      - name: membershipDuesRenewalPeriod
+        label: Dues Renewal Period
+        type: string
+        required: true
+        hint: 'When membership dues are renewed (e.g., "January", "January of each year")'
+        min: 3
+        max: 100
+        placeholder: 'January'
+      - name: membershipNote
+        label: Membership Note
+        type: text
+        required: false
+        hint: 'Optional note about membership pricing or changes (e.g., announcements about pricing changes)'
+        max: 500
+        placeholder: 'We are changing from a $20/household to a $10/person model in 2026.'
+      - name: paypalLink
+        label: PayPal Payment Link
+        type: string
+        required: false
+        hint: 'Full PayPal URL for membership payments. Must start with https://. Leave blank if not using PayPal.'
+        pattern: '^https?://.*'
+        placeholder: 'https://www.paypal.com/...'
+
+      # Contact Information Section
+      - name: contactAddress
+        label: Contact Address (Line 1)
+        type: string
+        required: true
+        hint: 'Primary address line (e.g., "PO BOX 38291" or street address)'
+        min: 5
+        max: 100
+        placeholder: 'PO BOX 38291'
+      - name: contactAddressLine2
+        label: Contact Address (Line 2)
+        type: string
+        required: false
+        hint: 'Optional second address line (e.g., suite number, building name)'
+        max: 100
+      - name: contactCity
+        label: City
+        type: string
+        required: true
+        hint: 'City name (e.g., "BALTIMORE")'
+        min: 2
+        max: 50
+        placeholder: 'BALTIMORE'
+      - name: contactState
+        label: State
+        type: string
+        required: true
+        hint: 'State abbreviation (e.g., "MD", "VA")'
+        min: 2
+        max: 2
+        placeholder: 'MD'
+      - name: contactZip
+        label: ZIP Code
+        type: string
+        required: true
+        hint: 'ZIP code (e.g., "21231-8291" or "21231")'
+        min: 5
+        max: 10
+        placeholder: '21231-8291'
+      - name: contactEmail
+        label: Contact Email
+        type: string
+        required: true
+        hint: 'Primary contact email address (e.g., "President@FellsProspectCommunity.org")'
+        pattern: '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+        placeholder: 'President@FellsProspectCommunity.org'
+
+      # Meeting Information Section
+      - name: meetingFrequency
+        label: Meeting Frequency
+        type: string
+        required: true
+        hint: 'How often general meetings occur (e.g., "Last Thursday of each month", "First Monday of each month")'
+        min: 5
+        max: 200
+        placeholder: 'Last Thursday of each month'
+      - name: meetingTime
+        label: Meeting Time
+        type: string
+        required: true
+        hint: 'Time meetings start (e.g., "7:00 PM", "6:30 PM")'
+        min: 4
+        max: 50
+        placeholder: '7:00 PM'
+      - name: meetingLocation
+        label: Meeting Location
+        type: string
+        required: true
+        hint: 'Venue or location name (e.g., "Kisling''s Tavern (Upstairs)", "Community Center")'
+        min: 5
+        max: 200
+        placeholder: "Kisling's Tavern (Upstairs)"
+      - name: meetingLocationAddress
+        label: Meeting Location Address
+        type: string
+        required: false
+        hint: 'Street address of meeting location (e.g., "2100 Fleet St"). Optional.'
+        max: 200
+        placeholder: '2100 Fleet St'
+
+      # Mission Statement Section
+      - name: missionStatement
+        label: Mission Statement
+        type: text
+        required: true
+        hint: 'Full mission statement text that appears on the About page. This describes FPCA''s purpose and goals.'
+        min: 100
+        max: 5000
+
+      # Board Categories Section
+      - name: boardCategories
+        label: Board Member Categories
+        type: list
+        required: true
+        hint: 'List of board categories for team members. Each category on a new line. Used in the team member dropdown.'
+        field:
+          type: string
+          placeholder: 'e.g., Executive Board, At-Large, Committee Chair'
+
+      - name: body
+        label: Notes
+        type: rich-text
+        required: false
+        hint: 'Optional notes about these settings (not displayed on the website)'
