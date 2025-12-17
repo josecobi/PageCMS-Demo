@@ -95,7 +95,10 @@ const settingsCollection = defineCollection({
     missionStatement: z.string(),
 
     // Board categories (for the team member dropdown)
-    boardCategories: z.array(z.string()).default(['Executive Board', 'At-Large', 'Committee Chair']),
+    boardCategories: z.union([
+      z.array(z.string()),
+      z.string().transform(val => val.split(',').map(cat => cat.trim()))
+    ]).default(['Executive Board', 'At-Large', 'Committee Chair']),
   }),
 });
 
