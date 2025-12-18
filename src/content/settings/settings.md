@@ -37,7 +37,10 @@ missionStatement: >
   Whether you're a long-time resident or new to the neighborhood, we invite you
   to get involved with FPCA. Together, we can continue to make Fells Prospect a
   great place to live, work, and thrive.
-googleCalendarEmbedUrl: ""
+googleCalendarEmbedUrl: '<iframe
+  src="https://calendar.google.com/calendar/embed?src=c_55b9e4d9e7c0bf74db9ff7f2e851e47173a4df606e697081ec50f57affee8692%40group.calendar.google.com&ctz=America%2FNew_York"
+  style="border: 0" width="800" height="600" frameborder="0"
+  scrolling="no"></iframe>'
 boardCategories: Executive Board,At-Large,Committee Chair, test category
 ---
 This file contains global site settings that can be edited through PagesCMS. These settings are used throughout the website to display dynamic content that may change over time.
