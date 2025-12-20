@@ -516,6 +516,262 @@ content:
         placeholder: '<iframe src="https://calendar.google.com/calendar/embed?src=..." style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>'
 
       # ============================================
+      # RESOURCES PAGE - ELECTED OFFICIALS (STATE) — Used on: /resources
+      # ============================================
+
+      - name: stateGovernor
+        label: '🏛️ State Governor — Used on: /resources'
+        type: string
+        required: false
+        hint: 'Current Governor of Maryland (e.g., "Wes Moore"). Displayed in the State of Maryland section on the Resources page.'
+        max: 100
+        placeholder: 'Wes Moore'
+
+      - name: stateSenateDistrict
+        label: '🏛️ State Senate District — Used on: /resources'
+        type: string
+        required: false
+        hint: 'State senate district name (e.g., "State Senate District 46"). Label shown on Resources page.'
+        max: 100
+        placeholder: 'State Senate District 46'
+
+      - name: stateSenator
+        label: '🏛️ State Senator — Used on: /resources'
+        type: string
+        required: false
+        hint: 'Name of state senator (e.g., "Bill Ferguson"). Displayed under the district on Resources page.'
+        max: 100
+        placeholder: 'Bill Ferguson'
+
+      - name: stateDelegatesDistrict
+        label: '🏛️ House of Delegates District — Used on: /resources'
+        type: string
+        required: false
+        hint: 'House of delegates district name (e.g., "House of Delegates District 46"). Label shown on Resources page.'
+        max: 100
+        placeholder: 'House of Delegates District 46'
+
+      - name: stateDelegates
+        label: '🏛️ House of Delegates Members — Used on: /resources'
+        type: string
+        required: false
+        hint: 'Comma-separated list of delegate names (e.g., "Luke Clippinger, Robbyn Lewis, Mark Edelson"). Each will display as a bullet point.'
+        max: 300
+        placeholder: 'Luke Clippinger, Robbyn Lewis, Mark Edelson'
+
+      # ============================================
+      # RESOURCES PAGE - ELECTED OFFICIALS (CITY) — Used on: /resources
+      # ============================================
+
+      - name: cityCouncilDistrict1
+        label: '🏛️ City Council District 1 Name — Used on: /resources'
+        type: string
+        required: false
+        hint: 'First city council district name (e.g., "City Council District 1"). Label shown on Resources page.'
+        max: 100
+        placeholder: 'City Council District 1'
+
+      - name: cityCouncilMember1
+        label: '🏛️ City Council District 1 Member — Used on: /resources'
+        type: string
+        required: false
+        hint: 'Name of council member for district 1 (e.g., "Mark Parker").'
+        max: 100
+        placeholder: 'Mark Parker'
+
+      - name: cityCouncilDistrict2
+        label: '🏛️ City Council District 2 Name — Used on: /resources'
+        type: string
+        required: false
+        hint: 'Second city council district name (e.g., "City Council District 13"). Leave blank if only one district.'
+        max: 100
+        placeholder: 'City Council District 13'
+
+      - name: cityCouncilMember2
+        label: '🏛️ City Council District 2 Member — Used on: /resources'
+        type: string
+        required: false
+        hint: 'Name of council member for district 2 (e.g., "Antonio Glover"). Leave blank if only one district.'
+        max: 100
+        placeholder: 'Antonio Glover'
+
+      # ============================================
+      # RESOURCES PAGE - ELECTED OFFICIALS (FEDERAL) — Used on: /resources
+      # ============================================
+
+      - name: usSenator1
+        label: '🏛️ U.S. Senator 1 — Used on: /resources'
+        type: string
+        required: false
+        hint: 'Name of first U.S. Senator (e.g., "Angela Alsobrooks"). Displayed in U.S. Senators section on Resources page.'
+        max: 100
+        placeholder: 'Angela Alsobrooks'
+
+      - name: usSenator2
+        label: '🏛️ U.S. Senator 2 — Used on: /resources'
+        type: string
+        required: false
+        hint: 'Name of second U.S. Senator (e.g., "Christopher Van Hollen, Jr.").'
+        max: 100
+        placeholder: 'Christopher Van Hollen, Jr.'
+
+      - name: usCongressionalDistrict
+        label: '🏛️ U.S. Congressional District — Used on: /resources'
+        type: string
+        required: false
+        hint: 'Congressional district name (e.g., "Congressional District 7"). Label shown on Resources page.'
+        max: 100
+        placeholder: 'Congressional District 7'
+
+      - name: usRepresentative
+        label: '🏛️ U.S. Representative — Used on: /resources'
+        type: string
+        required: false
+        hint: 'Name of U.S. House Representative (e.g., "Kweisi Mfume").'
+        max: 100
+        placeholder: 'Kweisi Mfume'
+
+      # ============================================
+      # RESOURCES PAGE - PHONE NUMBERS — Used on: /resources
+      # ============================================
+
+      - name: phone311
+        label: '📞 311 General Complaints — Used on: /resources'
+        type: string
+        required: false
+        hint: 'Baltimore City''s general complaints number. Default: "311". Shown prominently on Resources page for reporting issues like trash, parking, abandoned vehicles, etc.'
+        max: 50
+        placeholder: '311'
+
+      - name: phoneSuspiciousBehavior
+        label: '📞 Report Suspicious Behavior — Used on: /resources'
+        type: string
+        required: false
+        hint: 'Phone number for reporting suspicious behavior (e.g., "(410) 223-0033"). Displayed in prominent red section on Resources page.'
+        max: 50
+        placeholder: '(410) 223-0033'
+
+      - name: phoneCommunityServices
+        label: '📞 Community Services — Used on: /resources'
+        type: string
+        required: false
+        hint: 'Community Services 1st District contact (e.g., "410-545-6512"). For energy, health, education, jobs, housing assistance.'
+        max: 50
+        placeholder: '410-545-6512'
+
+      - name: phoneLibrary
+        label: '📞 Enoch Pratt Library — Used on: /resources'
+        type: string
+        required: false
+        hint: 'Library contact number (e.g., "410-396-5403"). Displayed in Education section on Resources page.'
+        max: 50
+        placeholder: '410-396-5403'
+
+      - name: phoneSchoolSuperintendent
+        label: '📞 School Superintendent — Used on: /resources'
+        type: string
+        required: false
+        hint: 'School superintendent office number (e.g., "410-396-8803"). Displayed in Education section.'
+        max: 50
+        placeholder: '410-396-8803'
+
+      - name: phoneSchoolClosings
+        label: '📞 School Closings & Holidays — Used on: /resources'
+        type: string
+        required: false
+        hint: 'School closings hotline (e.g., "410-396-8577"). Displayed in Education section.'
+        max: 50
+        placeholder: '410-396-8577'
+
+      - name: phoneEmergency
+        label: '📞 Emergency (Police/Fire/Medical) — Used on: /resources'
+        type: string
+        required: false
+        hint: 'Emergency services number. Default: "911". Displayed prominently in Emergency section on Resources page.'
+        max: 50
+        placeholder: '911'
+
+      - name: phoneGasLeaks
+        label: '📞 Gas Leaks — Used on: /resources'
+        type: string
+        required: false
+        hint: 'Gas leak emergency number (e.g., "410-685-0123"). Displayed in Emergency section.'
+        max: 50
+        placeholder: '410-685-0123'
+
+      - name: phonePoisonControl
+        label: '📞 Poison Control Center — Used on: /resources'
+        type: string
+        required: false
+        hint: 'Poison control hotline (e.g., "410-529-7701"). Displayed in Emergency section.'
+        max: 50
+        placeholder: '410-529-7701'
+
+      - name: phoneLeadInspection
+        label: '📞 Lead Paint Inspection — Used on: /resources'
+        type: string
+        required: false
+        hint: 'Lead paint inspection services (e.g., "410-396-8576"). Displayed in Health section on Resources page.'
+        max: 50
+        placeholder: '410-396-8576'
+
+      - name: phoneImmunizations
+        label: '📞 Free Immunizations — Used on: /resources'
+        type: string
+        required: false
+        hint: 'Free immunization services (e.g., "410-396-4454"). Displayed in Health section.'
+        max: 50
+        placeholder: '410-396-4454'
+
+      - name: phoneLeadPoisoning
+        label: '📞 Lead Poisoning Info — Used on: /resources'
+        type: string
+        required: false
+        hint: 'Lead poisoning information line (e.g., "410-396-8595"). Displayed in Health section.'
+        max: 50
+        placeholder: '410-396-8595'
+
+      - name: phoneLeadAbatement
+        label: '📞 Lead Abatement — Used on: /resources'
+        type: string
+        required: false
+        hint: 'Lead abatement services (e.g., "410-396-4530"). Displayed in Health section.'
+        max: 50
+        placeholder: '410-396-4530'
+
+      - name: phoneDrugActivity
+        label: '📞 Report Drug Activity — Used on: /resources'
+        type: string
+        required: false
+        hint: 'Drug activity reporting hotline (e.g., "410-685-DRUG"). Displayed in Public Safety section on Resources page.'
+        max: 50
+        placeholder: '410-685-DRUG'
+
+      - name: phoneCrimePrevention
+        label: '📞 Crime Prevention — Used on: /resources'
+        type: string
+        required: false
+        hint: 'Crime prevention office (e.g., "410-396-2525"). Displayed in Public Safety section.'
+        max: 50
+        placeholder: '410-396-2525'
+
+      - name: phoneCommunityCleanup
+        label: '📞 Community Cleanup — Used on: /resources'
+        type: string
+        required: false
+        hint: 'Community cleanup coordination (e.g., "410-396-4511"). Displayed in Sanitation section on Resources page.'
+        max: 50
+        placeholder: '410-396-4511'
+
+      - name: phoneEnvironmentalCrimes
+        label: '📞 Environmental Crimes — Used on: /resources'
+        type: string
+        required: false
+        hint: 'Environmental crimes reporting (e.g., "410-396-4707"). Displayed in Sanitation section.'
+        max: 50
+        placeholder: '410-396-4707'
+
+      # ============================================
       # TEAM MEMBER SETTINGS — Used on: Team Members dropdown
       # ============================================
 

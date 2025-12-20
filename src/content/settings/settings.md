@@ -41,6 +41,36 @@ googleCalendarEmbedUrl: '<iframe
   src="https://calendar.google.com/calendar/embed?src=c_55b9e4d9e7c0bf74db9ff7f2e851e47173a4df606e697081ec50f57affee8692%40group.calendar.google.com&ctz=America%2FNew_York"
   style="border: 0" width="800" height="600" frameborder="0"
   scrolling="no"></iframe>'
+stateGovernor: Wes Moore
+stateSenateDistrict: State Senate District 46
+stateSenator: Bill Ferguson
+stateDelegatesDistrict: House of Delegates District 46
+stateDelegates: Luke Clippinger, Robbyn Lewis, Mark Edelson
+cityCouncilDistrict1: City Council District 1
+cityCouncilMember1: Mark Parker
+cityCouncilDistrict2: City Council District 13
+cityCouncilMember2: Antonio Glover
+usSenator1: Angela Alsobrooks
+usSenator2: Christopher Van Hollen, Jr.
+usCongressionalDistrict: Congressional District 7
+usRepresentative: Kweisi Mfume
+phone311: "311"
+phoneSuspiciousBehavior: (410) 223-0033
+phoneCommunityServices: 410-545-6512
+phoneLibrary: 410-396-5403
+phoneSchoolSuperintendent: 410-396-8803
+phoneSchoolClosings: 410-396-8577
+phoneEmergency: "911"
+phoneGasLeaks: 410-685-0123
+phonePoisonControl: 410-529-7701
+phoneLeadInspection: 410-396-8576
+phoneImmunizations: 410-396-4454
+phoneLeadPoisoning: 410-396-8595
+phoneLeadAbatement: 410-396-4530
+phoneDrugActivity: 410-685-DRUG
+phoneCrimePrevention: 410-396-2525
+phoneCommunityCleanup: 410-396-4511
+phoneEnvironmentalCrimes: 410-396-4707
 boardCategories: Executive Board,At-Large,Committee Chair, test category
 ---
 This file contains global site settings that can be edited through PagesCMS. These settings are used throughout the website to display dynamic content that may change over time.
