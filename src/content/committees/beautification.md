@@ -11,7 +11,7 @@ imageCaption: Students from the local high school, Cristo Rey, joined us for a
   community cleanup event
 order: 1
 ---
-## Here are some ways you can get involved
+## Here are some ways you can get involved:
 
 ### "Love Your Block" 2024
 
