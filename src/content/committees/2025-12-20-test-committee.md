@@ -8,18 +8,10 @@ order: 0
 ---
 ## Here are some ways you can get involved:
 
-### "Love Your Block" 2024
+Li Europan lingues es membres del sam familie. Lor separat existentie es un myth.
 
-Grant application process opens in March.
+Li Europan lingues es membres del sam familie. Lor separat existentie es un myth.
 
-### 2024 Dumpster Days
+Li Europan lingues es membres del sam familie. Lor separat existentie es un myth.
 
-Have been announced.
-
-### Cafe Lighting
-
-Enhancing our neighborhood ambiance with beautiful outdoor lighting.
-
-### Community Cleanup Events
-
-Join neighbors in keeping Fells Prospect clean and beautiful.
+Li Europan lingues es membres del sam familie. Lor separat existentie es un myth.
