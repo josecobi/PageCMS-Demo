@@ -65,6 +65,19 @@ const documentsCollection = defineCollection({
   }),
 });
 
+// Committees collection schema
+const committeesCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    name: z.string(),
+    description: z.string(),
+    image: z.string().optional(),
+    imageAlt: z.string().optional(),
+    imageCaption: z.string().optional(),
+    order: z.number().default(0),
+  }),
+});
+
 // Settings collection schema - global site settings
 const settingsCollection = defineCollection({
   type: 'content',
@@ -110,5 +123,6 @@ export const collections = {
   events: eventsCollection,
   team: teamCollection,
   documents: documentsCollection,
+  committees: committeesCollection,
   settings: settingsCollection,
 };
