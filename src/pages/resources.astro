@@ -1,46 +1,39 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { getEntry } from 'astro:content';
+import { getEntry, getCollection } from 'astro:content';
 
-// Fetch site settings
+// Fetch collections
+const allOfficials = await getCollection('officials');
+const allContacts = await getCollection('resource-contacts');
+
+// Fetch settings for 311 and suspicious behavior
 const settings = await getEntry('settings', 'settings');
-const {
-  // Elected officials
-  stateGovernor,
-  stateSenateDistrict,
-  stateSenator,
-  stateDelegatesDistrict,
-  stateDelegates,
-  cityCouncilDistrict1,
-  cityCouncilMember1,
-  cityCouncilDistrict2,
-  cityCouncilMember2,
-  usSenator1,
-  usSenator2,
-  usCongressionalDistrict,
-  usRepresentative,
-  // Phone numbers
-  phone311,
-  phoneSuspiciousBehavior,
-  phoneCommunityServices,
-  phoneLibrary,
-  phoneSchoolSuperintendent,
-  phoneSchoolClosings,
-  phoneEmergency,
-  phoneGasLeaks,
-  phonePoisonControl,
-  phoneLeadInspection,
-  phoneImmunizations,
-  phoneLeadPoisoning,
-  phoneLeadAbatement,
-  phoneDrugActivity,
-  phoneCrimePrevention,
-  phoneCommunityCleanup,
-  phoneEnvironmentalCrimes
-} = settings.data;
 
-// Helper to parse delegates list
-const delegatesList = stateDelegates ? stateDelegates.split(',').map(d => d.trim()) : [];
+// Group officials by level
+const stateOfficials = allOfficials.filter(o => o.data.level === 'State').sort((a, b) => a.data.order - b.data.order);
+const cityOfficials = allOfficials.filter(o => o.data.level === 'City').sort((a, b) => a.data.order - b.data.order);
+const federalOfficials = allOfficials.filter(o => o.data.level === 'Federal').sort((a, b) => a.data.order - b.data.order);
+
+// Group federal officials by category
+const senators = federalOfficials.filter(o => o.data.category === 'U.S. Senate');
+const representatives = federalOfficials.filter(o => o.data.category === 'U.S. House');
+
+// Group contacts by category
+const generalContacts = allContacts.filter(c => c.data.category === 'General').sort((a, b) => a.data.order - b.data.order);
+const communityContacts = allContacts.filter(c => c.data.category === 'Community Services').sort((a, b) => a.data.order - b.data.order);
+const educationContacts = allContacts.filter(c => c.data.category === 'Education').sort((a, b) => a.data.order - b.data.order);
+const emergencyContacts = allContacts.filter(c => c.data.category === 'Emergency').sort((a, b) => a.data.order - b.data.order);
+const healthContacts = allContacts.filter(c => c.data.category === 'Health').sort((a, b) => a.data.order - b.data.order);
+const safetyContacts = allContacts.filter(c => c.data.category === 'Public Safety').sort((a, b) => a.data.order - b.data.order);
+const sanitationContacts = allContacts.filter(c => c.data.category === 'Sanitation').sort((a, b) => a.data.order - b.data.order);
+
+// Get 311 phone from general contacts
+const contact311 = generalContacts.find(c => c.data.name === '311');
+const phone311 = contact311?.data.phone || '311';
+
+// Get suspicious behavior phone from general contacts
+const suspiciousBehaviorContact = generalContacts.find(c => c.data.name === 'Report Suspicious Behavior');
+const phoneSuspiciousBehavior = suspiciousBehaviorContact?.data.phone;
 
 // Helper to format phone for tel: link
 const formatPhoneLink = (phone: string) => phone.replace(/[^0-9]/g, '');
@@ -178,79 +171,72 @@ const formatPhoneLink = (phone: string) => phone.replace(/[^0-9]/g, '');
 
       <div class="grid md:grid-cols-2 gap-6">
         <!-- State Officials -->
-        <div class="rounded-2xl shadow-xl p-8" style="background: linear-gradient(to bottom right, #F5F1E8, #EFE9DC);">
-          <h3 class="text-2xl font-bold mb-6 pb-3" style="font-family: Georgia, serif; color: #C1503D; border-bottom: 2px solid #D4A574;">
-            State of Maryland
-          </h3>
-          <div class="space-y-4">
-            {stateGovernor && (
-              <div>
-                <p class="font-semibold mb-1" style="color: #D4A574;">Governor</p>
-                <p class="text-lg" style="color: #3D3D3D;">{stateGovernor}</p>
-              </div>
-            )}
-            {stateSenator && (
-              <div>
-                <p class="font-semibold mb-1" style="color: #D4A574;">{stateSenateDistrict || 'State Senate'}</p>
-                <p class="text-lg" style="color: #3D3D3D;">{stateSenator}</p>
-              </div>
-            )}
-            {delegatesList.length > 0 && (
-              <div>
-                <p class="font-semibold mb-1" style="color: #D4A574;">{stateDelegatesDistrict || 'House of Delegates'}</p>
-                <ul class="text-lg space-y-1" style="color: #3D3D3D;">
-                  {delegatesList.map(delegate => (
-                    <li>• {delegate}</li>
-                  ))}
-                </ul>
-              </div>
-            )}
+        {stateOfficials.length > 0 && (
+          <div class="rounded-2xl shadow-xl p-8" style="background: linear-gradient(to bottom right, #F5F1E8, #EFE9DC);">
+            <h3 class="text-2xl font-bold mb-6 pb-3" style="font-family: Georgia, serif; color: #C1503D; border-bottom: 2px solid #D4A574;">
+              State of Maryland
+            </h3>
+            <div class="space-y-4">
+              {stateOfficials.map(official => (
+                <div>
+                  <p class="font-semibold mb-1" style="color: #D4A574;">
+                    {official.data.district ? `${official.data.title} — ${official.data.district}` : official.data.title}
+                  </p>
+                  <p class="text-lg" style="color: #3D3D3D;">{official.data.name}</p>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
 
         <!-- Baltimore City Officials -->
-        <div class="rounded-2xl shadow-xl p-8" style="background: linear-gradient(to bottom right, #F5F1E8, #EFE9DC);">
-          <h3 class="text-2xl font-bold mb-6 pb-3" style="font-family: Georgia, serif; color: #1B365D; border-bottom: 2px solid #D4A574;">
-            Baltimore City
-          </h3>
-          <div class="space-y-4">
-            {cityCouncilMember1 && (
-              <div>
-                <p class="font-semibold mb-1" style="color: #D4A574;">{cityCouncilDistrict1 || 'City Council'}</p>
-                <p class="text-lg" style="color: #3D3D3D;">{cityCouncilMember1}</p>
-              </div>
-            )}
-            {cityCouncilMember2 && (
-              <div>
-                <p class="font-semibold mb-1" style="color: #D4A574;">{cityCouncilDistrict2 || 'City Council'}</p>
-                <p class="text-lg" style="color: #3D3D3D;">{cityCouncilMember2}</p>
-              </div>
-            )}
+        {cityOfficials.length > 0 && (
+          <div class="rounded-2xl shadow-xl p-8" style="background: linear-gradient(to bottom right, #F5F1E8, #EFE9DC);">
+            <h3 class="text-2xl font-bold mb-6 pb-3" style="font-family: Georgia, serif; color: #1B365D; border-bottom: 2px solid #D4A574;">
+              Baltimore City
+            </h3>
+            <div class="space-y-4">
+              {cityOfficials.map(official => (
+                <div>
+                  <p class="font-semibold mb-1" style="color: #D4A574;">
+                    {official.data.district ? `${official.data.title} — ${official.data.district}` : official.data.title}
+                  </p>
+                  <p class="text-lg" style="color: #3D3D3D;">{official.data.name}</p>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
 
         <!-- Federal Senators -->
-        {(usSenator1 || usSenator2) && (
+        {senators.length > 0 && (
           <div class="rounded-2xl shadow-xl p-8" style="background: linear-gradient(to bottom right, #F5F1E8, #EFE9DC);">
             <h3 class="text-2xl font-bold mb-6 pb-3" style="font-family: Georgia, serif; color: #C1503D; border-bottom: 2px solid #D4A574;">
               U.S. Senators
             </h3>
             <div class="space-y-4">
-              {usSenator1 && <p class="text-lg" style="color: #3D3D3D;">• {usSenator1}</p>}
-              {usSenator2 && <p class="text-lg" style="color: #3D3D3D;">• {usSenator2}</p>}
+              {senators.map(official => (
+                <p class="text-lg" style="color: #3D3D3D;">• {official.data.name}</p>
+              ))}
             </div>
           </div>
         )}
 
         <!-- House Representative -->
-        {usRepresentative && (
+        {representatives.length > 0 && (
           <div class="rounded-2xl shadow-xl p-8" style="background: linear-gradient(to bottom right, #F5F1E8, #EFE9DC);">
             <h3 class="text-2xl font-bold mb-6 pb-3" style="font-family: Georgia, serif; color: #1B365D; border-bottom: 2px solid #D4A574;">
               U.S. House of Representatives
             </h3>
-            <div>
-              <p class="font-semibold mb-1" style="color: #D4A574;">{usCongressionalDistrict || 'Congressional District'}</p>
-              <p class="text-lg" style="color: #3D3D3D;">{usRepresentative}</p>
+            <div class="space-y-4">
+              {representatives.map(official => (
+                <div>
+                  <p class="font-semibold mb-1" style="color: #D4A574;">
+                    {official.data.district || 'Congressional District'}
+                  </p>
+                  <p class="text-lg" style="color: #3D3D3D;">{official.data.name}</p>
+                </div>
+              ))}
             </div>
           </div>
         )}
@@ -274,7 +260,7 @@ const formatPhoneLink = (phone: string) => phone.replace(/[^0-9]/g, '');
       </div>
 
       <div class="grid md:grid-cols-2 gap-6">
-        {phoneCommunityServices && (
+        {communityContacts.map(contact => (
           <div class="rounded-2xl shadow-xl p-8 hover:scale-105 transition-transform" style="background: linear-gradient(to bottom right, #F5F1E8, #EFE9DC);">
             <div class="flex items-start">
               <div class="w-12 h-12 rounded-full flex items-center justify-center mr-4 flex-shrink-0" style="background-color: #C1503D;">
@@ -283,13 +269,13 @@ const formatPhoneLink = (phone: string) => phone.replace(/[^0-9]/g, '');
                 </svg>
               </div>
               <div>
-                <h3 class="text-xl font-bold mb-2" style="font-family: Georgia, serif; color: #C1503D;">Community Services - 1st District</h3>
-                <p class="mb-3" style="color: #3D3D3D;">Energy, health, education, jobs, housing</p>
-                <a href={`tel:${formatPhoneLink(phoneCommunityServices)}`} class="text-lg font-semibold hover:underline" style="color: #1B365D;">{phoneCommunityServices}</a>
+                <h3 class="text-xl font-bold mb-2" style="font-family: Georgia, serif; color: #C1503D;">{contact.data.name}</h3>
+                {contact.data.description && <p class="mb-3" style="color: #3D3D3D;">{contact.data.description}</p>}
+                <a href={`tel:${formatPhoneLink(contact.data.phone)}`} class="text-lg font-semibold hover:underline" style="color: #1B365D;">{contact.data.phone}</a>
               </div>
             </div>
           </div>
-        )}
+        ))}
       </div>
     </div>
   </section>
@@ -310,24 +296,12 @@ const formatPhoneLink = (phone: string) => phone.replace(/[^0-9]/g, '');
       </div>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {phoneLibrary && (
-          <div class="rounded-xl shadow-lg p-6" style="background: linear-gradient(135deg, #C1503D, #A84636); color: #FAF8F4;">
-            <h3 class="text-lg font-bold mb-3">Enoch Pratt Library</h3>
-            <a href={`tel:${formatPhoneLink(phoneLibrary)}`} class="text-xl font-semibold hover:underline">{phoneLibrary}</a>
+        {educationContacts.map((contact, index) => (
+          <div class="rounded-xl shadow-lg p-6" style={`background: linear-gradient(135deg, ${index % 2 === 0 ? '#C1503D, #A84636' : '#1B365D, #4A7C9D'}); color: #FAF8F4;`}>
+            <h3 class="text-lg font-bold mb-3">{contact.data.name}</h3>
+            <a href={`tel:${formatPhoneLink(contact.data.phone)}`} class="text-xl font-semibold hover:underline">{contact.data.phone}</a>
           </div>
-        )}
-        {phoneSchoolSuperintendent && (
-          <div class="rounded-xl shadow-lg p-6" style="background: linear-gradient(135deg, #1B365D, #4A7C9D); color: #FAF8F4;">
-            <h3 class="text-lg font-bold mb-3">School Superintendent</h3>
-            <a href={`tel:${formatPhoneLink(phoneSchoolSuperintendent)}`} class="text-xl font-semibold hover:underline">{phoneSchoolSuperintendent}</a>
-          </div>
-        )}
-        {phoneSchoolClosings && (
-          <div class="rounded-xl shadow-lg p-6" style="background: linear-gradient(135deg, #C1503D, #A84636); color: #FAF8F4;">
-            <h3 class="text-lg font-bold mb-3">School Closings & Holidays</h3>
-            <a href={`tel:${formatPhoneLink(phoneSchoolClosings)}`} class="text-xl font-semibold hover:underline">{phoneSchoolClosings}</a>
-          </div>
-        )}
+        ))}
       </div>
     </div>
   </section>
@@ -348,24 +322,15 @@ const formatPhoneLink = (phone: string) => phone.replace(/[^0-9]/g, '');
       </div>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {phoneEmergency && (
-          <div class="rounded-xl shadow-lg p-6" style="background: linear-gradient(135deg, #C1503D, #A84636); color: #FAF8F4;">
-            <h3 class="text-lg font-bold mb-3">Police, Fire & Medical Emergency</h3>
-            <a href={`tel:${formatPhoneLink(phoneEmergency)}`} class="text-3xl font-bold hover:underline">{phoneEmergency}</a>
-          </div>
-        )}
-        {phoneGasLeaks && (
-          <div class="rounded-xl shadow-lg p-6" style="background: linear-gradient(135deg, #1B365D, #4A7C9D); color: #FAF8F4;">
-            <h3 class="text-lg font-bold mb-3">Gas Leaks</h3>
-            <a href={`tel:${formatPhoneLink(phoneGasLeaks)}`} class="text-xl font-semibold hover:underline">{phoneGasLeaks}</a>
-          </div>
-        )}
-        {phonePoisonControl && (
-          <div class="rounded-xl shadow-lg p-6" style="background: linear-gradient(135deg, #C1503D, #A84636); color: #FAF8F4;">
-            <h3 class="text-lg font-bold mb-3">Poison Control Center</h3>
-            <a href={`tel:${formatPhoneLink(phonePoisonControl)}`} class="text-xl font-semibold hover:underline">{phonePoisonControl}</a>
-          </div>
-        )}
+        {emergencyContacts.map((contact, index) => {
+          const is911 = contact.data.name.toLowerCase().includes('911') || contact.data.name.toLowerCase().includes('police, fire');
+          return (
+            <div class="rounded-xl shadow-lg p-6" style={`background: linear-gradient(135deg, ${index % 2 === 0 ? '#C1503D, #A84636' : '#1B365D, #4A7C9D'}); color: #FAF8F4;`}>
+              <h3 class="text-lg font-bold mb-3">{contact.data.name}</h3>
+              <a href={`tel:${formatPhoneLink(contact.data.phone)}`} class={`font-semibold hover:underline ${is911 ? 'text-3xl font-bold' : 'text-xl'}`}>{contact.data.phone}</a>
+            </div>
+          );
+        })}
       </div>
     </div>
   </section>
@@ -386,30 +351,12 @@ const formatPhoneLink = (phone: string) => phone.replace(/[^0-9]/g, '');
       </div>
 
       <div class="grid md:grid-cols-2 gap-6">
-        {phoneLeadInspection && (
-          <div class="rounded-xl shadow-lg p-6" style="background: linear-gradient(135deg, #C1503D, #A84636); color: #FAF8F4;">
-            <h3 class="text-lg font-bold mb-3">Lead Paint Inspection</h3>
-            <a href={`tel:${formatPhoneLink(phoneLeadInspection)}`} class="text-xl font-semibold hover:underline">{phoneLeadInspection}</a>
+        {healthContacts.map((contact, index) => (
+          <div class="rounded-xl shadow-lg p-6" style={`background: linear-gradient(135deg, ${index % 2 === 0 ? '#C1503D, #A84636' : '#1B365D, #4A7C9D'}); color: #FAF8F4;`}>
+            <h3 class="text-lg font-bold mb-3">{contact.data.name}</h3>
+            <a href={`tel:${formatPhoneLink(contact.data.phone)}`} class="text-xl font-semibold hover:underline">{contact.data.phone}</a>
           </div>
-        )}
-        {phoneImmunizations && (
-          <div class="rounded-xl shadow-lg p-6" style="background: linear-gradient(135deg, #1B365D, #4A7C9D); color: #FAF8F4;">
-            <h3 class="text-lg font-bold mb-3">Free Immunizations</h3>
-            <a href={`tel:${formatPhoneLink(phoneImmunizations)}`} class="text-xl font-semibold hover:underline">{phoneImmunizations}</a>
-          </div>
-        )}
-        {phoneLeadPoisoning && (
-          <div class="rounded-xl shadow-lg p-6" style="background: linear-gradient(135deg, #C1503D, #A84636); color: #FAF8F4;">
-            <h3 class="text-lg font-bold mb-3">Lead Poisoning Info</h3>
-            <a href={`tel:${formatPhoneLink(phoneLeadPoisoning)}`} class="text-xl font-semibold hover:underline">{phoneLeadPoisoning}</a>
-          </div>
-        )}
-        {phoneLeadAbatement && (
-          <div class="rounded-xl shadow-lg p-6" style="background: linear-gradient(135deg, #1B365D, #4A7C9D); color: #FAF8F4;">
-            <h3 class="text-lg font-bold mb-3">Lead Abatement</h3>
-            <a href={`tel:${formatPhoneLink(phoneLeadAbatement)}`} class="text-xl font-semibold hover:underline">{phoneLeadAbatement}</a>
-          </div>
-        )}
+        ))}
       </div>
     </div>
   </section>
@@ -430,18 +377,12 @@ const formatPhoneLink = (phone: string) => phone.replace(/[^0-9]/g, '');
       </div>
 
       <div class="grid md:grid-cols-2 gap-6">
-        {phoneDrugActivity && (
-          <div class="rounded-xl shadow-lg p-6" style="background: linear-gradient(135deg, #C1503D, #A84636); color: #FAF8F4;">
-            <h3 class="text-lg font-bold mb-3">Report Drug Activity</h3>
-            <a href={`tel:${formatPhoneLink(phoneDrugActivity)}`} class="text-xl font-semibold hover:underline">{phoneDrugActivity}</a>
+        {safetyContacts.map((contact, index) => (
+          <div class="rounded-xl shadow-lg p-6" style={`background: linear-gradient(135deg, ${index % 2 === 0 ? '#C1503D, #A84636' : '#1B365D, #4A7C9D'}); color: #FAF8F4;`}>
+            <h3 class="text-lg font-bold mb-3">{contact.data.name}</h3>
+            <a href={`tel:${formatPhoneLink(contact.data.phone)}`} class="text-xl font-semibold hover:underline">{contact.data.phone}</a>
           </div>
-        )}
-        {phoneCrimePrevention && (
-          <div class="rounded-xl shadow-lg p-6" style="background: linear-gradient(135deg, #1B365D, #4A7C9D); color: #FAF8F4;">
-            <h3 class="text-lg font-bold mb-3">Crime Prevention</h3>
-            <a href={`tel:${formatPhoneLink(phoneCrimePrevention)}`} class="text-xl font-semibold hover:underline">{phoneCrimePrevention}</a>
-          </div>
-        )}
+        ))}
       </div>
     </div>
   </section>
@@ -465,18 +406,12 @@ const formatPhoneLink = (phone: string) => phone.replace(/[^0-9]/g, '');
       </div>
 
       <div class="grid md:grid-cols-2 gap-6">
-        {phoneCommunityCleanup && (
-          <div class="rounded-xl shadow-lg p-6" style="background: linear-gradient(135deg, #C1503D, #A84636); color: #FAF8F4;">
-            <h3 class="text-lg font-bold mb-3">Community Cleanup</h3>
-            <a href={`tel:${formatPhoneLink(phoneCommunityCleanup)}`} class="text-xl font-semibold hover:underline">{phoneCommunityCleanup}</a>
+        {sanitationContacts.map((contact, index) => (
+          <div class="rounded-xl shadow-lg p-6" style={`background: linear-gradient(135deg, ${index % 2 === 0 ? '#C1503D, #A84636' : '#1B365D, #4A7C9D'}); color: #FAF8F4;`}>
+            <h3 class="text-lg font-bold mb-3">{contact.data.name}</h3>
+            <a href={`tel:${formatPhoneLink(contact.data.phone)}`} class="text-xl font-semibold hover:underline">{contact.data.phone}</a>
           </div>
-        )}
-        {phoneEnvironmentalCrimes && (
-          <div class="rounded-xl shadow-lg p-6" style="background: linear-gradient(135deg, #1B365D, #4A7C9D); color: #FAF8F4;">
-            <h3 class="text-lg font-bold mb-3">Environmental Crimes</h3>
-            <a href={`tel:${formatPhoneLink(phoneEnvironmentalCrimes)}`} class="text-xl font-semibold hover:underline">{phoneEnvironmentalCrimes}</a>
-          </div>
-        )}
+        ))}
       </div>
     </div>
   </section>

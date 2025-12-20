@@ -78,6 +78,32 @@ const committeesCollection = defineCollection({
   }),
 });
 
+// Elected Officials collection schema
+const officialsCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    name: z.string(),
+    title: z.string(), // e.g., "Governor", "State Senator", "U.S. Representative"
+    district: z.string().optional(), // e.g., "District 46", "Congressional District 7"
+    level: z.enum(['State', 'City', 'Federal']),
+    category: z.string(), // e.g., "Governor", "State Senate", "State Delegates", "City Council", "U.S. Senate", "U.S. House"
+    order: z.number().default(0),
+  }),
+});
+
+// Resource Contacts collection schema
+const resourceContactsCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    name: z.string(), // e.g., "311 General Complaints", "Report Suspicious Behavior"
+    phone: z.string(),
+    category: z.enum(['General', 'Community Services', 'Education', 'Emergency', 'Health', 'Public Safety', 'Sanitation']),
+    description: z.string().optional(),
+    featured: z.boolean().default(false), // For highlighting important numbers
+    order: z.number().default(0),
+  }),
+});
+
 // Settings collection schema - global site settings
 const settingsCollection = defineCollection({
   type: 'content',
@@ -110,40 +136,6 @@ const settingsCollection = defineCollection({
     // Events page
     googleCalendarEmbedUrl: z.string().optional(),
 
-    // Resources page - Elected Officials
-    stateGovernor: z.string().default(''),
-    stateSenateDistrict: z.string().default(''),
-    stateSenator: z.string().default(''),
-    stateDelegatesDistrict: z.string().default(''),
-    stateDelegates: z.string().default(''), // Comma-separated list
-    cityCouncilDistrict1: z.string().default(''),
-    cityCouncilMember1: z.string().default(''),
-    cityCouncilDistrict2: z.string().default(''),
-    cityCouncilMember2: z.string().default(''),
-    usSenator1: z.string().default(''),
-    usSenator2: z.string().default(''),
-    usCongressionalDistrict: z.string().default(''),
-    usRepresentative: z.string().default(''),
-
-    // Resources page - Phone Numbers
-    phone311: z.string().default('311'),
-    phoneSuspiciousBehavior: z.string().default(''),
-    phoneCommunityServices: z.string().default(''),
-    phoneLibrary: z.string().default(''),
-    phoneSchoolSuperintendent: z.string().default(''),
-    phoneSchoolClosings: z.string().default(''),
-    phoneEmergency: z.string().default('911'),
-    phoneGasLeaks: z.string().default(''),
-    phonePoisonControl: z.string().default(''),
-    phoneLeadInspection: z.string().default(''),
-    phoneImmunizations: z.string().default(''),
-    phoneLeadPoisoning: z.string().default(''),
-    phoneLeadAbatement: z.string().default(''),
-    phoneDrugActivity: z.string().default(''),
-    phoneCrimePrevention: z.string().default(''),
-    phoneCommunityCleanup: z.string().default(''),
-    phoneEnvironmentalCrimes: z.string().default(''),
-
     // Board categories (for the team member dropdown)
     boardCategories: z.union([
       z.array(z.string()),
@@ -158,5 +150,7 @@ export const collections = {
   team: teamCollection,
   documents: documentsCollection,
   committees: committeesCollection,
+  officials: officialsCollection,
+  'resource-contacts': resourceContactsCollection,
   settings: settingsCollection,
 };
