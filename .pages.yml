@@ -181,14 +181,11 @@ content:
         max: 50
       - name: boardCategory
         label: Board Category
-        type: select
+        type: string
         required: true
-        hint: 'Which board group this person belongs to'
-        options:
-          values:
-            - Executive Board
-            - At-Large
-            - Committee Chair
+        hint: 'Which board group this person belongs to. MUST match one of the categories defined in Site Settings → Board Member Categories. Common values: Executive Board, At-Large, Committee Chair'
+        min: 2
+        max: 50
       - name: bio
         label: Short Bio
         type: text

@@ -42,7 +42,7 @@ const teamCollection = defineCollection({
     name: z.string(),
     role: z.string(),
     bio: z.string(),
-    boardCategory: z.enum(['Executive Board', 'At-Large', 'Committee Chair']),
+    boardCategory: z.string(), // Dynamic - matches categories defined in Site Settings
     image: z.string().optional(),
     imageAlt: z.string().optional(),
     email: z.string().email().optional().or(z.literal('')),
