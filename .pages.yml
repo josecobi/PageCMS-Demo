@@ -70,6 +70,13 @@ content:
         type: string
         required: false
         hint: 'Describe the image for accessibility (required if image is provided)'
+      - name: galleryImages
+        label: Additional Images
+        type: list
+        required: false
+        hint: 'Upload additional photos to display at the end of the post as a gallery. For images within the content text, use markdown syntax in the Content field below.'
+        field:
+          type: image
       - name: tags
         label: Tags
         type: list
@@ -87,7 +94,7 @@ content:
         label: Content
         type: rich-text
         required: true
-        hint: 'Main content of the blog post'
+        hint: 'Main content of the blog post. To add images within the text, use markdown syntax: ![Image description](/images/your-photo.jpg). First upload your image to Media, then copy its path.'
 
   # Events
   - name: events

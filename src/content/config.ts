@@ -10,6 +10,7 @@ const blogCollection = defineCollection({
     author: z.string(),
     image: z.string().optional(),
     imageAlt: z.string().optional(),
+    galleryImages: z.array(z.string()).optional().default([]), // Additional images for the post
     tags: z.union([
       z.array(z.string()),
       z.string().transform(val => val.split(',').map(tag => tag.trim()))
