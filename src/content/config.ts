@@ -76,6 +76,11 @@ const committeesCollection = defineCollection({
     imageAlt: z.string().optional(),
     imageCaption: z.string().optional(),
     order: z.number().default(0),
+    sectionHeading: z.string().optional().default('Ways to Get Involved'),
+    activities: z.array(z.object({
+      title: z.string(),
+      content: z.string(),
+    })).optional().default([]),
   }),
 });
 

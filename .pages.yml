@@ -332,11 +332,34 @@ content:
         type: number
         required: false
         hint: 'Order in which this committee appears on the page. Lower numbers appear first (e.g., 1, 2, 3). Leave blank to append to the end.'
-      - name: body
-        label: Committee Content & Activities
-        type: rich-text
-        required: true
-        hint: 'Full committee content including activities, initiatives, or ways to get involved. Use markdown formatting: ## for subheadings (section titles), ### for activity names, regular text for descriptions. Example format: "## Ways to Get Involved:\n\n### Activity Name\nActivity description here."'
+      - name: sectionHeading
+        label: Section Heading
+        type: string
+        required: false
+        hint: 'Heading displayed above the activities/cards (e.g., "Our Initiatives", "Get Involved", "Safety Programs"). Default: "Ways to Get Involved"'
+        max: 100
+        placeholder: 'Ways to Get Involved'
+      - name: activities
+        label: Activities & Initiatives
+        type: list
+        required: false
+        hint: 'Add cards for different activities or initiatives. You can add up to 8 or more cards. Each card has a title and description. Click "Add item" to create a new card.'
+        field:
+          type: object
+          fields:
+            - name: title
+              label: Card Title
+              type: string
+              required: true
+              hint: 'Name of the activity or initiative (e.g., "Neighborhood Watch", "Community Cleanup", "Street Lighting Campaign")'
+              min: 3
+              max: 100
+              placeholder: 'Activity name'
+            - name: content
+              label: Card Description
+              type: rich-text
+              required: true
+              hint: 'Describe what this activity involves. You can use formatting (bold, italics, lists, links) to make the content more engaging.'
 
 
   # Elected Officials

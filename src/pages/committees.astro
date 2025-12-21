@@ -7,59 +7,6 @@ const allCommittees = await getCollection('committees');
 
 // Sort by order
 const committees = allCommittees.sort((a, b) => a.data.order - b.data.order);
-
-// Helper function to parse activities from markdown body
-function parseActivities(content: string) {
-  const lines = content.split('\n');
-  const activities: { title: string; description: string }[] = [];
-  let currentActivity: { title: string; description: string } | null = null;
-
-  for (const line of lines) {
-    // Check if this is an H3 heading (activity title)
-    if (line.startsWith('### ')) {
-      // Save previous activity if exists
-      if (currentActivity) {
-        activities.push(currentActivity);
-      }
-      // Start new activity
-      currentActivity = {
-        title: line.replace('### ', '').trim(),
-        description: ''
-      };
-    } else if (currentActivity && line.trim() && !line.startsWith('#')) {
-      // Add to current activity description
-      currentActivity.description += (currentActivity.description ? ' ' : '') + line.trim();
-    }
-  }
-
-  // Don't forget the last activity
-  if (currentActivity) {
-    activities.push(currentActivity);
-  }
-
-  return activities;
-}
-
-// Helper to extract the section heading (H2) from markdown
-function extractSectionHeading(content: string): string | null {
-  const match = content.match(/^## (.+)$/m);
-  return match ? match[1] : null;
-}
-
-// Helper to get text before first H2 or H3
-function getIntroText(content: string): string {
-  const lines = content.split('\n');
-  const introLines: string[] = [];
-
-  for (const line of lines) {
-    if (line.startsWith('##')) break;
-    if (line.trim()) {
-      introLines.push(line);
-    }
-  }
-
-  return introLines.join('\n');
-}
 ---
 
 <Layout
@@ -84,12 +31,7 @@ function getIntroText(content: string): string {
     </div>
   </section>
 
-  {committees.map(async (committee, index) => {
-    const { Content } = await committee.render();
-    const activities = parseActivities(committee.body);
-    const sectionHeading = extractSectionHeading(committee.body);
-    const introText = getIntroText(committee.body);
-
+  {committees.map((committee, index) => {
     // Alternate background colors
     const isEven = index % 2 === 0;
     const bgColor = isEven ? '#FAF8F4' : 'linear-gradient(to bottom, #EFE9DC, #F5F1E8)';
@@ -118,21 +60,9 @@ function getIntroText(content: string): string {
             <!-- Text Content -->
             <div>
               <div class="rounded-2xl shadow-xl p-8 md:p-10" style="background: linear-gradient(to bottom right, #F5F1E8, #EFE9DC);">
-                <p class="text-lg leading-relaxed mb-6" style="color: #3D3D3D;">
+                <p class="text-lg leading-relaxed" style="color: #3D3D3D;">
                   {committee.data.description}
                 </p>
-
-                {sectionHeading && (
-                  <h3 class="text-2xl font-bold mb-6" style="font-family: Georgia, serif; color: #C1503D;">
-                    {sectionHeading}
-                  </h3>
-                )}
-
-                {introText && !sectionHeading && (
-                  <div class="prose prose-lg max-w-none" style="color: #3D3D3D;">
-                    <Content />
-                  </div>
-                )}
               </div>
             </div>
 
@@ -155,32 +85,41 @@ function getIntroText(content: string): string {
             )}
           </div>
 
-          <!-- Activities Grid -->
-          {activities.length > 0 && (
-            <div class="grid md:grid-cols-2 gap-6">
-              {activities.map((activity, activityIndex) => {
-                // Alternate card colors
-                const isRedCard = activityIndex % 2 === 0;
-                const cardGradient = isRedCard
-                  ? 'linear-gradient(135deg, #C1503D, #A84636)'
-                  : 'linear-gradient(135deg, #1B365D, #4A7C9D)';
-                const iconColor = isRedCard ? '#C1503D' : '#3D3D3D';
+          <!-- Activities Section -->
+          {committee.data.activities && committee.data.activities.length > 0 && (
+            <div>
+              {committee.data.sectionHeading && (
+                <h3 class="text-3xl md:text-4xl font-bold mb-8 text-center" style="font-family: Georgia, serif; color: #3D3D3D;">
+                  {committee.data.sectionHeading}
+                </h3>
+              )}
 
-                return (
-                  <div class="rounded-xl shadow-lg p-8 transition-transform hover:scale-105" style={`background: ${cardGradient}; color: #FAF8F4;`}>
-                    <div class="w-16 h-16 rounded-full flex items-center justify-center mb-4" style="background-color: #FAF8F4;">
-                      <!-- Generic icon for all activities -->
-                      <svg class="w-8 h-8" style={`color: ${iconColor};`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-                      </svg>
+              <!-- Activities Grid -->
+              <div class="grid md:grid-cols-2 gap-6">
+                {committee.data.activities.map((activity, activityIndex) => {
+                  // Alternate card colors
+                  const isRedCard = activityIndex % 2 === 0;
+                  const cardGradient = isRedCard
+                    ? 'linear-gradient(135deg, #C1503D, #A84636)'
+                    : 'linear-gradient(135deg, #1B365D, #4A7C9D)';
+                  const iconColor = isRedCard ? '#C1503D' : '#3D3D3D';
+
+                  return (
+                    <div class="rounded-xl shadow-lg p-8 transition-transform hover:scale-105" style={`background: ${cardGradient}; color: #FAF8F4;`}>
+                      <div class="w-16 h-16 rounded-full flex items-center justify-center mb-4" style="background-color: #FAF8F4;">
+                        <!-- Generic icon for all activities -->
+                        <svg class="w-8 h-8" style={`color: ${iconColor};`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                        </svg>
+                      </div>
+                      <h4 class="text-2xl font-bold mb-4" style="font-family: Georgia, serif;">
+                        {activity.title}
+                      </h4>
+                      <div class="prose prose-invert prose-lg max-w-none leading-relaxed" set:html={activity.content} />
                     </div>
-                    <h3 class="text-xl font-bold mb-3" style="font-family: Georgia, serif;">{activity.title}</h3>
-                    <p class="leading-relaxed">
-                      {activity.description}
-                    </p>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
             </div>
           )}
         </div>
