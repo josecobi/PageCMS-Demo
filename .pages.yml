@@ -72,11 +72,10 @@ content:
         hint: 'Describe the image for accessibility (required if image is provided)'
       - name: galleryImages
         label: Additional Images
-        type: list
+        type: image
+        list: true
         required: false
-        hint: 'Upload additional photos to display at the end of the post as a gallery. For images within the content text, use markdown syntax in the Content field below.'
-        field:
-          type: image
+        hint: 'Upload additional photos to display at the end of the post as a gallery. Click the upload button to add multiple images. You can also add images within the content text using markdown syntax in the Content field below.'
       - name: tags
         label: Tags
         type: list
