@@ -30,7 +30,12 @@ const pastEvents = allEvents
   })
   .sort((a, b) => b.data.eventDate.getTime() - a.data.eventDate.getTime()); // Most recent first
 
-const featuredEvents = allEvents.filter(event => event.data.featured);
+const featuredEvents = allEvents.filter(event => {
+  if (!event.data.featured) return false;
+  const eventDate = new Date(event.data.eventDate);
+  eventDate.setHours(0, 0, 0, 0);
+  return eventDate >= today; // Only show featured events that haven't passed
+});
 ---
 
 <Layout
@@ -117,7 +122,7 @@ const featuredEvents = allEvents.filter(event => event.data.featured);
             </svg>
           </div>
           <h2 class="text-4xl md:text-5xl font-bold mb-4" style="font-family: Georgia, serif; color: #3D3D3D;">
-            Event Calendar</span>
+            Event Calendar
           </h2>
           <div class="w-32 h-1 mx-auto mb-6" style="background-color: #C1503D;"></div>
           <p class="text-lg" style="color: #3D3D3D;">
@@ -147,7 +152,7 @@ const featuredEvents = allEvents.filter(event => event.data.featured);
       {featuredEvents.length > 0 && (
         <div class="mb-16">
           <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center" style="font-family: Georgia, serif; color: #3D3D3D;">
-            Featured <span style="color: #C1503D;">Events</span>
+            Featured Events
           </h2>
           <div class="w-32 h-1 mx-auto mb-10" style="background-color: #D4A574;"></div>
           <div class="grid md:grid-cols-2 gap-8">
@@ -173,7 +178,7 @@ const featuredEvents = allEvents.filter(event => event.data.featured);
       {upcomingEvents.length > 0 && (
         <div class="mb-16">
           <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center" style="font-family: Georgia, serif; color: #3D3D3D;">
-            Upcoming <span style="color: #C1503D;">Events</span>
+            Upcoming Events
           </h2>
           <div class="w-32 h-1 mx-auto mb-10" style="background-color: #D4A574;"></div>
           <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
