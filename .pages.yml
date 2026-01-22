@@ -147,7 +147,6 @@ content:
         type: string
         required: false
         hint: 'Full URL to registration page (e.g., https://eventbrite.com/...). Leave blank if no registration needed.'
-        pattern: '^https?://.*'
         placeholder: 'https://www.eventbrite.com/e/your-event'
       - name: isPast
         label: Past Event

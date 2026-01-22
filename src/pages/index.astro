@@ -1,7 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Button from '../components/Button.astro';
-import NewsletterForm from '../components/NewsletterForm.astro';
 import BlogCard from '../components/BlogCard.astro';
 import EventCard from '../components/EventCard.astro';
 import { getCollection } from 'astro:content';
@@ -63,12 +62,12 @@ const upcomingEvents = allEvents
         </div>
 
         <!-- Hero Image - SVG Silhouette -->
-        <div class="relative flex items-center justify-center overflow-hidden">
+        <div class="relative flex items-center justify-center">
           <div class="w-full max-w-2xl opacity-20 pointer-events-none" style="filter: brightness(0) saturate(100%) invert(98%) sepia(4%) saturate(352%) hue-rotate(343deg) brightness(103%) contrast(96%);">
             <img
               src="/images/header.svg"
               alt=""
-              class="w-full h-auto scale-125"
+              class="w-full h-auto"
             />
           </div>
         </div>
@@ -160,16 +159,6 @@ const upcomingEvents = allEvents
           Contact Us
         </a>
       </div>
-    </div>
-  </section>
-
-  <!-- Newsletter Signup -->
-  <section class="py-16 md:py-24">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <NewsletterForm
-        title="Stay Connected"
-        description="Get the latest news, event updates, and impact stories delivered to your inbox."
-      />
     </div>
   </section>
 </Layout>
