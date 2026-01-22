@@ -12,15 +12,6 @@ const sortedPosts = allPosts.sort((a, b) =>
 // Get all unique tags
 const allTags = [...new Set(allPosts.flatMap(post => post.data.tags))].sort();
 
-// Get tag from URL if filtering
-const urlParams = Astro.url.searchParams;
-const selectedTag = urlParams.get('tag');
-
-// Filter posts by tag if selected
-const filteredPosts = selectedTag
-  ? sortedPosts.filter(post => post.data.tags.includes(selectedTag))
-  : sortedPosts;
-
 const featuredPosts = sortedPosts.filter(post => post.data.featured);
 ---
 
@@ -59,51 +50,47 @@ const featuredPosts = sortedPosts.filter(post => post.data.featured);
       {allTags.length > 0 && (
         <div class="mb-12">
           <h2 class="text-lg font-semibold mb-4" style="color: #3D3D3D;">Filter by Topic</h2>
-          <div class="flex flex-wrap gap-3">
-            <a
-              href="/blog"
-              class="px-4 py-2 rounded-full transition-all"
-              style={!selectedTag
-                ? 'background-color: #1B365D; color: #FAF8F4;'
-                : 'background-color: #EFE9DC; color: #3D3D3D;'}
-              onmouseover={!selectedTag ? '' : "this.style.backgroundColor='#E5DFD0'"}
-              onmouseout={!selectedTag ? '' : "this.style.backgroundColor='#EFE9DC'"}
+          <div class="flex flex-wrap gap-3" id="tag-filters">
+            <button
+              type="button"
+              class="tag-filter px-4 py-2 rounded-full transition-all cursor-pointer"
+              data-tag=""
+              style="background-color: #1B365D; color: #FAF8F4;"
             >
               All Posts
-            </a>
+            </button>
             {allTags.map(tag => (
-              <a
-                href={`/blog?tag=${encodeURIComponent(tag)}`}
-                class="px-4 py-2 rounded-full transition-all"
-                style={selectedTag === tag
-                  ? 'background-color: #1B365D; color: #FAF8F4;'
-                  : 'background-color: #EFE9DC; color: #3D3D3D;'}
-                onmouseover={selectedTag === tag ? '' : "this.style.backgroundColor='#E5DFD0'"}
-                onmouseout={selectedTag === tag ? '' : "this.style.backgroundColor='#EFE9DC'"}
+              <button
+                type="button"
+                class="tag-filter px-4 py-2 rounded-full transition-all cursor-pointer"
+                data-tag={tag}
+                style="background-color: #EFE9DC; color: #3D3D3D;"
               >
                 {tag}
-              </a>
+              </button>
             ))}
           </div>
         </div>
       )}
 
       <!-- Featured Posts -->
-      {!selectedTag && featuredPosts.length > 0 && (
-        <div class="mb-16">
+      {featuredPosts.length > 0 && (
+        <div class="mb-16" id="featured-section">
           <h2 class="text-3xl md:text-4xl font-bold mb-8" style="font-family: Georgia, serif; color: #C1503D;">Featured Stories</h2>
           <div class="grid md:grid-cols-2 gap-8">
             {featuredPosts.slice(0, 2).map(post => (
-              <BlogCard
-                title={post.data.title}
-                description={post.data.description}
-                publishDate={post.data.publishDate}
-                author={post.data.author}
-                slug={post.slug}
-                image={post.data.image}
-                imageAlt={post.data.imageAlt}
-                tags={post.data.tags}
-              />
+              <div class="blog-card" data-tags={JSON.stringify(post.data.tags)}>
+                <BlogCard
+                  title={post.data.title}
+                  description={post.data.description}
+                  publishDate={post.data.publishDate}
+                  author={post.data.author}
+                  slug={post.slug}
+                  image={post.data.image}
+                  imageAlt={post.data.imageAlt}
+                  tags={post.data.tags}
+                />
+              </div>
             ))}
           </div>
         </div>
@@ -111,35 +98,102 @@ const featuredPosts = sortedPosts.filter(post => post.data.featured);
 
       <!-- All Posts -->
       <div>
-        <h2 class="text-3xl md:text-4xl font-bold mb-8" style="font-family: Georgia, serif; color: #1B365D;">
-          {selectedTag ? `Posts tagged "${selectedTag}"` : 'All Posts'}
+        <h2 class="text-3xl md:text-4xl font-bold mb-8" style="font-family: Georgia, serif; color: #1B365D;" id="posts-heading">
+          All Posts
         </h2>
 
-        {filteredPosts.length > 0 ? (
-          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredPosts.map(post => (
-              <BlogCard
-                title={post.data.title}
-                description={post.data.description}
-                publishDate={post.data.publishDate}
-                author={post.data.author}
-                slug={post.slug}
-                image={post.data.image}
-                imageAlt={post.data.imageAlt}
-                tags={post.data.tags}
-              />
+        {sortedPosts.length > 0 ? (
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="posts-grid">
+            {sortedPosts.map(post => (
+              <div class="blog-card" data-tags={JSON.stringify(post.data.tags)}>
+                <BlogCard
+                  title={post.data.title}
+                  description={post.data.description}
+                  publishDate={post.data.publishDate}
+                  author={post.data.author}
+                  slug={post.slug}
+                  image={post.data.image}
+                  imageAlt={post.data.imageAlt}
+                  tags={post.data.tags}
+                />
+              </div>
             ))}
           </div>
         ) : (
-          <div class="text-center py-12">
+          <div class="text-center py-12" id="no-posts-message">
             <p class="text-xl" style="color: #3D3D3D;">
-              {selectedTag
-                ? `No posts found with tag "${selectedTag}"`
-                : 'No blog posts yet. Check back soon!'}
+              No blog posts yet. Check back soon!
             </p>
           </div>
         )}
+
+        <div class="text-center py-12 hidden" id="no-results-message">
+          <p class="text-xl" style="color: #3D3D3D;" id="no-results-text">
+            No posts found with this tag.
+          </p>
+        </div>
       </div>
     </div>
   </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const filters = document.querySelectorAll('.tag-filter');
+      const blogCards = document.querySelectorAll('.blog-card');
+      const featuredSection = document.getElementById('featured-section');
+      const postsHeading = document.getElementById('posts-heading');
+      const noResultsMessage = document.getElementById('no-results-message');
+      const noResultsText = document.getElementById('no-results-text');
+
+      filters.forEach(filter => {
+        filter.addEventListener('click', () => {
+          const selectedTag = filter.getAttribute('data-tag');
+
+          // Update button styles
+          filters.forEach(f => {
+            if (f.getAttribute('data-tag') === selectedTag) {
+              f.style.backgroundColor = '#1B365D';
+              f.style.color = '#FAF8F4';
+            } else {
+              f.style.backgroundColor = '#EFE9DC';
+              f.style.color = '#3D3D3D';
+            }
+          });
+
+          // Filter blog cards
+          let visibleCount = 0;
+          blogCards.forEach(card => {
+            const tags = JSON.parse(card.getAttribute('data-tags') || '[]');
+            if (!selectedTag || tags.includes(selectedTag)) {
+              card.classList.remove('hidden');
+              visibleCount++;
+            } else {
+              card.classList.add('hidden');
+            }
+          });
+
+          // Show/hide featured section
+          if (featuredSection) {
+            featuredSection.classList.toggle('hidden', !!selectedTag);
+          }
+
+          // Update heading
+          if (postsHeading) {
+            postsHeading.textContent = selectedTag ? `Posts tagged "${selectedTag}"` : 'All Posts';
+          }
+
+          // Show/hide no results message
+          if (noResultsMessage && noResultsText) {
+            const mainGridCards = document.querySelectorAll('#posts-grid .blog-card:not(.hidden)');
+            if (mainGridCards.length === 0 && selectedTag) {
+              noResultsMessage.classList.remove('hidden');
+              noResultsText.textContent = `No posts found with tag "${selectedTag}"`;
+            } else {
+              noResultsMessage.classList.add('hidden');
+            }
+          }
+        });
+      });
+    });
+  </script>
 </Layout>
